@@ -1,0 +1,212 @@
+---
+title: "I Built a Cyberpunk Synth in the Browser — Here's How the Web Audio API Actually Works"
+description: "A practical breakdown of the Web Audio API through the lens of BeatReactor — how I built a real-time synth with dual sound engines, keyboard mapping, and live recording using only vanilla JavaScript."
+date: "2025-04-10"
+readingTime: "10 min read"
+tags: "JavaScript, Web Audio API, BeatReactor, Vanilla JS"
+---
+
+## The Idea
+
+Most developers hear "audio in the browser" and immediately think: *that sounds painful*. Import a library, pray it works, move on.
+
+I thought the same thing — until I built BeatReactor.
+
+BeatReactor is a cyberpunk music station that runs entirely in the browser. No backend. No audio files. Just the Web Audio API and vanilla JavaScript generating sound from scratch in real time. It has a dual sound engine, live keyboard mapping, and a built-in recording feature that lets you export what you play.
+
+This post is the breakdown I wish I had before I started. If you've ever been curious about how sound actually works in a browser, this one's for you.
+
+---
+
+## The AudioContext — The Engine Behind Everything
+
+The Web Audio API is built around one central object: the `AudioContext`. Think of it as a mixer board. Everything — oscillators, filters, effects, your speakers — is a **node** in a graph, and you connect them together.
+
+```js
+const audioCtx = new AudioContext();
+```
+
+That one line gives you access to the entire audio pipeline. From here you create nodes, connect them in sequence, and the last node connects to `audioCtx.destination` — which is your speakers.
+
+A simple chain looks like this:
+
+```
+OscillatorNode → GainNode → audioCtx.destination
+```
+
+An oscillator generates a raw tone. A gain node controls volume. Your speakers play the result. That's it. The entire Web Audio API is just variations of this pattern.
+
+---
+
+## Generating Sound from Nothing — OscillatorNode
+
+This is the part that genuinely surprised me. You don't need an audio file to make sound. The browser can generate it mathematically.
+
+```js
+function playTone(frequency, type = 'sine') {
+  const oscillator = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+
+  oscillator.type = type;        // 'sine' | 'square' | 'sawtooth' | 'triangle'
+  oscillator.frequency.value = frequency;  // in Hz — e.g. 440 = middle A
+
+  // Shape the volume: quick attack, short sustain, fast release
+  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+  gainNode.gain.linearRampToValueAtTime(0.8, audioCtx.currentTime + 0.01);
+  gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+
+  oscillator.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  oscillator.start(audioCtx.currentTime);
+  oscillator.stop(audioCtx.currentTime + 0.5);
+}
+```
+
+Call `playTone(440)` and you hear a clean A note. Call `playTone(440, 'sawtooth')` and you get a harsher, more aggressive tone — which is exactly what I used for the "synth bass" engine in BeatReactor.
+
+The four waveform types each have a distinct character:
+
+- **Sine** — pure, smooth, clean. Good for pads and soft leads.
+- **Square** — hollow, retro, NES-game energy. Classic chiptune.
+- **Sawtooth** — bright, buzzy, aggressive. Great for basslines and leads.
+- **Triangle** — softer than square, warmer than sine. Useful for sub bass.
+
+---
+
+## The Dual Sound Engine
+
+BeatReactor has two modes switchable in real time: **Synth** and **Drum**. This was the most fun part to build.
+
+The synth engine uses the oscillator approach above — each key triggers a note at a specific frequency from a lookup table:
+
+```js
+const NOTE_FREQUENCIES = {
+  'a': 261.63,  // C4
+  'w': 277.18,  // C#4
+  's': 293.66,  // D4
+  'e': 311.13,  // D#4
+  'd': 329.63,  // E4
+  'f': 349.23,  // F4
+  // ... and so on up the keyboard
+};
+```
+
+The drum engine is different. Kicks, snares, and hi-hats can't easily be replicated with a plain oscillator — they need noise and filtering. A snare, for example, is a mix of a short tone and white noise:
+
+```js
+function playSnare() {
+  // White noise buffer
+  const bufferSize = audioCtx.sampleRate * 0.1;
+  const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) {
+    data[i] = Math.random() * 2 - 1;  // random values between -1 and 1
+  }
+
+  const noise = audioCtx.createBufferSource();
+  noise.buffer = buffer;
+
+  // High-pass filter to make it snappy, not muddy
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'highpass';
+  filter.frequency.value = 1000;
+
+  const gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(1, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+
+  noise.connect(filter);
+  filter.connect(gain);
+  gain.connect(audioCtx.destination);
+  noise.start();
+}
+```
+
+White noise is just random numbers between -1 and 1 fed into the audio pipeline. The `BiquadFilterNode` shapes the frequency content — cut everything below 1kHz and it sounds percussive. That combination gets you a convincing snare with zero audio files.
+
+---
+
+## The Autoplay Policy Problem
+
+Here's the gotcha that trips up every developer the first time.
+
+Modern browsers block audio from playing until the user has interacted with the page. Try to create an `AudioContext` on page load and it will be in a `suspended` state. Your sounds won't play and you'll get no useful error.
+
+The fix is to resume the context on the first user interaction:
+
+```js
+document.addEventListener('keydown', async () => {
+  if (audioCtx.state === 'suspended') {
+    await audioCtx.resume();
+  }
+}, { once: true });
+```
+
+The `{ once: true }` option removes the listener after it fires once — clean and efficient. After this runs, the context is in `running` state and audio works normally for the rest of the session.
+
+This was the first bug I hit with BeatReactor. I spent an embarrassing amount of time debugging before I found the autoplay policy docs.
+
+---
+
+## Recording with MediaRecorder
+
+The feature I'm most proud of in BeatReactor is the built-in recorder. Play something, hit record, hit stop, download a WAV. All in the browser.
+
+The trick is routing the audio through a `MediaStreamDestinationNode` instead of — or in addition to — your speakers:
+
+```js
+const recordingDest = audioCtx.createMediaStreamDestination();
+masterGain.connect(recordingDest);           // record what's playing
+masterGain.connect(audioCtx.destination);    // also play through speakers
+
+const mediaRecorder = new MediaRecorder(recordingDest.stream);
+const chunks = [];
+
+mediaRecorder.ondataavailable = (e) => chunks.push(e.data);
+
+mediaRecorder.onstop = () => {
+  const blob = new Blob(chunks, { type: 'audio/wav' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'beatreactor-recording.wav';
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+// Start / stop
+mediaRecorder.start();
+// ... user plays keys ...
+mediaRecorder.stop();
+```
+
+The `MediaStreamDestinationNode` captures whatever flows through the audio graph into a `MediaStream`. The `MediaRecorder` records that stream into a blob. Then a programmatic `<a>` click triggers the download. No server, no uploads, no dependencies — pure browser APIs end to end.
+
+---
+
+## What I Learned
+
+Building BeatReactor taught me more about how computers process audio than any article ever could. A few things stuck with me:
+
+**The Web Audio API runs off the main thread.** Audio processing happens in a dedicated thread, which is why it doesn't stutter even when your JavaScript is busy. This is by design — the API was built to be jitter-free.
+
+**Everything is a graph.** Once you internalize the node-and-connection mental model, the API clicks. OscillatorNode → BiquadFilterNode → DynamicsCompressorNode → GainNode → destination is a perfectly valid chain, and each node has one job.
+
+**White noise is just math.** I had this vague idea that audio engineering was mysterious. It's not — it's just numbers. Waveforms are mathematical functions. Filters are formulas. The browser is doing signal processing on your CPU, 44,100 times per second, to produce sound.
+
+**The autoplay policy exists for good reason.** Autoplay audio is genuinely annoying. The browser policy forcing user interaction before sound plays is the right call — it just requires one extra line to handle.
+
+---
+
+## Try It Yourself
+
+BeatReactor is [live on GitHub Pages](https://itsrajaniket.github.io/BeatReactor/). Open it on desktop, switch between Synth and Drum mode, and hit record while you play. The whole thing is about 400 lines of vanilla JavaScript.
+
+If you want to go deeper, the [MDN Web Audio API docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) are genuinely excellent — one of the better-documented browser APIs out there.
+
+The browser is a more capable instrument than most developers realize. You don't need an audio library. You don't need a backend. You just need an `AudioContext` and the patience to read the docs.
+
+---
+
+*Built something cool with the Web Audio API? [Reach out](/contact) — I'd love to see it.*

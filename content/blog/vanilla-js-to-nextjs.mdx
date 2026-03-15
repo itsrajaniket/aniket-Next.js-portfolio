@@ -1,0 +1,127 @@
+---
+title: "From Vanilla JS to Next.js — What I Learned Migrating My Portfolio"
+description: "A deep-dive into the architectural decisions, gotchas, and wins when taking a static HTML/CSS/JS portfolio to a production-grade Next.js App Router project."
+date: "2025-03-15"
+readingTime: "8 min read"
+tags: "Next.js, React, TypeScript, Migration"
+---
+
+## Why I Decided to Migrate
+
+My original portfolio was a single `index.html` file — 2,800 lines of vanilla HTML, Tailwind (via CDN), and inline JavaScript. It worked, and it looked good. But maintaining it was painful.
+
+Every new project meant scrolling through hundreds of lines to find the right `<div>`. Sharing data between sections required reading the DOM. TypeScript was out of the question.
+
+The real trigger? I wanted to add a blog. You can't do that with a static HTML file without shipping a CMS or writing markdown-to-HTML by hand. That was the moment I committed to migrating.
+
+## The Hardest Part: Canvas Animations
+
+My portfolio had two canvas effects I was proud of:
+
+1. **Spider-network particles** in the hero section — particles that repel from your mouse cursor and connect to nearby particles with lines
+2. **Mouse trail sparkles** — a global cyan particle trail that follows your cursor
+
+In vanilla JS, these were simple. You grab the canvas, set up a `requestAnimationFrame` loop, and you're done.
+
+In Next.js, there's a fundamental problem: **canvas code runs in the browser, but Next.js tries to run components on the server first**. If you reference `window`, `document`, or `HTMLCanvasElement` in a component that isn't marked `"use client"`, you get a build error.
+
+The solution was to extract each canvas effect into a dedicated Client Component:
+
+```tsx
+"use client";
+
+import { useEffect, useRef } from "react";
+
+export default function SpiderCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    // All the canvas logic goes here — runs only in the browser
+    // ...
+
+    return () => {
+      // Cleanup: cancel animation frame, remove listeners
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} aria-hidden="true" />;
+}
+```
+
+The `useRef` + `useEffect` pattern is the correct way to manage imperative DOM/canvas APIs in React. The `useEffect` cleanup function is critical — without it, you get memory leaks when the component unmounts.
+
+I also added an `IntersectionObserver` to pause the spider canvas when it's scrolled off-screen. This cut CPU usage by ~60% when users scroll past the hero.
+
+## Server vs Client Components: The Mental Model
+
+The App Router's server/client split confused me at first. Here's the mental model that helped:
+
+**Default to Server Components.** They render on the server (or at build time), which means:
+- No JavaScript bundle shipped to the browser
+- Direct access to databases, filesystem, environment variables
+- Great for SEO
+
+**Only add `"use client"` when you need:**
+- Browser APIs (`window`, `document`, `localStorage`, `canvas`)
+- React state (`useState`, `useReducer`)
+- React effects (`useEffect`)
+- Event handlers that need to be interactive
+- Third-party libraries that use browser APIs
+
+In my portfolio, only 5 out of 15+ components needed `"use client"`: `SpiderCanvas`, `MouseTrailCanvas`, `MobileNav`, `NavLinks` (for `usePathname`), `Typewriter`, and `ContactForm`.
+
+Everything else — `Hero`, `About`, `Skills`, `Projects` (the grid wrapper), `Education`, `Footer` — runs as a Server Component.
+
+## The Contact Form: Server Actions
+
+My old form used a third-party FormSubmit service and vanilla fetch. The new version uses a **Next.js Server Action** — a function marked `"use server"` that runs on the server when called from a Client Component.
+
+This is a major architectural win. Instead of exposing an API route, you write a function that:
+
+1. Validates input with Zod
+2. Calls the email service (Resend, SendGrid, etc.)
+3. Returns a typed result
+
+```ts
+"use server";
+import { z } from "zod";
+
+export async function sendContactEmail(data: FormData) {
+  const result = schema.safeParse(data);
+  if (!result.success) return { success: false, errors: result.error.flatten() };
+  // Call email API here
+}
+```
+
+The client form calls this directly — no fetch, no API route, no CORS headers. It feels like calling a local function, but it runs securely on the server.
+
+## What Next.js Gave Me for Free
+
+- **`next/font`**: Google Fonts with zero layout shift. Loading Orbitron and Rajdhani with `next/font/google` automatically generates CSS variables, inlines critical font CSS, and removes the render-blocking `<link>` tag.
+- **`next/image`**: Automatic WebP conversion, lazy loading, and preventing layout shift with `fill` + `sizes`.
+- **Metadata API**: The `metadata` export in `layout.tsx` generates all Open Graph and Twitter card tags without a single `<meta>` tag in JSX.
+- **`generateStaticParams`**: For the blog, Next.js pre-renders all post pages at build time. Zero cold starts.
+
+## The One Thing I'd Do Differently
+
+I'd set up **`next-mdx-remote`** from day one instead of writing a custom markdown parser. My minimal `mdToHtml` function works for simple posts but breaks on code blocks with syntax highlighting, nested lists, and custom components.
+
+`next-mdx-remote` lets you embed React components inside your markdown posts — imagine a live `CodeSandbox` embed or an interactive chart inside a blog post. That's the power of MDX, and it's worth the setup cost.
+
+## Final Thoughts
+
+The migration took about a week of focused work. The result is a portfolio that:
+
+- Loads faster (no CDN Tailwind, no blocking scripts)
+- Is fully typed with TypeScript
+- Has a real blog with SEO metadata
+- Can be extended with a CMS, database, or auth at any point
+
+The key insight: **Next.js App Router doesn't replace what you already know — it gives you better tools to express it.**
+
+If you're sitting on a static portfolio and thinking about the jump, do it. Your future self will thank you.
+
+---
+
+*Have questions about any of this? [Reach out](/contact) — I'm happy to help.*

@@ -1,0 +1,116 @@
+import type { Project } from "@/types";
+
+export const projects: Project[] = [
+  {
+    id: "habit-builder-kit",
+    title: "Habit Builder Kit",
+    description:
+      "A productivity app for building and tracking daily habits. Features streak tracking, progress visualizations, and a reminder system — all offline-first.",
+    tags: ["REACT", "REDUX", "TAILWIND"],
+    github: "https://github.com/itsrajaniket",
+    live: "https://habit-builder-kit.vercel.app/",
+    image: "/images/project-habit.jpg",
+    icon: "fas fa-check-circle",
+    featured: true,
+    accentColor: "cyan",
+  },
+  {
+    id: "markdown-studio",
+    title: "Markdown Studio",
+    description:
+      "A feature-rich React editor with real-time preview, synchronized scrolling, and multi-format export (MD/DOCX). Includes XSS protection and syntax highlighting.",
+    tags: ["REACT", "PRISM.JS", "MARKED"],
+    github: "https://github.com/itsrajaniket/Your-Markdown-Editor",
+    live: "https://markdown-studio-pro.netlify.app/",
+    image: "/images/project-markdown.png",
+    icon: "fas fa-file-code",
+    featured: true,
+    accentColor: "indigo",
+  },
+  {
+    id: "beatreactor-synth",
+    title: "BeatReactor Synth",
+    description:
+      "A cyberpunk music station with a dual-sound engine, real-time keyboard mapping, and built-in recording using the Web Audio API.",
+    tags: ["WEB AUDIO API", "JS ES6+", "NEON UI"],
+    github: "https://github.com/itsrajaniket/BeatReactor",
+    live: "https://itsrajaniket.github.io/BeatReactor/",
+    image: "/images/project-beatreactor.jpg",
+    icon: "fas fa-compact-disc",
+    featured: true,
+    accentColor: "purple",
+  },
+  {
+    id: "corporate-job-tracker",
+    title: "Corporate Job Tracker",
+    description:
+      "A Kanban-style job application tracker with drag-and-drop columns, deadline alerts, company notes, and CSV export.",
+    tags: ["REACT", "DND-KIT", "TAILWIND"],
+    github: "https://github.com/itsrajaniket",
+    live: "https://corporate-job-tracker.vercel.app/",
+    image: "/images/project-jobtracker.jpg",
+    icon: "fas fa-briefcase",
+    featured: true,
+    accentColor: "violet",
+  },
+  {
+    id: "maharani-food-plaza",
+    title: "Maharani Food Plaza",
+    description:
+      "A freelance restaurant website with GSAP scroll animations, interactive menu, and EmailJS-powered reservation form.",
+    tags: ["HTML", "CSS", "JS", "GSAP"],
+    github: "https://github.com/itsrajaniket",
+    live: "https://itsrajaniket.github.io/freelance-restaurant-app/",
+    image: "/images/project-maharani.jpg",
+    icon: "fas fa-utensils",
+    accentColor: "amber",
+  },
+  {
+    id: "weather-app",
+    title: "Weather App",
+    description:
+      "Real-time weather data via OpenWeather API with dynamic backgrounds and smooth animated transitions.",
+    tags: ["REST API", "JS"],
+    github: "https://github.com/itsrajaniket/Weather-App",
+    live: "https://itsrajaniket.github.io/Weather-App/",
+    image: "/images/project-weather.jpg",
+    icon: "fas fa-cloud-sun",
+    accentColor: "sky",
+  },
+  {
+    id: "text-to-speech",
+    title: "Text-to-Speech",
+    description:
+      "An accessibility tool converting text to natural-sounding speech using the browser Web Speech API.",
+    tags: ["WEB SPEECH API", "JS"],
+    github: "https://github.com/itsrajaniket/Text-to-Speech-Converter",
+    live: "https://itsrajaniket.github.io/Text-to-Speech-Converter/",
+    image: "/images/project-speech.jpg",
+    icon: "fas fa-volume-up",
+    accentColor: "teal",
+  },
+  {
+    id: "qr-code-generator",
+    title: "QR Code Generator",
+    description:
+      "Instantly generates scannable QR codes for any URL or text with download support and a clean UI.",
+    tags: ["JS", "CANVAS API", "HTML"],
+    github: "https://github.com/itsrajaniket/QR-Code-Generator",
+    live: "https://itsrajaniket.github.io/QR-Code-Generator/",
+    image: "/images/project-qr.jpg",
+    icon: "fas fa-qrcode",
+    accentColor: "green",
+  },
+  {
+    id: "dog-api-gallery",
+    title: "Dog API Gallery",
+    description:
+      "Fetches random dog images and breed info using async JavaScript — a clean demo of REST API consumption.",
+    tags: ["FETCH API", "JSON", "JS"],
+    github: "https://github.com/itsrajaniket/dog-api-project",
+    live: "https://itsrajaniket.github.io/dog-api-project/",
+    image: "/images/project-dog.jpg",
+    icon: "fas fa-dog",
+    accentColor: "orange",
+  },
+];
