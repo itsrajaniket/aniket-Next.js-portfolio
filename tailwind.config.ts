@@ -15,11 +15,11 @@ const config: Config = {
         accent: "#22d3ee",
         dark: "#020617",
       },
-      fontFamily: {
-        display: ["var(--font-display)", "Orbitron", "sans-serif"],
-        sans: ["var(--font-body)", "Rajdhani", "sans-serif"],
-        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
-      },
+      // fontFamily: {
+      //   display: ["var(--font-display)", "Orbitron", "sans-serif"],
+      //   sans: ["var(--font-body)", "Rajdhani", "sans-serif"],
+      //   mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
+      // },
       animation: {
         "spin-slow": "spin 8s linear infinite",
         float: "float 6s ease-in-out infinite",
