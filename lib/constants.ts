@@ -1,29 +1,25 @@
-// ── Single source of truth ──────────────────────────────────────────────────
-
-export const SITE_URL     = "https://itsrajaniket.github.io";
-export const SITE_NAME    = "Aniket Raj Portfolio";
-export const AUTHOR_NAME  = "Aniket Raj";
+export const SITE_URL = "https://www.rajaniket.com";
+export const SITE_NAME = "Aniket Raj Portfolio";
+export const AUTHOR_NAME = "Aniket Raj";
 export const AUTHOR_EMAIL = "aniketrajid@gmail.com";
 export const AUTHOR_LOCATION = "Indore, Madhya Pradesh, India";
 
-// ── Navigation (order matches exact page render order) ──────────────────────
 export const NAV_ITEMS = [
-  { label: "Home",       href: "#home",       isRoute: false },
-  { label: "About",      href: "#about",      isRoute: false },
-  { label: "Skills",     href: "#skills",     isRoute: false },
-  { label: "Work",       href: "#work",       isRoute: false },
-  { label: "Projects",   href: "#projects",   isRoute: false },
-  { label: "Services",   href: "#services",   isRoute: false },
-  { label: "Education",  href: "#education",  isRoute: false },
-  { label: "Blog",       href: "/blog",       isRoute: true  },
-  { label: "Contact",    href: "#contact",    isRoute: false },
+  { label: "Home", href: "#home", isRoute: false },
+  { label: "About", href: "#about", isRoute: false },
+  { label: "Skills", href: "#skills", isRoute: false },
+  { label: "Work", href: "#work", isRoute: false },
+  { label: "Projects", href: "#projects", isRoute: false },
+  { label: "Services", href: "#services", isRoute: false },
+  { label: "Education", href: "#education", isRoute: false },
+  { label: "Blog", href: "/blog", isRoute: true },
+  { label: "Contact", href: "#contact", isRoute: false },
 ] as const;
 
-export const NAV_SECTION_IDS = NAV_ITEMS
-  .filter((n) => !n.isRoute)
-  .map((n) => n.href.replace("#", ""));
+export const NAV_SECTION_IDS = NAV_ITEMS.filter((n) => !n.isRoute).map((n) =>
+  n.href.replace("#", ""),
+);
 
-// ── Social links ─────────────────────────────────────────────────────────────
 export const SOCIAL_LINKS = [
   {
     icon: "fab fa-linkedin",
@@ -38,8 +34,8 @@ export const SOCIAL_LINKS = [
     href: "https://github.com/itsrajaniket",
     label: "GitHub Profile",
     handle: "@itsrajaniket",
-    color: "text-slate-300",
-    bg: "bg-slate-500/10 border-slate-500/20",
+    color: "text-stone-300",
+    bg: "bg-stone-500/10 border-stone-500/20",
   },
   {
     icon: "fas fa-code",
@@ -71,20 +67,21 @@ export const SOCIAL_LINKS = [
     label: "Send Email",
     handle: AUTHOR_EMAIL,
     color: "text-accent",
-    bg: "bg-cyan-500/10 border-cyan-500/20",
+    bg: "bg-orange-500/10 border-orange-500/20",
   },
 ] as const;
 
+// More personal, less generic AI output
 export const TYPEWRITER_WORDS = [
-  "React Engineer",
-  "Frontend Developer",
-  "Problem Solver",
-  "UI Performance Nerd",
+  "React Developer",
+  "Next.js Engineer",
+  "UI Craftsman",
+  "Frontend Obsessive",
 ] as const;
 
 export const HERO_STATS = [
-  { value: "15+", label: "Projects Built" },
-  { value: "25+", label: "GitHub Repos" },
-  { value: "3+",  label: "Happy Clients" },
-  { value: "∞",   label: "Coffee Cups" },
+  { value: "15+", label: "Projects" },
+  { value: "25+", label: "Repos" },
+  { value: "3+", label: "Clients" },
+  { value: "∞", label: "Coffee" },
 ] as const;
