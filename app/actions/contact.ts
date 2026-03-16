@@ -4,8 +4,8 @@ import { z } from "zod";
 
 // ── Validation schema (mirrors ContactForm's zod schema) ──────────────────
 const contactSchema = z.object({
-  name:    z.string().min(2, "Name must be at least 2 characters"),
-  email:   z.string().email("Please enter a valid email"),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email"),
   subject: z.string().min(4, "Subject must be at least 4 characters"),
   message: z.string().min(20, "Message must be at least 20 characters"),
 });
@@ -19,7 +19,7 @@ export interface ActionResult {
 }
 
 export async function sendContactEmail(
-  formData: ContactFormData
+  formData: ContactFormData,
 ): Promise<ActionResult> {
   // ── 1. Validate ──────────────────────────────────────────────────────
   const result = contactSchema.safeParse(formData);
@@ -43,26 +43,31 @@ export async function sendContactEmail(
 
   try {
     // ─── UNCOMMENT TO ENABLE REAL EMAIL SENDING ───────────────────────
-    // const { Resend } = await import("resend");
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    //
-    // await resend.emails.send({
-    //   from: "Portfolio Contact <onboarding@resend.dev>",
-    //   to:   "aniketrajid@gmail.com",   // TODO: your real email
-    //   replyTo: email,
-    //   subject: `[Portfolio] ${subject}`,
-    //   html: `
-    //     <h2>New message from ${name}</h2>
-    //     <p><strong>Email:</strong> ${email}</p>
-    //     <p><strong>Subject:</strong> ${subject}</p>
-    //     <hr />
-    //     <p>${message.replace(/\n/g, "<br/>")}</p>
-    //   `,
-    // });
+    const { Resend } = await import("resend");
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: "aniketrajid@gmail.com", // TODO: your real email
+      replyTo: email,
+      subject: `[Portfolio] ${subject}`,
+      html: `
+        <h2>New message from ${name}</h2>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <hr />
+        <p>${message.replace(/\n/g, "<br/>")}</p>
+      `,
+    });
     // ─────────────────────────────────────────────────────────────────
 
     // ─── STUB (logs to console for now) ───────────────────────────────
-    console.log("[ContactForm] Message received:", { name, email, subject, message });
+    console.log("[ContactForm] Message received:", {
+      name,
+      email,
+      subject,
+      message,
+    });
     await new Promise((r) => setTimeout(r, 600)); // simulate network delay
 
     return {
@@ -73,7 +78,8 @@ export async function sendContactEmail(
     console.error("[ContactForm] Error:", error);
     return {
       success: false,
-      message: "Something went wrong. Please try emailing directly at aniketrajid@gmail.com",
+      message:
+        "Something went wrong. Please try emailing directly at aniketrajid@gmail.com",
     };
   }
 }
