@@ -11,7 +11,7 @@ const SHOWCASE = [
     id: "maharani",
     type: "Freelance",
     typeBadge: "bg-amber-500/15 border-amber-500/30 text-amber-300",
-    period: "2024",
+    period: "2025",
     title: "Maharani Food Plaza",
     subtitle: "Restaurant Website — Live Client Project",
     description:
@@ -32,8 +32,8 @@ const SHOWCASE = [
     bgGrad: "from-amber-950/80 via-slate-900/95 to-slate-900",
     icon: "fas fa-utensils",
     metrics: [
-      { value: "2 wks", label: "Delivery" },
-      { value: "0", label: "Revisions" },
+      { value: "8 wks", label: "Delivery" },
+      { value: "4", label: "Revisions" },
       { value: "Live", label: "Status" },
     ],
   },
@@ -41,7 +41,7 @@ const SHOWCASE = [
     id: "jobtracker",
     type: "Personal",
     typeBadge: "bg-purple-500/15 border-purple-500/30 text-purple-300",
-    period: "2024",
+    period: "2025",
     title: "Corporate Job Tracker",
     subtitle: "SaaS-style Productivity App — Vercel",
     description:
@@ -71,7 +71,7 @@ const SHOWCASE = [
     id: "habitbuilder",
     type: "Personal",
     typeBadge: "bg-cyan-500/15 border-cyan-500/30 text-cyan-300",
-    period: "2024",
+    period: "2026",
     title: "Habit Builder Kit",
     subtitle: "Productivity App — Redux Architecture",
     description:
