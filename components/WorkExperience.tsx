@@ -39,7 +39,7 @@ const SHOWCASE = [
   },
   {
     id: "jobtracker",
-    type: "Personal",
+    type: "Freelance",
     typeBadge: "bg-purple-500/15 border-purple-500/30 text-purple-300",
     period: "2025",
     title: "Corporate Job Tracker",
