@@ -69,6 +69,14 @@ export const SOCIAL_LINKS = [
     color: "text-accent",
     bg: "bg-orange-500/10 border-orange-500/20",
   },
+  {
+    icon: "fas fa-user-tie",
+    href: "https://topmate.io/rajaniket",
+    label: "Topmate Profile",
+    handle: "@rajaniket",
+    color: "text-purple-400",
+    bg: "bg-purple-500/10 border-purple-500/20",
+  },
 ] as const;
 
 // More personal, less generic AI output
