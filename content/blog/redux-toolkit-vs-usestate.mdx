@@ -1,0 +1,168 @@
+---
+title: "Redux Toolkit vs useState — When to Use Which (A Real-World Take)"
+description: "Not a theoretical comparison. After building Habit Builder Kit with Redux Toolkit and a dozen smaller projects with useState, here's the honest answer to the question every React developer asks."
+date: "2025-05-12"
+readingTime: "7 min read"
+tags: "React, Redux Toolkit, State Management"
+---
+
+## The Question Nobody Answers Honestly
+
+Every Redux vs useState article online gives you the same generic answer: "use useState for local state, Redux for global state." That's technically correct and completely useless.
+
+After building Habit Builder Kit — a full productivity app using Redux Toolkit — and a dozen smaller projects where I stayed with local state, I have a much more specific answer. This is it.
+
+---
+
+## What I Thought Before Building Habit Builder Kit
+
+Before this project, my mental model was simple: Redux is for big apps, useState is for small apps. Scale = complexity = Redux.
+
+That model is wrong. The right question isn't *how big is the app* — it's *what does the data do*.
+
+---
+
+## The Real Rule: Where Does the Data Live?
+
+Ask yourself this about any piece of state:
+
+**Does this data need to be accessed or changed by components that have no parent-child relationship?**
+
+If yes — Redux. If no — useState.
+
+That's it. That's the rule.
+
+In Habit Builder Kit, a habit's streak count needs to be:
+- Read by the `HabitCard` component (to display the number)
+- Read by the `StreakChart` component (to draw the visualization)
+- Updated by the `CheckInButton` component (when the user checks in)
+- Reset by the `SettingsPanel` component (if the user resets progress)
+
+Those four components have no parent-child relationship. They're scattered across the component tree. Passing state and setters through props would require drilling through 4–5 levels of components that don't care about the data. That's where Redux earns its keep.
+
+Compare that to a search input in a filter component. The search term is used to filter a list, and both elements live inside the same `FilterableList` parent. That's `useState`. No ceremony needed.
+
+---
+
+## What Redux Toolkit Actually Looks Like in Practice
+
+The old Redux boilerplate complaint is outdated. Redux Toolkit cut the setup code by about 70%. Here's a real slice from Habit Builder Kit:
+
+```ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface Habit {
+  id: string;
+  name: string;
+  streak: number;
+  completedDates: string[];
+}
+
+const habitsSlice = createSlice({
+  name: "habits",
+  initialState: [] as Habit[],
+  reducers: {
+    addHabit: (state, action: PayloadAction<Habit>) => {
+      state.push(action.payload);
+    },
+    checkIn: (state, action: PayloadAction<string>) => {
+      const habit = state.find((h) => h.id === action.payload);
+      if (!habit) return;
+      const today = new Date().toISOString().split("T")[0];
+      if (!habit.completedDates.includes(today)) {
+        habit.completedDates.push(today);
+        habit.streak += 1;
+      }
+    },
+    resetStreak: (state, action: PayloadAction<string>) => {
+      const habit = state.find((h) => h.id === action.payload);
+      if (habit) habit.streak = 0;
+    },
+  },
+});
+```
+
+That's it. No `ACTION_TYPES` constants, no switch statements, no `Object.assign`. Immer handles immutability under the hood so you write mutations directly.
+
+The TypeScript integration is excellent — `PayloadAction<string>` gives you full type safety on the action payload without extra boilerplate.
+
+---
+
+## The useState Version of the Same Problem
+
+If I had used `useState` for habits, the `App` component would become a state management layer:
+
+```tsx
+function App() {
+  const [habits, setHabits] = useState<Habit[]>([]);
+
+  const checkIn = (id: string) => {
+    setHabits((prev) =>
+      prev.map((h) =>
+        h.id === id
+          ? { ...h, streak: h.streak + 1 }
+          : h
+      )
+    );
+  };
+
+  return (
+    <HabitList habits={habits} onCheckIn={checkIn} />
+    // checkIn needs to reach HabitCard → CheckInButton
+    // That's 3 levels of prop passing for a function
+  );
+}
+```
+
+This works for 3 habits and 2 levels. It falls apart at 20 habits, 5 levels, and when you add filtering, sorting, and streaks. The `App` component becomes a mess of state and handlers that it has no business owning.
+
+---
+
+## When useState Wins
+
+I kept useState in Habit Builder Kit for:
+
+- **Modal open/close state** — `const [isOpen, setIsOpen] = useState(false)`. This never needs to leave the modal component.
+- **Form input values** — controlled inputs. Local, ephemeral, no one else cares.
+- **Hover/active UI states** — whether a button is hovered. Pure UI, zero business logic.
+- **Loading/error states for a specific request** — if only one component cares about whether an API call is pending, keep it local.
+
+The pattern: if the state dies when the component unmounts and nothing else misses it, use `useState`.
+
+---
+
+## The One Thing That Changed My Mind About Redux
+
+Before Habit Builder Kit, I thought Redux's biggest win was shared state. It's not.
+
+The biggest win is **the Redux DevTools**.
+
+Being able to replay every state change, inspect the exact payload of every action, and time-travel backwards through your app's state history is genuinely magical for debugging. When a streak wasn't calculating correctly, I opened DevTools, found the `checkIn` action, inspected the `completedDates` array, and saw immediately that the date comparison was failing due to timezone issues.
+
+With useState, that bug would have taken me 30 minutes of `console.log`. With Redux DevTools, it took 2 minutes.
+
+---
+
+## My Decision Framework
+
+```
+Is the state used by 2+ unrelated components?
+  → Yes: Redux Toolkit
+  → No: Is it complex logic (derived values, multiple related fields)?
+      → Yes: Redux Toolkit (or useReducer for simpler cases)
+      → No: useState
+```
+
+For a brand new project, I start with useState everywhere. The moment I find myself passing a piece of state through more than 2 component levels to reach where it's needed, I move it to Redux. That migration is painless with Redux Toolkit — it takes about 20 minutes to extract a piece of state into a slice.
+
+---
+
+## The Verdict
+
+useState is not "Redux Lite." They solve different problems. useState is for isolated, ephemeral UI state. Redux Toolkit is for shared, persistent application state that multiple components need to read and update independently.
+
+Use both. The question isn't which one is better — it's which one fits this specific piece of data.
+
+---
+
+*Building something with Redux Toolkit and hitting a wall? [Reach out](/contact) — happy to help.*
