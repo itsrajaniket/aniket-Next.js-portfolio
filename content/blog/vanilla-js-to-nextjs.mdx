@@ -1,7 +1,7 @@
 ---
 title: "From Vanilla JS to Next.js — What I Learned Migrating My Portfolio"
 description: "A deep-dive into the architectural decisions, gotchas, and wins when taking a static HTML/CSS/JS portfolio to a production-grade Next.js App Router project."
-date: "2025-03-15"
+date: "2025-12-15"
 readingTime: "8 min read"
 tags: "Next.js, React, TypeScript, Migration"
 ---
@@ -58,11 +58,13 @@ I also added an `IntersectionObserver` to pause the spider canvas when it's scro
 The App Router's server/client split confused me at first. Here's the mental model that helped:
 
 **Default to Server Components.** They render on the server (or at build time), which means:
+
 - No JavaScript bundle shipped to the browser
 - Direct access to databases, filesystem, environment variables
 - Great for SEO
 
 **Only add `"use client"` when you need:**
+
 - Browser APIs (`window`, `document`, `localStorage`, `canvas`)
 - React state (`useState`, `useReducer`)
 - React effects (`useEffect`)
@@ -89,7 +91,8 @@ import { z } from "zod";
 
 export async function sendContactEmail(data: FormData) {
   const result = schema.safeParse(data);
-  if (!result.success) return { success: false, errors: result.error.flatten() };
+  if (!result.success)
+    return { success: false, errors: result.error.flatten() };
   // Call email API here
 }
 ```
@@ -124,4 +127,4 @@ If you're sitting on a static portfolio and thinking about the jump, do it. Your
 
 ---
 
-*Have questions about any of this? [Reach out](/contact) — I'm happy to help.*
+_Have questions about any of this? [Reach out](/contact) — I'm happy to help._

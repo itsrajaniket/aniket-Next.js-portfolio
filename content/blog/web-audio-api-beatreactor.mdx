@@ -1,14 +1,14 @@
 ---
 title: "I Built a Cyberpunk Synth in the Browser — Here's How the Web Audio API Actually Works"
 description: "A practical breakdown of the Web Audio API through the lens of BeatReactor — how I built a real-time synth with dual sound engines, keyboard mapping, and live recording using only vanilla JavaScript."
-date: "2025-04-10"
+date: "2025-01-10"
 readingTime: "10 min read"
 tags: "JavaScript, Web Audio API, BeatReactor, Vanilla JS"
 ---
 
 ## The Idea
 
-Most developers hear "audio in the browser" and immediately think: *that sounds painful*. Import a library, pray it works, move on.
+Most developers hear "audio in the browser" and immediately think: _that sounds painful_. Import a library, pray it works, move on.
 
 I thought the same thing — until I built BeatReactor.
 
@@ -43,12 +43,12 @@ An oscillator generates a raw tone. A gain node controls volume. Your speakers p
 This is the part that genuinely surprised me. You don't need an audio file to make sound. The browser can generate it mathematically.
 
 ```js
-function playTone(frequency, type = 'sine') {
+function playTone(frequency, type = "sine") {
   const oscillator = audioCtx.createOscillator();
   const gainNode = audioCtx.createGain();
 
-  oscillator.type = type;        // 'sine' | 'square' | 'sawtooth' | 'triangle'
-  oscillator.frequency.value = frequency;  // in Hz — e.g. 440 = middle A
+  oscillator.type = type; // 'sine' | 'square' | 'sawtooth' | 'triangle'
+  oscillator.frequency.value = frequency; // in Hz — e.g. 440 = middle A
 
   // Shape the volume: quick attack, short sustain, fast release
   gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
@@ -82,12 +82,12 @@ The synth engine uses the oscillator approach above — each key triggers a note
 
 ```js
 const NOTE_FREQUENCIES = {
-  'a': 261.63,  // C4
-  'w': 277.18,  // C#4
-  's': 293.66,  // D4
-  'e': 311.13,  // D#4
-  'd': 329.63,  // E4
-  'f': 349.23,  // F4
+  a: 261.63, // C4
+  w: 277.18, // C#4
+  s: 293.66, // D4
+  e: 311.13, // D#4
+  d: 329.63, // E4
+  f: 349.23, // F4
   // ... and so on up the keyboard
 };
 ```
@@ -101,7 +101,7 @@ function playSnare() {
   const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
   const data = buffer.getChannelData(0);
   for (let i = 0; i < bufferSize; i++) {
-    data[i] = Math.random() * 2 - 1;  // random values between -1 and 1
+    data[i] = Math.random() * 2 - 1; // random values between -1 and 1
   }
 
   const noise = audioCtx.createBufferSource();
@@ -109,7 +109,7 @@ function playSnare() {
 
   // High-pass filter to make it snappy, not muddy
   const filter = audioCtx.createBiquadFilter();
-  filter.type = 'highpass';
+  filter.type = "highpass";
   filter.frequency.value = 1000;
 
   const gain = audioCtx.createGain();
@@ -136,11 +136,15 @@ Modern browsers block audio from playing until the user has interacted with the 
 The fix is to resume the context on the first user interaction:
 
 ```js
-document.addEventListener('keydown', async () => {
-  if (audioCtx.state === 'suspended') {
-    await audioCtx.resume();
-  }
-}, { once: true });
+document.addEventListener(
+  "keydown",
+  async () => {
+    if (audioCtx.state === "suspended") {
+      await audioCtx.resume();
+    }
+  },
+  { once: true },
+);
 ```
 
 The `{ once: true }` option removes the listener after it fires once — clean and efficient. After this runs, the context is in `running` state and audio works normally for the rest of the session.
@@ -157,8 +161,8 @@ The trick is routing the audio through a `MediaStreamDestinationNode` instead of
 
 ```js
 const recordingDest = audioCtx.createMediaStreamDestination();
-masterGain.connect(recordingDest);           // record what's playing
-masterGain.connect(audioCtx.destination);    // also play through speakers
+masterGain.connect(recordingDest); // record what's playing
+masterGain.connect(audioCtx.destination); // also play through speakers
 
 const mediaRecorder = new MediaRecorder(recordingDest.stream);
 const chunks = [];
@@ -166,11 +170,11 @@ const chunks = [];
 mediaRecorder.ondataavailable = (e) => chunks.push(e.data);
 
 mediaRecorder.onstop = () => {
-  const blob = new Blob(chunks, { type: 'audio/wav' });
+  const blob = new Blob(chunks, { type: "audio/wav" });
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
+  const a = document.createElement("a");
   a.href = url;
-  a.download = 'beatreactor-recording.wav';
+  a.download = "beatreactor-recording.wav";
   a.click();
   URL.revokeObjectURL(url);
 };
@@ -209,4 +213,4 @@ The browser is a more capable instrument than most developers realize. You don't
 
 ---
 
-*Built something cool with the Web Audio API? [Reach out](/contact) — I'd love to see it.*
+_Built something cool with the Web Audio API? [Reach out](/contact) — I'd love to see it._

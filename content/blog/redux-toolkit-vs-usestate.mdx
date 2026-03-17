@@ -1,7 +1,7 @@
 ---
 title: "Redux Toolkit vs useState — When to Use Which (A Real-World Take)"
 description: "Not a theoretical comparison. After building Habit Builder Kit with Redux Toolkit and a dozen smaller projects with useState, here's the honest answer to the question every React developer asks."
-date: "2025-05-12"
+date: "2025-11-12"
 readingTime: "7 min read"
 tags: "React, Redux Toolkit, State Management"
 ---
@@ -18,7 +18,7 @@ After building Habit Builder Kit — a full productivity app using Redux Toolkit
 
 Before this project, my mental model was simple: Redux is for big apps, useState is for small apps. Scale = complexity = Redux.
 
-That model is wrong. The right question isn't *how big is the app* — it's *what does the data do*.
+That model is wrong. The right question isn't _how big is the app_ — it's _what does the data do_.
 
 ---
 
@@ -33,6 +33,7 @@ If yes — Redux. If no — useState.
 That's it. That's the rule.
 
 In Habit Builder Kit, a habit's streak count needs to be:
+
 - Read by the `HabitCard` component (to display the number)
 - Read by the `StreakChart` component (to draw the visualization)
 - Updated by the `CheckInButton` component (when the user checks in)
@@ -98,11 +99,7 @@ function App() {
 
   const checkIn = (id: string) => {
     setHabits((prev) =>
-      prev.map((h) =>
-        h.id === id
-          ? { ...h, streak: h.streak + 1 }
-          : h
-      )
+      prev.map((h) => (h.id === id ? { ...h, streak: h.streak + 1 } : h)),
     );
   };
 
@@ -165,4 +162,4 @@ Use both. The question isn't which one is better — it's which one fits this sp
 
 ---
 
-*Building something with Redux Toolkit and hitting a wall? [Reach out](/contact) — happy to help.*
+_Building something with Redux Toolkit and hitting a wall? [Reach out](/contact) — happy to help._

@@ -1,0 +1,119 @@
+---
+title: "What I Learned Shipping a Real Freelance Project (Maharani Food Plaza)"
+description: "My first real freelance delivery — a restaurant website for a client in Indore. What went right, what almost went wrong, and the lessons I'd tell every developer taking their first paid project."
+date: "2026-02-20"
+readingTime: "8 min read"
+tags: "Freelance, Career, Web Development"
+---
+
+## How It Started
+
+A restaurant owner in Indore reached out through a mutual contact. They needed a website — something that looked premium, showed the menu, let people make reservations, and worked on mobile. Budget was fixed. Timeline was "as soon as possible."
+
+I had built plenty of projects for myself before this. Personal tools, practice projects, portfolio pieces. But this was different. Someone was paying me. Someone with a business, customers, and expectations I had no control over.
+
+I said yes. Then I spent the next 20 minutes wondering if I should have.
+
+This is what I learned from that project — not about GSAP or EmailJS, but about the actual work of delivering something for someone else.
+
+---
+
+## Lesson 1: Scope Before You Start Anything
+
+The first thing I did wrong was open VS Code before I had a clear picture of what I was actually building.
+
+I had a rough brief: restaurant website, menu, reservations, mobile-friendly. That sounds specific. It isn't. I had no idea how many menu categories there were. I didn't know if they wanted online ordering or just a contact form. I didn't know if they had photos, or if I needed to source them. I didn't know if there was existing branding — colors, fonts, a logo — or if I was creating that too.
+
+I found out the answers to most of these questions by building the wrong thing first.
+
+The fix: before writing a single line of code, I now send a short list of questions. Not a 40-point questionnaire — just the things that would change the scope or timeline if the answer went one way instead of another. For a restaurant site that would have been:
+
+- How many menu sections and items?
+- Do you have photos, or do I source stock images?
+- Do you have a logo and brand colors, or is visual design included?
+- Is the reservation a form that sends an email, or do you need actual booking management?
+- Who handles content updates after launch — you or me?
+
+Five questions. Twenty minutes of their time. Would have saved me two days of rework.
+
+---
+
+## Lesson 2: Show Work Early and Often
+
+My instinct was to work quietly, build the whole thing, then do a big reveal. That instinct is wrong.
+
+Clients get anxious when they don't hear from you. Even if you're working hard, silence feels like nothing is happening. And if you disappear for two weeks and come back with something they hate, you've wasted two weeks.
+
+I started sharing progress at the end of every two or three days. Not polished, finished work — just screenshots of whatever was built. "Here's the hero section, working on the menu layout next." That's it. Two lines and an image.
+
+What this does is catch problems early when they're cheap to fix, and it keeps the client feeling involved. The Maharani project had one point where the client wanted the color scheme to shift warmer — less white, more earthy tones. I caught this feedback on day four when I'd only built two sections. If I'd caught it on day twelve when everything was built, that would have been a full day of rework instead of an hour.
+
+---
+
+## Lesson 3: Deliver More Than They Asked For, in Small Ways
+
+The brief didn't mention animations. I added smooth GSAP scroll animations anyway — nothing extravagant, just subtle movement that made the page feel alive rather than static.
+
+The brief didn't mention a loading state on the reservation form. I added one — the submit button shows a spinner while the EmailJS request is in flight, then a success message. Five minutes of work.
+
+The brief didn't mention a sticky header that hides on scroll and reappears when you scroll up. I added it because it made the mobile experience significantly better.
+
+None of these were asked for. None of them added more than a few hours total. And when I did the handover, these were the things the client specifically mentioned. "I wasn't expecting the animations." "The form confirmation is a nice touch."
+
+Small extras that genuinely improve the product cost you very little and leave a strong impression. The key word is _genuinely_ — don't add things for the sake of showing off your skills. Add things that make the product better for the actual users.
+
+---
+
+## Lesson 4: Zero Revisions Is a Process, Not Luck
+
+The Maharani project went live with zero revision requests after the final delivery. People ask how that happened. The honest answer is that revisions were front-loaded into the process, not eliminated.
+
+Every time I shared progress, I was inviting small feedback. The color change on day four was a revision — it just happened early, when it was cheap. The navigation structure changed after day two — also a revision, also cheap.
+
+By the time I delivered the final build, the client had already seen every major section multiple times and signed off on each one informally. The "final delivery" wasn't a reveal — it was a formality.
+
+Zero revision requests at the end doesn't mean the client had no opinions. It means their opinions were collected throughout the project rather than saved up for the end.
+
+---
+
+## Lesson 5: Set the Technical Decisions, Then Explain Them Simply
+
+I chose EmailJS for the reservation form instead of building a backend. I chose GSAP for animations instead of CSS alone. I made a dozen other technical decisions the client never asked about.
+
+I made a habit of explaining each one in one sentence, in plain language, when I mentioned it. "I'm using a service called EmailJS for the reservation form — it means reservation emails go directly to your inbox without needing a server, and you don't pay anything extra." That's it. No jargon, no showing off, just: here's what I'm doing and here's why it helps you.
+
+This matters for two reasons. First, it builds trust — the client can see you're making considered decisions, not just doing whatever is easiest. Second, it protects you — if a decision causes a problem later, you've documented that you explained the tradeoff upfront.
+
+---
+
+## Lesson 6: Pricing Fixed Projects Is Hard and You'll Price Too Low
+
+I won't share exact numbers because they're irrelevant to anyone reading this — rates vary wildly by location, client, and scope. What I will say is that I priced the project based on how long I thought it would take, and I was wrong by about 40%.
+
+Things I didn't account for: the time spent on emails and calls. The time spent researching the client's existing brand materials. The time spent writing copy for sections where they didn't have text ready. The time spent doing the handover and explaining how to update the menu.
+
+A rough rule that's helped me since: estimate how long you think it will take, then multiply by 1.5. That buffer usually covers the invisible work that every project has but no brief mentions.
+
+---
+
+## What I'd Do Differently
+
+If I was starting that project again, I would send a short scope document before any work began — not a formal contract (though that's worth having eventually), just a plain text summary: here's what I'm building, here's what's not included, here's the timeline, here's what I need from you. One page. Gets everyone aligned before a single component is built.
+
+I'd also ask for a deposit upfront. Not because the client was untrustworthy — they paid on time without any issues. But because a deposit changes the psychology of the engagement. When someone has paid you before you've started, they're invested. They respond to messages faster. They take feedback sessions more seriously. It's a small operational change that meaningfully improves the working relationship.
+
+---
+
+## The Part Nobody Talks About
+
+The technical skills were the easy part. I knew how to build the thing. What I didn't know was how to manage the process around building it — the communication, the expectation setting, the feedback cycles, the handover.
+
+Those skills don't come from tutorials. They come from doing the work, making mistakes, and paying attention to what caused problems.
+
+Maharani Food Plaza is live. The client was happy. I learned more from that single project about how to work with clients than from everything I'd built before it.
+
+The next one went smoother. It always does.
+
+---
+
+_Taking on your first freelance project or working through a tricky client situation? [Send me a message](/contact) — I'm happy to talk through it._
