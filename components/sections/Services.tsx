@@ -1,6 +1,6 @@
 // Server Component
 import { services } from "@/lib/experience";
-import SectionReveal from "./SectionReveal";
+import SectionReveal from "@/components/animations/SectionReveal";
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; text: string; icon: string; glow: string }> = {
   purple:  { border: "hover:border-purple-500/50",  bg: "bg-purple-500/10",  text: "text-purple-400",  icon: "group-hover:text-purple-300",  glow: "hover:shadow-[0_8px_30px_rgb(168,85,247,0.15)]" },

@@ -1,7 +1,7 @@
 // Server Component — reads blog posts at build/request time
 import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
-import SectionReveal from "./SectionReveal";
+import SectionReveal from "@/components/animations/SectionReveal";
 
 export default function BlogPreview() {
   const posts = getAllPosts().slice(0, 3); // show latest 3

@@ -1,6 +1,6 @@
 // Server Component
 import { education } from "@/lib/experience";
-import SectionReveal from "./SectionReveal";
+import SectionReveal from "@/components/animations/SectionReveal";
 
 const ACCENT: Record<string, { bar: string; period: string; badge: string }> = {
   green:   { bar: "bg-green-500",   period: "text-green-400",   badge: "bg-green-500/10 border-green-500/20 text-green-300" },

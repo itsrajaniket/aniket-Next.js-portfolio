@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { sendContactEmail } from "@/app/actions/contact";
-import Toast from "./ui/Toast";
+import Toast from "@/components/ui/Toast";
 
 // ── Validation schema ──────────────────────────────────────────────────────
 const schema = z.object({

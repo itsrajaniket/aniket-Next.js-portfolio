@@ -1,6 +1,6 @@
 // Server Component
 import { skillCategories } from "@/lib/skills";
-import SectionReveal from "./SectionReveal";
+import SectionReveal from "@/components/animations/SectionReveal";
 
 export default function Skills() {
   return (

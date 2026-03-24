@@ -1,6 +1,6 @@
 // Server Component
 import Image from "next/image";
-import SectionReveal from "./SectionReveal";
+import SectionReveal from "@/components/animations/SectionReveal";
 import { HERO_STATS } from "@/lib/constants";
 
 export default function About() {

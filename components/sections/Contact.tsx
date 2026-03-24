@@ -1,7 +1,7 @@
 // Server Component
-import ContactForm from "./ContactForm";
-import SectionReveal from "./SectionReveal";
-import CopyButton from "./ui/CopyButton";
+import ContactForm from "@/components/shared/ContactForm";
+import SectionReveal from "@/components/animations/SectionReveal";
+import CopyButton from "@/components/ui/CopyButton";
 import { SOCIAL_LINKS, AUTHOR_EMAIL, AUTHOR_LOCATION } from "@/lib/constants";
 
 export default function Contact() {

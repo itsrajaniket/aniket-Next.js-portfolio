@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { projects } from "@/lib/projects";
 import { useReducedMotion } from "@/hooks";
-import ProjectCard from "./ProjectCard";
-import SectionReveal from "./SectionReveal";
+import ProjectCard from "@/components/shared/ProjectCard";
+import SectionReveal from "@/components/animations/SectionReveal";
 
 const FILTERS = ["All", "React", "JavaScript", "Web API", "Tools"] as const;
 type Filter = (typeof FILTERS)[number];

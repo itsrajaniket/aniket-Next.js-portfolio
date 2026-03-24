@@ -1,7 +1,7 @@
 // Server Component — SpiderCanvas and Typewriter are Client Components
 import Image from "next/image";
-import SpiderCanvas from "./SpiderCanvas";
-import Typewriter from "./Typewriter";
+import SpiderCanvas from "@/components/visuals/SpiderCanvas";
+import Typewriter from "@/components/animations/Typewriter";
 import { HERO_STATS, AUTHOR_LOCATION } from "@/lib/constants";
 
 export default function Hero() {

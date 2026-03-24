@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useState, useRef, useCallback } from "react";
 import { useReducedMotion } from "@/hooks";
-import SectionReveal from "./SectionReveal";
+import SectionReveal from "@/components/animations/SectionReveal";
 
 const SHOWCASE = [
   {

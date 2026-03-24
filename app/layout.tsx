@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
-import MouseTrailCanvas from "@/components/MouseTrailCanvas";
+import MouseTrailCanvas from "@/components/visuals/MouseTrailCanvas";
 import ScrollToTop from "@/components/ui/ScrollToTop";
-import MotionWrapper from "@/components/MotionWrapper";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import MotionWrapper from "@/components/animations/MotionWrapper";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 // ── Fonts ──────────────────────────────────────────────────────────────────
 // Syne: geometric, distinctive, not overused. Perfect for headings.
