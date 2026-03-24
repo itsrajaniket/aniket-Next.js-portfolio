@@ -10,10 +10,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#6366f1",
-        secondary: "#a855f7",
-        accent: "#22d3ee",
+        primary: "rgb(var(--primary) / <alpha-value>)",
+        secondary: "rgb(var(--secondary) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
         dark: "#020617",
+        
+        // Semantic Theme Map
+        base: "rgb(var(--bg-base) / <alpha-value>)",
+        card: "rgb(var(--bg-card) / <alpha-value>)",
+        "section-contact": "rgb(var(--bg-section-contact) / <alpha-value>)",
+        "section-blog": "rgb(var(--bg-section-blog) / <alpha-value>)",
+        "section-skills": "rgb(var(--bg-section-skills) / <alpha-value>)",
+        "section-projects": "rgb(var(--bg-section-projects) / <alpha-value>)",
+        "section-services": "rgb(var(--bg-section-services) / <alpha-value>)",
+        "section-education": "rgb(var(--bg-section-education) / <alpha-value>)",
+        "section-work": "rgb(var(--bg-section-work) / <alpha-value>)",
+        main: "rgb(var(--text-main) / <alpha-value>)",
+        muted: "rgb(var(--text-muted) / <alpha-value>)",
+        surfaceBorder: "rgb(var(--border-subtle) / <alpha-value>)",
+        inverseBase: "rgb(var(--inverse-base) / <alpha-value>)",
+        inverseText: "rgb(var(--inverse-text) / <alpha-value>)",
       },
       // fontFamily: {
       //   display: ["var(--font-display)", "Orbitron", "sans-serif"],
@@ -58,35 +74,37 @@ const config: Config = {
     plugin(function ({ addUtilities }) {
       addUtilities({
         ".glass": {
-          background: "rgba(15, 23, 42, 0.75)",
+          background: "rgba(var(--bg-card), 0.75)",
           backdropFilter: "blur(14px) saturate(1.4)",
           "-webkit-backdrop-filter": "blur(14px) saturate(1.4)",
-          border: "1px solid rgba(255, 255, 255, 0.09)",
+          border: "1px solid rgba(var(--border-subtle), 0.09)",
           boxShadow:
-            "0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.2)",
+            "0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(var(--border-subtle), 0.07), inset 0 -1px 0 rgba(0,0,0,0.2)",
+          transform: "translateZ(0)",
         },
         ".glass-light": {
-          background: "rgba(15, 23, 42, 0.45)",
+          background: "rgba(var(--bg-card), 0.45)",
           backdropFilter: "blur(8px) saturate(1.2)",
           "-webkit-backdrop-filter": "blur(8px) saturate(1.2)",
-          border: "1px solid rgba(255, 255, 255, 0.06)",
+          border: "1px solid rgba(var(--border-subtle), 0.06)",
+          transform: "translateZ(0)",
         },
         ".tech-tag": {
           fontSize: "11px",
           fontWeight: "700",
-          color: "#67e8f9",
+          color: "rgb(var(--accent))",
           letterSpacing: "0.05em",
-          background: "rgba(34, 211, 238, 0.08)",
+          background: "rgba(var(--accent), 0.08)",
           padding: "1px 6px",
           borderRadius: "3px",
-          border: "1px solid rgba(34, 211, 238, 0.2)",
+          border: "1px solid rgba(var(--accent), 0.2)",
         },
         ".neon-border-cyan": {
           boxShadow:
-            "0 0 30px rgba(34,211,238,0.45), 0 0 60px rgba(34,211,238,0.15)",
+            "0 0 30px rgba(var(--accent), 0.45), 0 0 60px rgba(var(--accent), 0.15)",
         },
         ".text-gradient": {
-          background: "linear-gradient(135deg, #6366f1, #22d3ee)",
+          background: "linear-gradient(135deg, rgb(var(--primary)), rgb(var(--accent)))",
           "-webkit-background-clip": "text",
           "-webkit-text-fill-color": "transparent",
           backgroundClip: "text",

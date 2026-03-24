@@ -8,7 +8,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="pt-8 pb-20 lg:pb-28 relative overflow-hidden bg-[#0a0a0a]"
+      className="pt-8 pb-20 lg:pb-28 relative overflow-hidden bg-section-contact"
       aria-label="Contact Aniket Raj"
     >
       {/* Ambient blobs */}
@@ -22,13 +22,13 @@ export default function Contact() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             08. Contact
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-main mb-4">
             Get{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               In Touch
             </span>
           </h2>
-          <p className="text-slate-400 max-w-xl">
+          <p className="text-muted max-w-xl">
             Open to full-time roles, freelance projects, and interesting collabs.
             Pick any channel below — I respond fast.
           </p>
@@ -46,17 +46,17 @@ export default function Contact() {
           <SectionReveal delay={0.2} className="space-y-6">
 
             {/* Availability badge */}
-            <div className="glass rounded-2xl p-6 border border-white/10">
+            <div className="bg-accent/5 rounded-2xl p-6 border border-accent/20 backdrop-blur-sm shadow-[0_0_20px_rgba(34,211,238,0.05)]">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse inline-block" />
                 <span className="text-green-400 text-sm font-bold tracking-wide uppercase">
                   Available for Work
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className="text-xl font-bold text-main mb-2">
                 Let&apos;s Build Something Great
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-muted text-sm leading-relaxed">
                 Whether it&apos;s a full-time React role, a freelance project, or just a quick
                 coffee chat about frontend engineering — my inbox is always open.
               </p>
@@ -67,7 +67,7 @@ export default function Contact() {
                   <i className="fas fa-envelope text-accent w-4" aria-hidden="true" />
                   <a
                     href={`mailto:${AUTHOR_EMAIL}`}
-                    className="text-slate-300 hover:text-accent transition-colors font-medium"
+                    className="text-muted hover:text-accent transition-colors font-medium"
                   >
                     {AUTHOR_EMAIL}
                   </a>
@@ -75,14 +75,14 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <i className="fas fa-map-marker-alt text-accent w-4" aria-hidden="true" />
-                  <span className="text-slate-400">{AUTHOR_LOCATION}</span>
+                  <span className="text-muted">{AUTHOR_LOCATION}</span>
                 </div>
               </div>
             </div>
 
             {/* Social links grid — all 6 */}
             <div>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-3">
+              <p className="text-xs text-muted font-bold uppercase tracking-widest mb-3">
                 Find me on
               </p>
               <div className="grid grid-cols-2 gap-3">
@@ -98,7 +98,7 @@ export default function Contact() {
                     >
                       <i className={`${icon} ${color} text-lg w-5 text-center shrink-0`} aria-hidden="true" />
                       <div className="min-w-0">
-                        <p className="text-xs text-slate-500 font-bold uppercase tracking-wider leading-none mb-0.5">
+                        <p className="text-xs text-muted font-bold uppercase tracking-wider leading-none mb-0.5">
                           {label.replace(" Profile", "")}
                         </p>
                         <p className={`text-sm font-semibold ${color} truncate`}>

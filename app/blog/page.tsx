@@ -24,10 +24,10 @@ export default function BlogListPage() {
             <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
               Writing
             </span>
-            <h1 className="text-5xl font-bold text-white mb-4 font-display">
+            <h1 className="text-5xl font-bold text-main mb-4 font-display">
               The Blog
             </h1>
-            <p className="text-slate-400 text-lg">
+            <p className="text-muted text-lg">
               Thoughts on React, performance, Next.js migrations, and building things on the web.
             </p>
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent rounded-full mt-6" />
@@ -35,17 +35,17 @@ export default function BlogListPage() {
 
           {/* Post list */}
           {posts.length === 0 ? (
-            <div className="glass rounded-2xl p-10 text-center border border-white/10">
+            <div className="glass rounded-2xl p-10 text-center border border-surfaceBorder/10">
               <i className="fas fa-pen-nib text-accent text-4xl mb-4 block" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-white mb-2">First post coming soon</h2>
-              <p className="text-slate-400">Working on some great content about React and Next.js.</p>
+              <h2 className="text-xl font-bold text-main mb-2">First post coming soon</h2>
+              <p className="text-muted">Working on some great content about React and Next.js.</p>
             </div>
           ) : (
             <div className="space-y-6">
               {posts.map((post) => (
                 <article
                   key={post.slug}
-                  className="group glass rounded-2xl p-7 border border-white/10 hover:border-accent/40 transition-all hover:-translate-y-1"
+                  className="group glass rounded-2xl p-7 border border-surfaceBorder/10 hover:border-accent/40 transition-all hover:-translate-y-1"
                 >
                   <Link href={`/blog/${post.slug}`} className="block">
                     {/* Tags */}
@@ -55,15 +55,15 @@ export default function BlogListPage() {
                       ))}
                     </div>
                     {/* Title */}
-                    <h2 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
+                    <h2 className="text-xl font-bold text-main mb-2 group-hover:text-accent transition-colors">
                       {post.title}
                     </h2>
                     {/* Description */}
-                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                    <p className="text-muted text-sm leading-relaxed mb-4">
                       {post.description}
                     </p>
                     {/* Meta */}
-                    <div className="flex items-center gap-4 text-xs text-slate-500 font-medium">
+                    <div className="flex items-center gap-4 text-xs text-muted font-medium">
                       <span>
                         <i className="fas fa-calendar-alt mr-1.5" aria-hidden="true" />
                         {post.date}

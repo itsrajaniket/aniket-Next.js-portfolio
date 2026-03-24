@@ -98,7 +98,6 @@ const SHOWCASE = [
     ],
   },
 ];
-
 const TIMELINE = [
   {
     period: "2024 — Present",
@@ -166,7 +165,7 @@ export default function WorkExperience() {
   return (
     <section
       id="work"
-      className="pt-8 pb-20 lg:pb-28 relative overflow-hidden bg-[#07101f]"
+      className="pt-8 pb-20 lg:pb-28 relative overflow-hidden bg-section-work"
       aria-label="Work Experience and Featured Projects"
     >
       {/* Animated background orbs */}
@@ -182,13 +181,13 @@ export default function WorkExperience() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             03. Experience & Work
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-main mb-4">
             What I&apos;ve{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Built & Delivered
             </span>
           </h2>
-          <p className="text-slate-400 max-w-xl text-lg">
+          <p className="text-muted max-w-xl text-lg">
             Real client work, real deployments. Click any card to explore.
           </p>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mt-6" />
@@ -215,7 +214,7 @@ export default function WorkExperience() {
         <SectionReveal className="mb-10">
           <div className="flex items-center gap-4">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <h3 className="text-lg font-bold text-white px-4">
+            <h3 className="text-lg font-bold text-main px-4">
               Career Timeline
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -231,7 +230,7 @@ export default function WorkExperience() {
                   {/* Dot */}
                   <div className="absolute left-[18px] top-6 flex items-center justify-center">
                     <div
-                      className={`w-4 h-4 rounded-full ${item.dot} border-2 border-[#07101f] z-10`}
+                      className={`w-4 h-4 rounded-full ${item.dot} border-2 border-section-work z-10`}
                     />
                     {item.pulse && (
                       <div
@@ -243,7 +242,7 @@ export default function WorkExperience() {
                   <motion.div
                     whileHover={prefersReduced ? undefined : { x: 4 }}
                     transition={{ duration: 0.2 }}
-                    className="glass rounded-2xl border border-white/10 hover:border-accent/30 p-5 transition-colors cursor-default"
+                    className="bg-card/40 rounded-2xl border border-surfaceBorder/10 hover:border-accent/30 p-5 transition-colors cursor-default backdrop-blur-sm will-change-transform"
                   >
                     <div className="flex flex-wrap items-center gap-3 mb-2">
                       <span className="font-mono text-xs text-accent font-bold tracking-widest uppercase">
@@ -261,13 +260,13 @@ export default function WorkExperience() {
                         </span>
                       )}
                     </div>
-                    <h4 className="text-lg font-black text-white mb-0.5">
+                    <h4 className="text-lg font-black text-main mb-0.5">
                       {item.role}
                     </h4>
-                    <p className="text-slate-500 text-xs font-medium mb-3">
+                    <p className="text-muted text-xs font-medium mb-3">
                       {item.company}
                     </p>
-                    <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                    <p className="text-muted text-sm leading-relaxed mb-4">
                       {item.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -343,7 +342,7 @@ function ShowcaseCard({
         onHover(null);
       }}
       onMouseEnter={() => onHover(project.id)}
-      className="relative rounded-2xl overflow-hidden border border-white/10 cursor-pointer group"
+      className="relative rounded-2xl overflow-hidden border border-surfaceBorder/10 cursor-pointer group"
       aria-label={`Featured project: ${project.title}`}
     >
       <div className={`grid lg:grid-cols-2`}>
@@ -383,7 +382,7 @@ function ShowcaseCard({
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
               <i
-                className={`${project.icon} text-8xl opacity-10 text-white`}
+                className={`${project.icon} text-8xl opacity-10 text-main`}
                 aria-hidden="true"
               />
             </div>
@@ -420,7 +419,7 @@ function ShowcaseCard({
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-xl font-bold text-sm text-dark flex items-center gap-2"
+              className="px-5 py-2.5 rounded-xl font-bold text-sm text-inverseText flex items-center gap-2"
               style={{ background: project.accentColor }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -439,7 +438,7 @@ function ShowcaseCard({
               {project.metrics.map((m) => (
                 <div
                   key={m.label}
-                  className="flex-1 rounded-xl px-3 py-2 text-center border border-white/10 backdrop-blur-md"
+                  className="flex-1 rounded-xl px-3 py-2 text-center border border-surfaceBorder/10 backdrop-blur-md"
                   style={{ background: "rgba(2,6,23,0.7)" }}
                 >
                   <p
@@ -448,7 +447,7 @@ function ShowcaseCard({
                   >
                     {m.value}
                   </p>
-                  <p className="text-xs text-slate-400 uppercase tracking-wider font-bold leading-none mt-0.5">
+                  <p className="text-xs text-muted uppercase tracking-wider font-bold leading-none mt-0.5">
                     {m.label}
                   </p>
                 </div>
@@ -459,7 +458,7 @@ function ShowcaseCard({
 
         {/* ── Content panel ─────────────────────────────────────────────── */}
         <div
-          className={`relative p-7 lg:p-10 flex flex-col justify-center bg-slate-900/90 ${!isEven ? "lg:order-1" : ""}`}
+          className={`relative p-7 lg:p-10 flex flex-col justify-center bg-card/90 ${!isEven ? "lg:order-1" : ""}`}
         >
           {/* Subtle glow behind content */}
           <motion.div
@@ -475,7 +474,7 @@ function ShowcaseCard({
             {/* Icon + period */}
             <div className="flex items-center gap-3 mb-5">
               <motion.div
-                className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10"
+                className="w-10 h-10 rounded-xl flex items-center justify-center border border-surfaceBorder/10"
                 style={{ background: `rgba(${project.accentRgb},0.15)` }}
                 animate={{ scale: isHovered ? 1.1 : 1 }}
                 transition={{ duration: 0.3 }}
@@ -486,13 +485,13 @@ function ShowcaseCard({
                   aria-hidden="true"
                 />
               </motion.div>
-              <span className="text-xs text-slate-500 font-mono font-bold uppercase tracking-widest">
+              <span className="text-xs text-muted font-mono font-bold uppercase tracking-widest">
                 {project.period}
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="text-2xl lg:text-3xl font-black text-white mb-1 leading-tight">
+            <h3 className="text-2xl lg:text-3xl font-black text-main mb-1 leading-tight">
               {project.title}
             </h3>
             <p
@@ -501,7 +500,7 @@ function ShowcaseCard({
             >
               {project.subtitle}
             </p>
-            <p className="text-slate-400 text-sm leading-relaxed mb-5">
+            <p className="text-muted text-sm leading-relaxed mb-5">
               {project.description}
             </p>
 
@@ -510,7 +509,7 @@ function ShowcaseCard({
               {project.highlights.map((h, hIdx) => (
                 <motion.li
                   key={h}
-                  className="flex items-start gap-2.5 text-sm text-slate-300"
+                  className="flex items-start gap-2.5 text-sm text-muted"
                   animate={{
                     x: isHovered && !prefersReduced ? 0 : -4,
                     opacity: isHovered ? 1 : 0.75,
@@ -554,7 +553,7 @@ function ShowcaseCard({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 font-bold rounded-xl text-sm text-dark"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 font-bold rounded-xl text-sm text-inverseText"
                   style={{ background: project.accentColor }}
                   whileHover={prefersReduced ? undefined : { scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
@@ -572,7 +571,7 @@ function ShowcaseCard({
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 glass border border-white/10 text-white font-bold rounded-xl text-sm hover:text-accent transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 glass border border-surfaceBorder/10 text-main font-bold rounded-xl text-sm hover:text-accent transition-colors"
                   whileHover={prefersReduced ? undefined : { scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   aria-label={`View ${project.title} source code`}

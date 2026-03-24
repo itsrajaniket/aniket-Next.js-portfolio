@@ -28,8 +28,8 @@ export default function CopyButton({ value }: { value: string }) {
       onClick={copy}
       className={`px-3 py-1.5 text-xs font-bold rounded border transition-all shrink-0 ${
         copied
-          ? "bg-green-500 border-green-500 text-white"
-          : "bg-cyan-500/10 border-cyan-500/20 text-cyan-400 hover:bg-cyan-500 hover:text-white"
+          ? "bg-green-500 border-green-500 text-main"
+          : "bg-cyan-500/10 border-cyan-500/20 text-cyan-400 hover:bg-cyan-500 hover:text-main"
       }`}
       aria-label={copied ? "Copied!" : `Copy ${value} to clipboard`}
     >

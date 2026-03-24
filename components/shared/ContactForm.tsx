@@ -49,7 +49,7 @@ export default function ContactForm() {
   const closeToast = useCallback(() => setToast(null), []);
 
   const inputBase =
-    "w-full bg-slate-800/50 border border-slate-700 text-slate-100 text-sm rounded-xl px-4 py-2.5 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/60 focus:border-accent transition-all";
+    "w-full bg-card/50 border border-surfaceBorder/20 text-main text-sm rounded-xl px-4 py-2.5 placeholder-muted/60 focus:outline-none focus:ring-2 focus:ring-accent/60 focus:border-accent transition-all";
   const errorClass = "text-red-400 text-xs mt-1";
 
   return (
@@ -58,8 +58,8 @@ export default function ContactForm() {
         <Toast message={toast.message} type={toast.type} onClose={closeToast} />
       )}
 
-      <div className="bg-slate-900/60 backdrop-blur-md p-6 rounded-2xl border border-slate-800 shadow-xl">
-        <h3 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
+      <div className="bg-card/60 backdrop-blur-md p-6 rounded-2xl border border-surfaceBorder/10 shadow-xl">
+        <h3 className="text-lg font-bold text-main mb-5 flex items-center gap-2">
           <i className="fas fa-paper-plane text-accent" aria-hidden="true" />
           Send a Message
         </h3>
@@ -68,7 +68,7 @@ export default function ContactForm() {
 
           {/* Name */}
           <div>
-            <label htmlFor="contact-name" className="block text-sm text-slate-400 mb-1 font-medium">
+            <label htmlFor="contact-name" className="block text-sm text-muted mb-1 font-medium">
               Full Name
             </label>
             <input
@@ -88,7 +88,7 @@ export default function ContactForm() {
 
           {/* Email */}
           <div>
-            <label htmlFor="contact-email" className="block text-sm text-slate-400 mb-1 font-medium">
+            <label htmlFor="contact-email" className="block text-sm text-muted mb-1 font-medium">
               Email Address
             </label>
             <input
@@ -108,7 +108,7 @@ export default function ContactForm() {
 
           {/* Subject */}
           <div>
-            <label htmlFor="contact-subject" className="block text-sm text-slate-400 mb-1 font-medium">
+            <label htmlFor="contact-subject" className="block text-sm text-muted mb-1 font-medium">
               Subject
             </label>
             <input
@@ -127,7 +127,7 @@ export default function ContactForm() {
 
           {/* Message */}
           <div>
-            <label htmlFor="contact-message" className="block text-sm text-slate-400 mb-1 font-medium">
+            <label htmlFor="contact-message" className="block text-sm text-muted mb-1 font-medium">
               Message
             </label>
             <textarea
@@ -148,7 +148,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 px-6 bg-gradient-to-r from-primary to-accent text-dark font-bold rounded-xl
+            className="w-full py-3 px-6 bg-gradient-to-r from-primary to-accent text-inverseText font-bold rounded-xl
                        hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(34,211,238,0.4)]
                        disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100
                        transition-all duration-200 flex items-center justify-center gap-2"

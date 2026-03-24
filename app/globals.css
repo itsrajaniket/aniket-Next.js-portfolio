@@ -2,18 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root, [data-theme='cyberpunk'] {
+    --primary: 99 102 241;
+    --secondary: 168 85 247;
+    --accent: 34 211 238;
+
+    --bg-base: 2 6 23;        
+    --bg-card: 30 41 59;      
+    --bg-section-contact: 10 10 10;
+    --bg-section-blog: 6 12 24;
+    --bg-section-skills: 11 17 32;
+    --bg-section-projects: 6 13 26;
+    --bg-section-services: 7 14 27;
+    --bg-section-education: 8 15 28;
+    --bg-section-work: 7 16 31;
+    
+    --text-main: 255 255 255; 
+    --text-muted: 148 163 184;
+    --border-subtle: 148 163 184; 
+    --inverse-base: 255 255 255;  
+    --inverse-text: 2 6 23;       
+    --surfaceBorder: 255 255 255;
+  }
+  
+  [data-theme='sunset'] {
+    --primary: 244 63 94;
+    --secondary: 249 115 22;
+    --accent: 245 158 11;
+
+    --bg-base: 253 251 247;
+    --bg-card: 255 246 240; 
+    --bg-section-contact: 253 251 247;
+    --bg-section-blog: 253 251 247;
+    --bg-section-skills: 253 251 247;
+    --bg-section-projects: 253 251 247;
+    --bg-section-services: 253 251 247;
+    --bg-section-education: 253 251 247;
+    --bg-section-work: 253 251 247;
+
+    --text-main: 45 36 34;
+    --text-muted: 120 107 104;
+    --border-subtle: 45 36 34; 
+    --inverse-base: 45 36 34;  
+    --inverse-text: 253 251 247; 
+  }
+}
+
 /* ── Custom Scrollbar ─────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-track { background: rgb(var(--bg-base)); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #6366f1, #22d3ee);
+  background: linear-gradient(to bottom, rgb(var(--primary)), rgb(var(--accent)));
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
-html { scrollbar-width: thin; scrollbar-color: #6366f1 #020617; }
+::-webkit-scrollbar-thumb:hover { background: rgb(var(--accent)); }
+html { scrollbar-width: thin; scrollbar-color: rgb(var(--primary)) rgb(var(--bg-base)); }
 
 /* ── Text selection ───────────────────────────────────────────────────────── */
-::selection { background: rgba(34, 211, 238, 0.25); color: #fff; }
+::selection { background: rgba(var(--accent), 0.25); color: rgb(var(--inverse-text)); }
 
 /* ── Focus outline ───────────────────────────────────────────────────────── */
 :focus-visible {

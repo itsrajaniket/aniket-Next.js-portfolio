@@ -11,7 +11,7 @@ export default function BlogPreview() {
   return (
     <section
       id="blog"
-      className="pt-8 pb-20 lg:pb-28 relative overflow-hidden bg-[#060c18]"
+      className="pt-8 pb-20 lg:pb-28 relative overflow-hidden bg-section-blog"
       aria-label="Latest Blog Posts"
     >
       {/* Ambient glow */}
@@ -25,7 +25,7 @@ export default function BlogPreview() {
             <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
               07. Writing
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-white">
+            <h2 className="text-4xl lg:text-5xl font-bold text-main">
               From the{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Blog
@@ -35,24 +35,24 @@ export default function BlogPreview() {
           </div>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-5 py-2.5 glass border border-white/10
-                       text-slate-300 hover:text-accent hover:border-accent/40
-                       font-bold text-sm rounded-xl transition-all shrink-0"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-card/60 border border-surfaceBorder/10
+                       text-muted hover:text-accent hover:border-accent/40
+                       font-bold text-sm rounded-xl transition-all shrink-0 backdrop-blur-md"
           >
             All Posts
             <i className="fas fa-arrow-right text-xs" aria-hidden="true" />
           </Link>
         </SectionReveal>
-
+ 
         {/* Post cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post, idx) => (
             <SectionReveal key={post.slug} delay={idx * 0.1}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block glass rounded-2xl p-6 border border-white/10
-                           hover:border-accent/40 hover:-translate-y-1
-                           transition-all duration-300 h-full"
+                className="group block bg-card/40 rounded-2xl p-6 border border-surfaceBorder/10
+                           hover:border-accent/40 hover:-translate-y-1 hover:bg-card/60
+                           transition-all duration-300 h-full backdrop-blur-sm will-change-transform"
                 aria-label={`Read: ${post.title}`}
               >
                 {/* Tags */}
@@ -63,18 +63,18 @@ export default function BlogPreview() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-white mb-3 leading-snug
+                <h3 className="text-lg font-bold text-main mb-3 leading-snug
                                group-hover:text-accent transition-colors line-clamp-2">
                   {post.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-slate-400 text-sm leading-relaxed mb-5 line-clamp-3">
+                <p className="text-muted text-sm leading-relaxed mb-5 line-clamp-3">
                   {post.description}
                 </p>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between text-xs text-slate-500 font-medium mt-auto pt-4 border-t border-white/5">
+                <div className="flex items-center justify-between text-xs text-muted font-medium mt-auto pt-4 border-t border-surfaceBorder/5">
                   <div className="flex items-center gap-3">
                     <span className="flex items-center gap-1.5">
                       <i className="fas fa-calendar-alt text-accent/60" aria-hidden="true" />

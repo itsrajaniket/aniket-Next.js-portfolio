@@ -82,6 +82,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.rajaniket.com" },
 };
 
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: {
@@ -91,6 +93,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${syne.variable} ${dmSans.variable} scroll-smooth`}
+      suppressHydrationWarning
     >
       <head>
         <link
@@ -99,13 +102,15 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="bg-dark text-stone-100 font-sans antialiased">
-        <GoogleAnalytics />
-        <MouseTrailCanvas />
-        <MotionWrapper>
-          <main id="main-content">{children}</main>
-        </MotionWrapper>
-        <ScrollToTop />
+      <body className="bg-base text-main font-sans antialiased transition-colors duration-500">
+        <ThemeProvider attribute="data-theme" defaultTheme="cyberpunk" enableSystem={false}>
+          <GoogleAnalytics />
+          <MouseTrailCanvas />
+          <MotionWrapper>
+            <main id="main-content">{children}</main>
+          </MotionWrapper>
+          <ScrollToTop />
+        </ThemeProvider>
       </body>
     </html>
   );

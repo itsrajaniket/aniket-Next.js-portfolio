@@ -71,7 +71,7 @@ export default function MobileNav() {
         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
-        className="text-white focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-dark rounded p-1"
+        className="text-main focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-dark rounded p-1"
       >
         <i className={`fas ${isOpen ? "fa-times" : "fa-bars"} text-2xl`} aria-hidden="true" />
       </button>
@@ -82,7 +82,7 @@ export default function MobileNav() {
         role="navigation"
         aria-label="Mobile navigation"
         className={`
-          absolute top-full left-0 w-full glass border-t border-white/10
+          absolute top-full left-0 w-full glass border-t border-surfaceBorder/10
           py-6 px-6 flex flex-col space-y-4 transition-all duration-300 origin-top
           ${isOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-0 pointer-events-none"}
         `}
@@ -103,7 +103,7 @@ export default function MobileNav() {
               key={href}
               href={isHomePage ? href : `/${href}`}
               onClick={(e) => handleAnchorClick(e, href)}
-              className="text-lg font-medium text-slate-200 hover:text-accent transition-colors py-1"
+              className="text-lg font-medium text-main hover:text-accent transition-colors py-1"
             >
               {label}
             </a>
@@ -114,7 +114,7 @@ export default function MobileNav() {
           href="/Aniket_Raj_Resume.pdf"
           download="Aniket_Raj_Resume.pdf"
           onClick={close}
-          className="mt-2 text-lg font-bold text-accent border border-accent/30 p-3 rounded-xl text-center hover:bg-accent hover:text-dark transition-colors"
+          className="mt-2 text-lg font-bold text-accent border border-accent/30 p-3 rounded-xl text-center hover:bg-accent hover:text-inverseText transition-colors"
           aria-label="Download Resume PDF"
         >
           Download Resume <i className="fas fa-download ml-2" aria-hidden="true" />

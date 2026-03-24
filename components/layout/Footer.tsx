@@ -6,7 +6,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="py-12 border-t border-white/5 bg-dark" aria-label="Site footer">
+    <footer className="py-12 border-t border-surfaceBorder/5 bg-base" aria-label="Site footer">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
 
@@ -25,11 +25,11 @@ export default function Footer() {
               {NAV_ITEMS.filter((_, i) => i > 0).map(({ label, href, isRoute }) => (
                 <li key={href}>
                   {isRoute ? (
-                    <Link href={href} className="text-sm text-slate-500 hover:text-accent transition-colors">
+                    <Link href={href} className="text-sm text-muted hover:text-accent transition-colors">
                       {label}
                     </Link>
                   ) : (
-                    <a href={href} className="text-sm text-slate-500 hover:text-accent transition-colors">
+                    <a href={href} className="text-sm text-muted hover:text-accent transition-colors">
                       {label}
                     </a>
                   )}
@@ -46,7 +46,7 @@ export default function Footer() {
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`w-9 h-9 glass rounded-lg flex items-center justify-center ${color} border border-white/5 hover:border-accent/50 hover:scale-110 transition-all`}
+                className={`w-9 h-9 glass rounded-lg flex items-center justify-center ${color} border border-surfaceBorder/5 hover:border-accent/50 hover:scale-110 transition-all`}
                 aria-label={label}
               >
                 <i className={`${icon} text-sm`} aria-hidden="true" />
@@ -55,8 +55,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/5 text-center">
-          <p className="text-slate-500 text-sm">
+        <div className="mt-8 pt-6 border-t border-surfaceBorder/5 text-center">
+          <p className="text-muted text-sm">
             Built with ❤️ by{" "}
             <span className="text-accent font-semibold">{AUTHOR_NAME}</span>{" "}
             using Next.js 15, Tailwind CSS &amp; Framer Motion &copy; {year}

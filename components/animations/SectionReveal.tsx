@@ -34,7 +34,7 @@ export default function SectionReveal({
         delay: prefersReduced ? 0 : delay,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
-      className={className}
+      className={`${className} will-change-transform`}
     >
       {children}
     </MotionTag>

@@ -32,7 +32,7 @@ export default function NavLinks({ onLinkClick, className = "" }: NavLinksProps)
   };
 
   return (
-    <ul className={`flex items-center gap-8 ${className}`} role="list">
+    <ul className={`flex items-center gap-6 ${className}`} role="list">
       {NAV_ITEMS.map(({ label, href, isRoute }) => {
         const isActive = isHomePage && !isRoute && activeSection === href.replace("#", "");
 
@@ -42,17 +42,17 @@ export default function NavLinks({ onLinkClick, className = "" }: NavLinksProps)
               <Link
                 href={href}
                 onClick={onLinkClick}
-                className="nav-link font-medium transition-colors hover:text-accent text-slate-300 flex items-center gap-1.5"
+                className="nav-link text-sm font-semibold transition-colors hover:text-accent text-muted flex items-center gap-1.5"
               >
                 {label}
-                <i className="fas fa-pen-nib text-xs text-accent opacity-70" aria-hidden="true" />
+                <i className="fas fa-pen-nib text-[10px] text-accent opacity-70" aria-hidden="true" />
               </Link>
             ) : (
               <a
                 href={isHomePage ? href : `/${href}`}
                 onClick={(e) => handleAnchorClick(e, href)}
-                className={`nav-link font-medium transition-colors hover:text-accent ${
-                  isActive ? "nav-active" : "text-slate-300"
+                className={`nav-link text-sm font-semibold transition-colors hover:text-accent ${
+                  isActive ? "nav-active" : "text-muted"
                 }`}
               >
                 {label}
@@ -66,8 +66,8 @@ export default function NavLinks({ onLinkClick, className = "" }: NavLinksProps)
         <a
           href="/Aniket_Raj_Resume.pdf"
           download="Aniket_Raj_Resume.pdf"
-          className="px-5 py-1.5 border border-accent text-accent rounded-full font-bold text-sm
-                     hover:bg-accent hover:text-dark transition-all
+          className="px-4 py-1 border border-accent text-accent rounded-full font-bold text-xs
+                     hover:bg-accent hover:text-inverseText transition-all
                      shadow-[0_0_10px_rgba(34,211,238,0.2)]
                      hover:shadow-[0_0_25px_rgba(34,211,238,0.7)]"
           aria-label="Download Aniket Raj's Resume PDF"

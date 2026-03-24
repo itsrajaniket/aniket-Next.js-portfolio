@@ -40,7 +40,7 @@ export default function Projects() {
       aria-label="Projects"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-[#060d1a] -z-10" />
+      <div className="absolute inset-0 bg-section-projects -z-10" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-7xl">
@@ -50,13 +50,13 @@ export default function Projects() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             04. Projects
           </span>
-          <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">
+          <h2 className="text-4xl lg:text-6xl font-bold text-main mb-4">
             Featured{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Projects
             </span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+          <p className="text-muted max-w-2xl mx-auto text-lg">
             A collection of projects built with modern web technologies. Each one solves a real problem.
           </p>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6" />
@@ -70,8 +70,8 @@ export default function Projects() {
               onClick={() => setActiveFilter(f)}
               className={`px-5 py-2 rounded-full text-sm font-bold border transition-all ${
                 activeFilter === f
-                  ? "bg-accent text-dark border-accent shadow-[0_0_20px_rgba(34,211,238,0.4)]"
-                  : "glass border-white/10 text-slate-300 hover:border-accent/50 hover:text-accent"
+                  ? "bg-accent text-inverseText border-accent shadow-[0_0_20px_rgba(34,211,238,0.4)]"
+                  : "glass border-surfaceBorder/10 text-muted hover:border-accent/50 hover:text-accent"
               }`}
               aria-pressed={activeFilter === f}
               aria-label={`Filter projects by ${f}`}
@@ -105,7 +105,7 @@ export default function Projects() {
         </motion.div>
 
         {filtered.length === 0 && (
-          <p className="text-center text-slate-400 mt-12 text-lg">
+          <p className="text-center text-muted mt-12 text-lg">
             No projects found for this filter.
           </p>
         )}
@@ -116,7 +116,7 @@ export default function Projects() {
             href="https://github.com/itsrajaniket"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 glass border border-white/10 text-white font-bold rounded-xl hover:border-accent hover:text-accent transition-all"
+            className="inline-flex items-center gap-3 px-8 py-4 glass border border-surfaceBorder/10 text-main font-bold rounded-xl hover:border-accent hover:text-accent transition-all"
             aria-label="View all projects on GitHub"
           >
             <i className="fab fa-github text-xl" aria-hidden="true" />

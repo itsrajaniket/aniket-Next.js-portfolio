@@ -15,10 +15,10 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="pt-8 pb-20 lg:pb-28 relative overflow-hidden bg-[#070e1b]"
+      className="pt-8 pb-20 lg:pb-28 bg-section-services relative overflow-hidden"
       aria-label="Services offered"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#060d1a] to-[#070e1b] -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-section-projects to-section-services -z-10" />
 
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Header */}
@@ -54,7 +54,7 @@ export default function Services() {
                       </svg>
                     </div>
 
-                    <h3 className={`text-xl font-bold text-white mb-2 ${colors.icon} transition-colors`}>
+                    <h3 className={`text-xl font-bold text-main mb-2 ${colors.icon} transition-colors`}>
                       {service.title}
                     </h3>
                     <p className="text-sm text-gray-400 leading-relaxed">{service.description}</p>

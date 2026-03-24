@@ -62,7 +62,7 @@ export default async function BlogPostPage({
           {/* Back */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-accent transition-colors mb-10"
+            className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors mb-10"
           >
             <i className="fas fa-arrow-left text-xs" aria-hidden="true" />
             Back to Blog
@@ -76,12 +76,12 @@ export default async function BlogPostPage({
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+          <h1 className="text-3xl md:text-5xl font-bold text-main mb-4 leading-tight">
             {post.title}
           </h1>
 
           {/* Meta row */}
-          <div className="flex flex-wrap items-center gap-5 text-sm text-slate-400 mb-10 pb-8 border-b border-white/10">
+          <div className="flex flex-wrap items-center gap-5 text-sm text-muted mb-10 pb-8 border-b border-surfaceBorder/10">
             <span className="flex items-center gap-1.5">
               <i className="fas fa-calendar-alt text-accent" aria-hidden="true" />
               {post.date}
@@ -107,14 +107,14 @@ export default async function BlogPostPage({
           />
 
           {/* Footer CTA */}
-          <div className="mt-16 pt-8 border-t border-white/10">
+          <div className="mt-16 pt-8 border-t border-surfaceBorder/10">
             <div className="glass rounded-2xl p-6 border border-accent/20 text-center">
-              <p className="text-slate-300 mb-4">
+              <p className="text-muted mb-4">
                 Enjoyed this post? Let&apos;s connect and talk frontend!
               </p>
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-dark font-bold rounded-xl hover:scale-105 transition-transform"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-inverseText font-bold rounded-xl hover:scale-105 transition-transform"
               >
                 Get in Touch
                 <i className="fas fa-arrow-right text-sm" aria-hidden="true" />
@@ -134,19 +134,19 @@ function mdToHtml(md: string): string {
     // Code blocks (must come before inline code)
     .replace(/```[\w]*\n([\s\S]*?)```/g, "<pre><code>$1</code></pre>")
     // Headings
-    .replace(/^### (.+)$/gm, "<h3 class=\"text-xl font-bold text-white mt-8 mb-3\">$1</h3>")
-    .replace(/^## (.+)$/gm, "<h2 class=\"text-2xl font-bold text-white mt-10 mb-4\">$1</h2>")
-    .replace(/^# (.+)$/gm, "<h1 class=\"text-3xl font-bold text-white mt-12 mb-6\">$1</h1>")
+    .replace(/^### (.+)$/gm, "<h3 class=\"text-xl font-bold text-main mt-8 mb-3\">$1</h3>")
+    .replace(/^## (.+)$/gm, "<h2 class=\"text-2xl font-bold text-main mt-10 mb-4\">$1</h2>")
+    .replace(/^# (.+)$/gm, "<h1 class=\"text-3xl font-bold text-main mt-12 mb-6\">$1</h1>")
     // Inline formatting
-    .replace(/\*\*(.+?)\*\*/g, "<strong class=\"text-white font-bold\">$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em class=\"text-slate-300 italic\">$1</em>")
+    .replace(/\*\*(.+?)\*\*/g, "<strong class=\"text-main font-bold\">$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em class=\"text-muted italic\">$1</em>")
     .replace(/`(.+?)`/g, "<code class=\"bg-primary/15 text-accent px-1.5 py-0.5 rounded text-sm font-mono\">$1</code>")
     // Links
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href=\"$2\" class=\"text-accent hover:underline\">$1</a>")
     // Horizontal rule
-    .replace(/^---$/gm, "<hr class=\"border-white/10 my-8\" />")
+    .replace(/^---$/gm, "<hr class=\"border-surfaceBorder/10 my-8\" />")
     // Lists
-    .replace(/^- (.+)$/gm, "<li class=\"ml-6 list-disc text-slate-300\">$1</li>")
+    .replace(/^- (.+)$/gm, "<li class=\"ml-6 list-disc text-muted\">$1</li>")
     .replace(/(<li[\s\S]*?<\/li>\n?)+/g, "<ul class=\"space-y-2 my-4\">$&</ul>")
     // Paragraphs (double newline = paragraph break)
     .split("\n\n")
@@ -155,7 +155,7 @@ function mdToHtml(md: string): string {
         return block;
       }
       const trimmed = block.trim();
-      return trimmed ? `<p class="text-slate-400 leading-relaxed my-4">${trimmed.replace(/\n/g, " ")}</p>` : "";
+      return trimmed ? `<p class="text-muted leading-relaxed my-4">${trimmed.replace(/\n/g, " ")}</p>` : "";
     })
     .join("\n");
 }

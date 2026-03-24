@@ -15,8 +15,8 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="pt-8 pb-20 lg:pb-28 bg-[#080f1c] relative overflow-hidden"
-      aria-label="Education"
+      className="pt-8 pb-20 lg:pb-28 bg-section-education relative overflow-hidden"
+      aria-label="Education background"
     >
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Header */}
@@ -24,7 +24,7 @@ export default function Education() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             06. Education
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="text-4xl lg:text-5xl font-bold text-main">
             Education &{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Background
@@ -40,7 +40,7 @@ export default function Education() {
             return (
               <SectionReveal key={item.period} delay={idx * 0.1}>
                 <div
-                  className={`relative group h-full bg-slate-900/60 backdrop-blur-md p-5 pt-6 rounded-xl border border-slate-800 hover:-translate-y-1 hover:border-${item.accentColor}-500/50 transition-all duration-300 shadow-lg flex flex-col`}
+                  className={`relative group h-full bg-card/60 backdrop-blur-md p-5 pt-6 rounded-xl border border-slate-800 hover:-translate-y-1 hover:border-${item.accentColor}-500/50 transition-all duration-300 shadow-lg flex flex-col`}
                 >
                   {/* Animated top accent bar */}
                   <div className={`absolute top-0 left-4 w-12 h-1 ${colors.bar} rounded-b-md z-10 group-hover:w-full transition-all duration-500`} />
@@ -48,10 +48,10 @@ export default function Education() {
                   <span className={`${colors.period} font-mono text-xs tracking-widest font-bold mb-1 uppercase`}>
                     {item.period}
                   </span>
-                  <h3 className="text-base font-bold text-white leading-tight mb-1">
+                  <h3 className="text-base font-bold text-main leading-tight mb-1">
                     {item.degree}
                   </h3>
-                  <p className="text-slate-300 text-xs mt-1 mb-3 flex-grow leading-relaxed">
+                  <p className="text-muted text-xs mt-1 mb-3 flex-grow leading-relaxed">
                     {item.institution}
                   </p>
                   <span className={`inline-flex w-max items-center px-2 py-0.5 rounded border ${colors.badge} font-bold text-xs`}>
