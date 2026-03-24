@@ -47,19 +47,6 @@ export default function MouseTrailCanvas() {
     resize();
     window.addEventListener("resize", resize, { passive: true });
 
-    // ── Mouse / touch handlers ──────────────────────────────────────────
-    const onMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-      createParticles(e.clientX, e.clientY, 4);
-    };
-    const onTouchMove = (e: TouchEvent) => {
-      const t = e.touches[0];
-      createParticles(t.clientX, t.clientY, 3);
-    };
-
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: true });
-
     // ── Animation loop ──────────────────────────────────────────────────
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -82,8 +69,28 @@ export default function MouseTrailCanvas() {
         return true;
       });
 
-      rafRef.current = requestAnimationFrame(animate);
+      // Optimization: Only request next frame if there are particles
+      if (particlesRef.current.length > 0) {
+        rafRef.current = requestAnimationFrame(animate);
+      } else {
+        rafRef.current = null;
+      }
     };
+
+    // ── Mouse / touch handlers ──────────────────────────────────────────
+    const onMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+      createParticles(e.clientX, e.clientY, 4);
+      if (!rafRef.current) rafRef.current = requestAnimationFrame(animate);
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      const t = e.touches[0];
+      createParticles(t.clientX, t.clientY, 3);
+      if (!rafRef.current) rafRef.current = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
 
     animate();
 

@@ -5,6 +5,8 @@ import { getPostBySlug, getAllSlugs } from "@/lib/blog";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+export const dynamic = "force-static";
+
 // ── Static params ─────────────────────────────────────────────────────────
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));

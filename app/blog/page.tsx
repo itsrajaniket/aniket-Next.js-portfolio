@@ -4,6 +4,8 @@ import { getAllPosts } from "@/lib/blog";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Blog",
   description: "Thoughts on React, Next.js, frontend engineering, and building great web experiences.",

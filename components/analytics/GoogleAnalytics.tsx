@@ -1,5 +1,7 @@
 // Server Component — renders GA script tags
 // GA only loads in production (not during local development)
+import Script from "next/script";
+
 // TODO: Replace GA_MEASUREMENT_ID with your real ID from Google Analytics
 // Steps to get your ID:
 //   1. Go to https://analytics.google.com
@@ -15,12 +17,13 @@ export default function GoogleAnalytics() {
 
   return (
     <>
-      <script
-        async
+      <Script
+        strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
       />
-      <script
+      <Script
         id="google-analytics"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
