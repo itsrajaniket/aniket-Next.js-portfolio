@@ -45,48 +45,55 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       whileHover={
         prefersReduced ? undefined : {
           y: -10,
-          boxShadow: "0 0 30px rgba(34,211,238,0.45), 0 0 60px rgba(34,211,238,0.15)",
+          boxShadow: "0 20px 40px -10px rgba(34,211,238,0.15)",
           transition: { duration: 0.25 },
         }
       }
-      className="group relative rounded-2xl overflow-hidden project-card border border-white/10 hover:border-accent/60 transition-colors h-full flex flex-col bg-slate-900/60"
+      className="group relative rounded-2xl overflow-hidden project-card border border-white/10 hover:border-accent/50 transition-all h-full flex flex-col bg-slate-900/60 backdrop-blur-sm"
       aria-label={`Project: ${project.title}`}
     >
-      {/* Background — image with gradient fallback */}
-      <div className="absolute inset-0">
+      {/* Top Half: Image */}
+      <div className="relative w-full h-56 sm:h-60 overflow-hidden bg-slate-800">
         {!imgError ? (
-          <div className="relative w-full h-full transform group-hover:scale-110 transition-transform duration-700">
-            <Image
-              src={project.image}
-              alt={`${project.title} screenshot`}
-              placeholder="blur"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              onError={() => setImgError(true)}
-            />
-          </div>
+          <Image
+            src={project.image}
+            alt={`${project.title} screenshot`}
+            placeholder="blur"
+            fill
+            className="object-cover transform group-hover:scale-105 transition-transform duration-700"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            onError={() => setImgError(true)}
+          />
         ) : (
-          // Gradient fallback when image is missing
           <div className={`w-full h-full bg-gradient-to-br ${fallback} flex items-center justify-center`}>
-            <i className={`${project.icon} text-6xl opacity-10 text-white`} aria-hidden="true" />
+            <i className={`${project.icon} text-6xl opacity-20 text-white`} aria-hidden="true" />
           </div>
         )}
-        <div className="absolute inset-0 bg-slate-900/92 group-hover:bg-slate-900/80 transition-colors duration-300" />
+        
+        {/* Subtle gradient to blend image into the card body */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
+
+        {/* Floating icon badge */}
+        <div className="absolute top-4 left-4 w-10 h-10 glass rounded-xl flex items-center justify-center border border-white/20 shadow-lg">
+          <i className={`${project.icon} text-accent text-lg drop-shadow-md`} aria-hidden="true" />
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 p-6 flex flex-col h-full">
-        {/* Header: icon + links */}
-        <div className="flex justify-between items-start mb-4">
-          <i className={`${project.icon} text-accent text-3xl drop-shadow-lg`} aria-hidden="true" />
-          <div className="flex gap-4">
+      {/* Bottom Half: Content */}
+      <div className="relative z-10 p-6 flex flex-col flex-grow">
+        
+        {/* Title & Links */}
+        <div className="flex justify-between items-start mb-3 gap-2">
+          <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors leading-tight">
+            {project.title}
+          </h3>
+          <div className="flex gap-3 shrink-0 mt-1">
             {project.github && (
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-300 hover:text-white transition"
+                className="text-slate-400 hover:text-white transition-colors"
                 aria-label={`View ${project.title} on GitHub`}
               >
                 <i className="fab fa-github text-xl" aria-hidden="true" />
@@ -97,7 +104,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-300 hover:text-accent transition"
+                className="text-slate-400 hover:text-accent transition-colors"
                 aria-label={`View ${project.title} live demo`}
               >
                 <i className="fas fa-external-link-alt text-xl" aria-hidden="true" />
@@ -106,30 +113,31 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </div>
 
-        {/* Title + description */}
-        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-accent transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-slate-300 text-sm mb-6 flex-grow font-medium leading-relaxed">
+        {/* Description */}
+        <p className="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
           {project.description}
         </p>
 
-        {/* Footer: tags + CTA */}
-        <div className="flex justify-between items-center mt-auto">
+        {/* Tags & Live Demo CTA */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mt-auto pt-4 border-t border-white/5">
           <div className="flex gap-2 flex-wrap">
-            {project.tags.map((tag) => (
-              <span key={tag} className="tech-tag">{tag}</span>
+            {project.tags.slice(0, 3).map((tag) => (
+              <span key={tag} className="text-[10px] font-mono tracking-widest text-accent uppercase bg-accent/10 px-2 py-1 rounded-md border border-accent/20">
+                {tag}
+              </span>
             ))}
           </div>
+          
           {project.live && (
             <a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-bold uppercase tracking-wider text-white hover:text-accent transition ml-3 shrink-0"
+              className="text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-accent transition-colors shrink-0 group/link flex items-center gap-1"
               aria-label={`Open ${project.title} live demo`}
             >
-              Live Demo →
+              Demo 
+              <i className="fas fa-arrow-right text-[10px] group-hover/link:translate-x-1 transition-transform" aria-hidden="true" />
             </a>
           )}
         </div>
