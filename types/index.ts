@@ -1,5 +1,7 @@
 // ── Core Data Types ──────────────────────────────────────────────────────────
 
+import { StaticImageData } from "next/image";
+
 export interface Project {
   id: string;
   title: string;
@@ -8,7 +10,7 @@ export interface Project {
   tags: string[];
   github?: string;
   live?: string;
-  image: string;
+  image: string | StaticImageData;
   icon: string;
   featured?: boolean;
   accentColor?: string;

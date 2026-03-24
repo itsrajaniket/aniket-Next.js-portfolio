@@ -42,13 +42,12 @@ export async function sendContactEmail(
   // TODO: Replace 'onboarding@resend.dev' with your verified sender domain
 
   try {
-    // ─── UNCOMMENT TO ENABLE REAL EMAIL SENDING ───────────────────────
     const { Resend } = await import("resend");
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
-      to: "aniketrajid@gmail.com", // TODO: your real email
+      to: "aniketrajid@gmail.com",
       replyTo: email,
       subject: `[Portfolio] ${subject}`,
       html: `
@@ -59,16 +58,14 @@ export async function sendContactEmail(
         <p>${message.replace(/\n/g, "<br/>")}</p>
       `,
     });
-    // ─────────────────────────────────────────────────────────────────
 
-    // ─── STUB (logs to console for now) ───────────────────────────────
-    console.log("[ContactForm] Message received:", {
-      name,
-      email,
-      subject,
-      message,
-    });
-    await new Promise((r) => setTimeout(r, 600)); // simulate network delay
+    if (error) {
+      console.error("[Resend Error]:", error);
+      return {
+        success: false,
+        message: `Email failed to send: ${error.message}`,
+      };
+    }
 
     return {
       success: true,

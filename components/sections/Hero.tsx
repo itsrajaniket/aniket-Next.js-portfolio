@@ -3,6 +3,8 @@ import Image from "next/image";
 import SpiderCanvas from "@/components/visuals/SpiderCanvas";
 import Typewriter from "@/components/animations/Typewriter";
 import { HERO_STATS, AUTHOR_LOCATION } from "@/lib/constants";
+import headImg from "@/public/images/head.png";
+import avatarImg from "@/public/images/3D-avatar.png";
 
 export default function Hero() {
   return (
@@ -14,8 +16,9 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/head.png"
+          src={headImg}
           alt="Cyberpunk background"
+          placeholder="blur"
           fill
           className="object-cover"
           priority
@@ -91,10 +94,9 @@ export default function Hero() {
             {/* Avatar */}
             <div className="rounded-2xl overflow-hidden border border-white/10 mb-5 relative group">
               <Image
-                src="/images/3D-avatar.png"
+                src={avatarImg}
                 alt="Aniket Raj 3D Avatar"
-                width={320}
-                height={380}
+                placeholder="blur"
                 className="w-full object-cover object-top transform group-hover:scale-110 transition-transform duration-700"
                 priority
               />

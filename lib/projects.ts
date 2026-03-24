@@ -1,5 +1,15 @@
 import type { Project } from "@/types";
 
+import habitImg from "@/public/images/project-habit.jpg";
+import markdownImg from "@/public/images/project-markdown.png";
+import beatreactorImg from "@/public/images/project-beatreactor.jpg";
+import jobtrackerImg from "@/public/images/project-jobtracker.jpg";
+import maharaniImg from "@/public/images/project-maharani.jpg";
+import weatherImg from "@/public/images/project-weather.jpg";
+import speechImg from "@/public/images/project-speech.jpg";
+import qrImg from "@/public/images/project-qr.jpg";
+import dogImg from "@/public/images/project-dog.jpg";
+
 export const projects: Project[] = [
   {
     id: "habit-builder-kit",
@@ -9,7 +19,7 @@ export const projects: Project[] = [
     tags: ["REACT", "REDUX", "TAILWIND"],
     github: "https://github.com/itsrajaniket",
     live: "https://habit-builder-kit.vercel.app/",
-    image: "/images/project-habit.jpg",
+    image: habitImg,
     icon: "fas fa-check-circle",
     featured: true,
     accentColor: "cyan",
@@ -22,7 +32,7 @@ export const projects: Project[] = [
     tags: ["REACT", "PRISM.JS", "MARKED"],
     github: "https://github.com/itsrajaniket/Your-Markdown-Editor",
     live: "https://markdown-studio-pro.netlify.app/",
-    image: "/images/project-markdown.png",
+    image: markdownImg,
     icon: "fas fa-file-code",
     featured: true,
     accentColor: "indigo",
@@ -35,7 +45,7 @@ export const projects: Project[] = [
     tags: ["WEB AUDIO API", "JS ES6+", "NEON UI"],
     github: "https://github.com/itsrajaniket/BeatReactor",
     live: "https://itsrajaniket.github.io/BeatReactor/",
-    image: "/images/project-beatreactor.jpg",
+    image: beatreactorImg,
     icon: "fas fa-compact-disc",
     featured: true,
     accentColor: "purple",
@@ -48,7 +58,7 @@ export const projects: Project[] = [
     tags: ["REACT", "DND-KIT", "TAILWIND"],
     github: "https://github.com/itsrajaniket",
     live: "https://corporate-job-tracker.vercel.app/",
-    image: "/images/project-jobtracker.jpg",
+    image: jobtrackerImg,
     icon: "fas fa-briefcase",
     featured: true,
     accentColor: "violet",
@@ -61,7 +71,7 @@ export const projects: Project[] = [
     tags: ["HTML", "CSS", "JS", "GSAP"],
     github: "https://github.com/itsrajaniket",
     live: "https://itsrajaniket.github.io/freelance-restaurant-app/",
-    image: "/images/project-maharani.jpg",
+    image: maharaniImg,
     icon: "fas fa-utensils",
     accentColor: "amber",
   },
@@ -73,7 +83,7 @@ export const projects: Project[] = [
     tags: ["REST API", "JS"],
     github: "https://github.com/itsrajaniket/Weather-App",
     live: "https://itsrajaniket.github.io/Weather-App/",
-    image: "/images/project-weather.jpg",
+    image: weatherImg,
     icon: "fas fa-cloud-sun",
     accentColor: "sky",
   },
@@ -85,7 +95,7 @@ export const projects: Project[] = [
     tags: ["WEB SPEECH API", "JS"],
     github: "https://github.com/itsrajaniket/Text-to-Speech-Converter",
     live: "https://itsrajaniket.github.io/Text-to-Speech-Converter/",
-    image: "/images/project-speech.jpg",
+    image: speechImg,
     icon: "fas fa-volume-up",
     accentColor: "teal",
   },
@@ -97,7 +107,7 @@ export const projects: Project[] = [
     tags: ["JS", "CANVAS API", "HTML"],
     github: "https://github.com/itsrajaniket/QR-Code-Generator",
     live: "https://itsrajaniket.github.io/QR-Code-Generator/",
-    image: "/images/project-qr.jpg",
+    image: qrImg,
     icon: "fas fa-qrcode",
     accentColor: "green",
   },
@@ -109,7 +119,7 @@ export const projects: Project[] = [
     tags: ["FETCH API", "JSON", "JS"],
     github: "https://github.com/itsrajaniket/dog-api-project",
     live: "https://itsrajaniket.github.io/dog-api-project/",
-    image: "/images/project-dog.jpg",
+    image: dogImg,
     icon: "fas fa-dog",
     accentColor: "orange",
   },
