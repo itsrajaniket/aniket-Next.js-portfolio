@@ -25,6 +25,6 @@ Copy these files from your original `resource/` folder into this directory:
 ## Other Required Files in /public
 | Filename                    | Notes                                |
 |-----------------------------|--------------------------------------|
-| `Aniket-Resume.pdf`         | Copy from `resource/Aniket-Resume.pdf` |
+| `Aniket_Raj_Resume.pdf`     | Copy from `resource/Aniket_Raj_Resume.pdf` |
 | `og-image.png`              | Create 1200×630px social share image |
 | `favicon.ico`               | Copy from `resource/iconio.png` and rename |

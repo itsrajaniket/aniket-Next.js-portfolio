@@ -120,7 +120,7 @@ Copy these from your old `resource/` folder into `public/images/`:
 | `project-dog.jpg`           | `resource/project-dog.jpg`        |
 
 Also copy:
-- `resource/Aniket-Resume.pdf` → `public/Aniket-Resume.pdf`
+- `resource/Aniket_Raj_Resume.pdf` → `public/Aniket_Raj_Resume.pdf`
 - Create a 1200×630 `public/og-image.png` for social sharing previews
 
 Missing project images (`project-habit.jpg`, `project-maharani.jpg`, `project-color.jpg`, `project-todo.jpg`, `project-weather.jpg`) can be any placeholder image for now — Next.js `<Image>` will handle sizing automatically.
