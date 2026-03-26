@@ -32,28 +32,40 @@ export default function SpotlightReveal({
     mouseY.set(e.clientY - top);
   }
 
+  function handleMouseEnter(e: React.MouseEvent<HTMLDivElement>) {
+    // Snap to position immediately on enter to prevent the "fly-in" glitch from 0,0
+    if (containerRef.current) {
+      const { left, top } = containerRef.current.getBoundingClientRect();
+      mouseX.jump(e.clientX - left);
+      mouseY.jump(e.clientY - top);
+    }
+    setIsHovered(true);
+  }
+
   const maskImage = useMotionTemplate`radial-gradient(${spotlightSize}px circle at ${smoothX}px ${smoothY}px, black 0%, transparent 100%)`;
 
   return (
     <div
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setIsHovered(false)}
       className={`relative group cursor-default ${className}`}
     >
       {/* ── BASE LAYER: Readable Muted Text ── */}
-      <div className="text-muted/80 transition-opacity duration-500 group-hover:opacity-60 select-none">
+      {/* Removed select-none so users can copy the text if needed */}
+      <div className="text-muted/80 transition-opacity duration-500 group-hover:opacity-60">
         {children}
       </div>
 
       {/* ── REVEAL LAYER: Full Brightness & Colorful Glow ── */}
       <motion.div
-        className="absolute inset-0 pointer-events-none select-text"
+        // Removed select-text (useless with pointer-events-none)
+        className="absolute inset-0 pointer-events-none"
         style={{
           maskImage,
           WebkitMaskImage: maskImage,
-          opacity: isHovered ? 1 : 0,
+          // Removed inline opacity to let Framer Motion handle it via animate{}
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: isHovered ? 1 : 0 }}
