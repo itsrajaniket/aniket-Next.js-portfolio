@@ -1,6 +1,7 @@
 // Server Component
 import { services } from "@/lib/experience";
 import SectionReveal from "@/components/animations/SectionReveal";
+import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; text: string; icon: string; glow: string }> = {
   purple:  { border: "hover:border-purple-500/50",  bg: "bg-purple-500/10",  text: "text-purple-400",  icon: "group-hover:text-purple-300",  glow: "hover:shadow-[0_8px_30px_rgb(168,85,247,0.15)]" },
@@ -26,9 +27,11 @@ export default function Services() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             05. Services
           </span>
-          <h2 className="inline-block text-4xl lg:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 pb-2">
-            My Expertise
-          </h2>
+          <AnimatedTitle 
+            text1="My" 
+            text2="Expertise" 
+            className="mb-4 justify-center pb-2" 
+          />
           <p className="max-w-2xl mx-auto text-gray-400 text-lg mt-4">
             Offering end-to-end web solutions — from pixel-perfect design to robust architecture.
           </p>

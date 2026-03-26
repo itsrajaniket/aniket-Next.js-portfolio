@@ -5,6 +5,7 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useState, useRef, useCallback } from "react";
 import { useReducedMotion } from "@/hooks";
 import SectionReveal from "@/components/animations/SectionReveal";
+import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
 const SHOWCASE = [
   {
@@ -181,12 +182,11 @@ export default function WorkExperience() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             03. Experience & Work
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-main mb-4">
-            What I&apos;ve{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Built & Delivered
-            </span>
-          </h2>
+          <AnimatedTitle 
+            text1="What I've" 
+            text2="Built & Delivered" 
+            className="mb-4" 
+          />
           <p className="text-muted max-w-xl text-lg">
             Real client work, real deployments. Click any card to explore.
           </p>

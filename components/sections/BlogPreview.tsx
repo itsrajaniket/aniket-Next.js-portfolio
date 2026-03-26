@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
 import SectionReveal from "@/components/animations/SectionReveal";
+import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
 export default function BlogPreview() {
   const posts = getAllPosts().slice(0, 3); // show latest 3
@@ -25,12 +26,11 @@ export default function BlogPreview() {
             <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
               07. Writing
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-main">
-              From the{" "}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Blog
-              </span>
-            </h2>
+            <AnimatedTitle 
+              text1="From the" 
+              text2="Blog" 
+              className="text-4xl lg:text-5xl" 
+            />
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mt-4" />
           </div>
           <Link

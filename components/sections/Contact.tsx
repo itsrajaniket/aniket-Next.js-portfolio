@@ -1,6 +1,7 @@
 // Server Component
 import ContactForm from "@/components/shared/ContactForm";
 import SectionReveal from "@/components/animations/SectionReveal";
+import AnimatedTitle from "@/components/animations/AnimatedTitle";
 import CopyButton from "@/components/ui/CopyButton";
 import { SOCIAL_LINKS, AUTHOR_EMAIL, AUTHOR_LOCATION } from "@/lib/constants";
 
@@ -22,12 +23,11 @@ export default function Contact() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             08. Contact
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-main mb-4">
-            Get{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              In Touch
-            </span>
-          </h2>
+          <AnimatedTitle 
+            text1="Get" 
+            text2="In Touch" 
+            className="mb-4" 
+          />
           <p className="text-muted max-w-xl">
             Open to full-time roles, freelance projects, and interesting collabs.
             Pick any channel below — I respond fast.

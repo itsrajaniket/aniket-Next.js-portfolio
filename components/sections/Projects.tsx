@@ -6,6 +6,7 @@ import { projects } from "@/lib/projects";
 import { useReducedMotion } from "@/hooks";
 import ProjectCard from "@/components/shared/ProjectCard";
 import SectionReveal from "@/components/animations/SectionReveal";
+import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
 const FILTERS = ["All", "React", "JavaScript", "Web API", "Tools"] as const;
 type Filter = (typeof FILTERS)[number];
@@ -50,12 +51,11 @@ export default function Projects() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             04. Projects
           </span>
-          <h2 className="text-4xl lg:text-6xl font-bold text-main mb-4">
-            Featured{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Projects
-            </span>
-          </h2>
+          <AnimatedTitle 
+            text1="Featured" 
+            text2="Projects" 
+            className="mb-4 justify-center" 
+          />
           <p className="text-muted max-w-2xl mx-auto text-lg">
             A collection of projects built with modern web technologies. Each one solves a real problem.
           </p>

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import SpiderCanvas from "@/components/visuals/SpiderCanvas";
 import Typewriter from "@/components/animations/Typewriter";
+import SpotlightText from "@/components/animations/SpotlightText";
 import { HERO_STATS, AUTHOR_LOCATION } from "@/lib/constants";
 import headImg from "@/public/images/head.png";
 import avatarImg from "@/public/images/3D-avatar.png";
@@ -47,22 +48,11 @@ export default function Hero() {
             Available for Full Time Work ↗
           </a>
 
-          {/* <h1 className="text-5xl md:text-8xl font-black tracking-tight font-display">
-            ANIKET <br />
-            <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-              RAJ
-            </span> */}
-          {/* </h1> */}
-          {<h1 className="text-5xl md:text-8xl font-black tracking-tight font-display leading-[0.93]">
-            <span className="text-main">ANIKET</span>
-            <br />
-            <span
-              className="text-transparent"
-              style={{ WebkitTextStroke: "1.5px rgba(167,139,250,0.3)" }}
-            >
-              RAJ
-            </span>
-          </h1>}
+          <SpotlightText 
+            text1="ANIKET" 
+            text2="RAJ" 
+            sizeClassName="text-5xl md:text-[7rem] lg:text-[8rem]"
+          />
 
           <h2 className="text-2xl md:text-4xl font-bold text-muted">
             I am a <Typewriter />

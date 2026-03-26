@@ -1,6 +1,9 @@
 // Server Component
 import Image from "next/image";
 import SectionReveal from "@/components/animations/SectionReveal";
+import SpotlightText from "@/components/animations/SpotlightText";
+import SpotlightReveal from "@/components/animations/SpotlightReveal";
+import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
 const ABOUT_STATS = [
   { value: "15+", label: "Projects", sub: "shipped" },
@@ -57,13 +60,11 @@ export default function About() {
           <SectionReveal delay={0.1} className="space-y-8">
 
             {/* Headline */}
-            <h2 className="text-4xl lg:text-5xl font-black text-main leading-[1.1] tracking-tight">
-              I build interfaces{" "}
-              <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                people actually enjoy.
-              </span>
-            </h2>
+            <SpotlightText
+              text1="I build interfaces"
+              text2="people actually enjoy."
+              sizeClassName="text-3xl md:text-4xl lg:text-5xl"
+            />
 
             {/* Trait pills */}
             <div className="flex flex-wrap gap-2">
@@ -77,33 +78,35 @@ export default function About() {
               ))}
             </div>
 
-            {/* Bio */}
-            <div className="space-y-4 text-muted leading-relaxed">
-              <p>
-                I&apos;m <span className="text-main font-semibold">Aniket Raj</span> — a
-                self-taught React developer from Indore, India. My M.Sc. in Electronics &amp;
-                Communication (CGPA 8.81) gave me an analytical, systems-first mindset that I
-                now bring to every line of frontend code.
-              </p>
-              <p>
-                From 2021–2024 I stepped away from tech to prepare seriously for the UPSC civil
-                services exams. That pause taught me depth, discipline, and how to learn hard
-                things from scratch. When I returned to code, I came back{" "}
-                <span className="text-primary font-semibold">more structured than ever.</span>
-              </p>
-              <p>
-                I care about performance you can measure, code a teammate can read six months
-                later, and UIs that feel fast and right. Outside work I&apos;m tinkering with
-                Web Audio synthesis in React — and writing about what I learn, because
-                explaining something is the best test of whether I actually understand it.
-              </p>
-            </div>
+            {/* Bio with Spotlight Reveal */}
+            <SpotlightReveal spotlightSize={250}>
+              <div className="space-y-4 text-muted leading-relaxed">
+                <p>
+                  I&apos;m <span className="text-main font-semibold">Aniket Raj</span> — a
+                  self-taught React developer from Indore, India. My M.Sc. in Electronics &amp;
+                  Communication (CGPA 8.81) gave me an analytical, systems-first mindset that I
+                  now bring to every line of frontend code.
+                </p>
+                <p>
+                  From 2021–2024 I stepped away from tech to prepare seriously for the UPSC civil
+                  services exams. That pause taught me depth, discipline, and how to learn hard
+                  things from scratch. When I returned to code, I came back{" "}
+                  <span className="text-primary font-semibold">more structured than ever.</span>
+                </p>
+                <p>
+                  I care about performance you can measure, code a teammate can read six months
+                  later, and UIs that feel fast and right. Outside work I&apos;m tinkering with
+                  Web Audio synthesis in React and writing about what I learn, because
+                  explaining something is the best test of whether I actually understand it.
+                </p>
+              </div>
+            </SpotlightReveal>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-3 pt-2">
               <a
                 href="#projects"
-                className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-inverseText font-bold rounded-xl hover:scale-105 transition-transform text-sm"
+                className="px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm shadow-[0_0_20px_rgba(34,211,238,0.2)]"
               >
                 View Projects
               </a>

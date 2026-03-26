@@ -1,6 +1,7 @@
 // Server Component
 import { education } from "@/lib/experience";
 import SectionReveal from "@/components/animations/SectionReveal";
+import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
 const ACCENT: Record<string, { bar: string; period: string; badge: string }> = {
   green:   { bar: "bg-green-500",   period: "text-green-400",   badge: "bg-green-500/10 border-green-500/20 text-green-300" },
@@ -24,12 +25,11 @@ export default function Education() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             06. Education
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-main">
-            Education &{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Background
-            </span>
-          </h2>
+          <AnimatedTitle 
+            text1="Education &" 
+            text2="Background" 
+            className="mb-4 justify-center" 
+          />
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6" />
         </SectionReveal>
 

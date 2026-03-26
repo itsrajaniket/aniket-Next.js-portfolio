@@ -13,10 +13,12 @@ export default function Footer() {
           {/* Brand */}
           <a
             href="#home"
-            className="text-xl font-black font-display bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+            className="flex items-center pl-3 border-l-2 border-accent hover:border-primary transition-colors duration-300"
             aria-label="Go to top"
           >
-            ANIKET.
+            <span className="text-sm font-medium tracking-[0.18em] uppercase text-main/90 hover:text-main transition-colors duration-300">
+              Aniket.
+            </span>
           </a>
 
           {/* Quick nav — renders anchors or Link based on isRoute */}
