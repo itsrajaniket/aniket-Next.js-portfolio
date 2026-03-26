@@ -44,7 +44,7 @@ export default function Hero() {
             className="inline-block px-4 py-1 rounded-full border border-accent/30 bg-accent/5
                        text-accent text-sm font-mono mb-2 hover:bg-accent/10 transition-colors"
           >
-            Available for New Opportunities ↗
+            Available for Full Time Work ↗
           </a>
 
           <h1 className="text-5xl md:text-8xl font-black tracking-tight font-display">
@@ -121,9 +121,9 @@ export default function Hero() {
             {/* Quick stats */}
             <div className="grid grid-cols-3 gap-3">
               {[
-                { icon: "fas fa-code",    color: "text-cyan-400",   label: "Projects", value: HERO_STATS[0].value },
-                { icon: "fab fa-github",  color: "text-purple-400", label: "Repos",    value: HERO_STATS[1].value },
-                { icon: "fas fa-star",    color: "text-yellow-400", label: "Year",     value: "2025" },
+                { icon: "fas fa-code", color: "text-cyan-400", label: "Projects", value: HERO_STATS[0].value },
+                { icon: "fab fa-github", color: "text-purple-400", label: "Repos", value: HERO_STATS[1].value },
+                { icon: "fas fa-star", color: "text-yellow-400", label: "Year", value: "2025" },
               ].map(({ icon, color, label, value }) => (
                 <div key={label} className="bg-card/40 p-2 rounded-xl text-center border border-surfaceBorder/5 backdrop-blur-sm will-change-transform">
                   <i className={`${icon} ${color} text-sm mb-1 block`} aria-hidden="true" />
