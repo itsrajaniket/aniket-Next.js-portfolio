@@ -61,7 +61,7 @@ export default function Hero() {
           <p className="text-muted text-lg max-w-lg leading-relaxed">
             Specializing in building high-performance{" "}
             <span className="text-accent italic font-medium">React ecosystems</span>{" "}
-            and optimizing complex algorithms. Based in Indore, India.
+            and optimizing complex algorithms. Based in India.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
