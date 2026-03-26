@@ -88,8 +88,10 @@ export const TYPEWRITER_WORDS = [
 ] as const;
 
 export const HERO_STATS = [
-  { value: "15+", label: "Projects" },
-  { value: "25+", label: "Repos" },
+  { value: "15+", label: "Projects shipped" },
+  { value: "35+", label: "Repositories" },
+  { value: "8.81", label: "M.Sc. CGPA" },
   { value: "3+", label: "Clients" },
-  { value: "∞", label: "Coffee" },
+  { value: "3 yrs", label: "UPSC discipline" },
+  { value: "2026", label: "Ready to join" },
 ] as const;

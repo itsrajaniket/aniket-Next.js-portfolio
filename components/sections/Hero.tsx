@@ -47,12 +47,22 @@ export default function Hero() {
             Available for Full Time Work ↗
           </a>
 
-          <h1 className="text-5xl md:text-8xl font-black tracking-tight font-display">
+          {/* <h1 className="text-5xl md:text-8xl font-black tracking-tight font-display">
             ANIKET <br />
             <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
               RAJ
+            </span> */}
+          {/* </h1> */}
+          {<h1 className="text-5xl md:text-8xl font-black tracking-tight font-display leading-[0.93]">
+            <span className="text-main">ANIKET</span>
+            <br />
+            <span
+              className="text-transparent"
+              style={{ WebkitTextStroke: "1.5px rgba(167,139,250,0.3)" }}
+            >
+              RAJ
             </span>
-          </h1>
+          </h1>}
 
           <h2 className="text-2xl md:text-4xl font-bold text-muted">
             I am a <Typewriter />
