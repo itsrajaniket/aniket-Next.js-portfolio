@@ -54,89 +54,9 @@ export default function About() {
         </SectionReveal>
 
         {/* Main grid */}
-        <div className="grid lg:grid-cols-[1fr_300px] gap-12 lg:gap-16 items-start">
-
-          {/* ── LEFT: Text content ── */}
-          <SectionReveal delay={0.1} className="space-y-8">
-
-            {/* Headline */}
-            <SpotlightText
-              text1="I build interfaces"
-              text2="people actually enjoy."
-              sizeClassName="text-3xl md:text-4xl lg:text-5xl"
-            />
-
-            {/* Trait pills */}
-            <div className="flex flex-wrap gap-2">
-              {TRAITS.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs font-mono px-3 py-1.5 rounded-full border border-accent/20 text-accent/70 bg-accent/5"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            {/* Bio with Spotlight Reveal */}
-            <SpotlightReveal spotlightSize={250}>
-              <div className="space-y-4 text-muted leading-relaxed">
-                <p>
-                  I&apos;m <span className="text-main font-semibold">Aniket Raj</span> — a
-                  self-taught React developer from Indore, India. My M.Sc. in Electronics &amp;
-                  Communication (CGPA 8.81) gave me an analytical, systems-first mindset that I
-                  now bring to every line of frontend code.
-                </p>
-                <p>
-                  From 2021–2024 I stepped away from tech to prepare seriously for the UPSC civil
-                  services exams. That pause taught me depth, discipline, and how to learn hard
-                  things from scratch. When I returned to code, I came back{" "}
-                  <span className="text-primary font-semibold">more structured than ever.</span>
-                </p>
-                <p>
-                  I care about performance you can measure, code a teammate can read six months
-                  later, and UIs that feel fast and right. Outside work I&apos;m tinkering with
-                  Web Audio synthesis in React and writing about what I learn, because
-                  explaining something is the best test of whether I actually understand it.
-                </p>
-              </div>
-            </SpotlightReveal>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3 pt-2">
-              <a
-                href="#projects"
-                className="px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm shadow-[0_0_20px_rgba(34,211,238,0.2)]"
-              >
-                View Projects
-              </a>
-              <a
-                href="/Aniket_Raj_Resume.pdf"
-                download="Aniket_Raj_Resume.pdf"
-                className="px-6 py-3 glass border border-surfaceBorder/10 text-main font-bold rounded-xl hover:border-accent hover:text-accent transition-all text-sm"
-                aria-label="Download Aniket Raj Resume PDF"
-              >
-                <i className="fas fa-download mr-2" aria-hidden="true" />
-                Resume
-              </a>
-            </div>
-
-            {/* Stats — borderline row */}
-            <div className="grid grid-cols-4 gap-3 pt-2 border-t border-surfaceBorder/10">
-              {ABOUT_STATS.map(({ value, label, sub }) => (
-                <div key={label} className="pt-5">
-                  <p className="text-2xl lg:text-3xl font-black font-display text-accent leading-none">
-                    {value}
-                  </p>
-                  <p className="text-xs font-semibold text-main mt-1">{label}</p>
-                  <p className="text-xs text-muted">{sub}</p>
-                </div>
-              ))}
-            </div>
-          </SectionReveal>
-
-          {/* ── RIGHT: Photo card ── */}
-          <SectionReveal delay={0.25} className="relative lg:sticky lg:top-24">
+        <div className="grid lg:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-start">
+          {/* ── LEFT: Photo card (Appears first on mobile too if desired, or use order-2 on mobile) ── */}
+          <SectionReveal delay={0.25} className="relative lg:sticky lg:top-24 order-2 lg:order-1">
 
             {/* Offset accent border */}
             <div
@@ -221,6 +141,85 @@ export default function About() {
                   ))}
                 </div>
               </div>
+            </div>
+          </SectionReveal>
+
+          {/* ── RIGHT: Text content ── */}
+          <SectionReveal delay={0.1} className="space-y-8 order-1 lg:order-2">
+
+            {/* Headline */}
+            <SpotlightText
+              text1="I build interfaces"
+              text2="people actually enjoy."
+              sizeClassName="text-3xl md:text-4xl lg:text-5xl"
+            />
+
+            {/* Trait pills */}
+            <div className="flex flex-wrap gap-2">
+              {TRAITS.map((t) => (
+                <span
+                  key={t}
+                  className="text-xs font-mono px-3 py-1.5 rounded-full border border-accent/20 text-accent/70 bg-accent/5"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* Bio with Spotlight Reveal */}
+            <SpotlightReveal spotlightSize={250}>
+              <div className="space-y-4 text-muted leading-relaxed">
+                <p>
+                  I&apos;m <span className="text-main font-semibold">Aniket Raj</span> — a
+                  self-taught React developer from Indore, India. My M.Sc. in Electronics &amp;
+                  Communication (CGPA 8.81) gave me an analytical, systems-first mindset that I
+                  now bring to every line of frontend code.
+                </p>
+                <p>
+                  From 2021–2024 I stepped away from tech to prepare seriously for the UPSC civil
+                  services exams. That pause taught me depth, discipline, and how to learn hard
+                  things from scratch. When I returned to code, I came back{" "}
+                  <span className="text-primary font-semibold">more structured than ever.</span>
+                </p>
+                <p>
+                  I care about performance you can measure, code a teammate can read six months
+                  later, and UIs that feel fast and right. Outside work I&apos;m tinkering with
+                  Web Audio synthesis in React and writing about what I learn, because
+                  explaining something is the best test of whether I actually understand it.
+                </p>
+              </div>
+            </SpotlightReveal>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a
+                href="#projects"
+                className="px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm shadow-[0_0_20px_rgba(34,211,238,0.2)]"
+              >
+                View Projects
+              </a>
+              <a
+                href="/Aniket_Raj_Resume.pdf"
+                download="Aniket_Raj_Resume.pdf"
+                className="px-6 py-3 glass border border-surfaceBorder/10 text-main font-bold rounded-xl hover:border-accent hover:text-accent transition-all text-sm"
+                aria-label="Download Aniket Raj Resume PDF"
+              >
+                <i className="fas fa-download mr-2" aria-hidden="true" />
+                Resume
+              </a>
+            </div>
+
+            {/* Stats — borderline row */}
+            <div className="grid grid-cols-4 gap-3 pt-2 border-t border-surfaceBorder/10">
+              {ABOUT_STATS.map(({ value, label, sub }) => (
+                <div key={label} className="pt-5">
+                  <p className="text-2xl lg:text-3xl font-black font-display text-accent leading-none">
+                    {value}
+                  </p>
+                  <p className="text-xs font-semibold text-main mt-1">{label}</p>
+                  <p className="text-xs text-muted">{sub}</p>
+                </div>
+              ))}
             </div>
           </SectionReveal>
         </div>
