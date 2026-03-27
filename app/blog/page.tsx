@@ -17,7 +17,7 @@ export default function BlogListPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-28 pb-20 px-6">
+      <main className="min-h-screen pt-32 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="mb-16">
@@ -27,10 +27,10 @@ export default function BlogListPage() {
             <h1 className="text-5xl font-bold text-main mb-4 font-display">
               The Blog
             </h1>
-            <p className="text-muted text-lg">
+            <p className="text-main/80 text-lg">
               Thoughts on React, performance, Next.js migrations, and building things on the web.
             </p>
-            <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent rounded-full mt-6" />
+            <div className="w-16 h-1 bg-accent rounded-full mt-6" />
           </div>
 
           {/* Post list */}
@@ -38,7 +38,7 @@ export default function BlogListPage() {
             <div className="glass rounded-2xl p-10 text-center border border-surfaceBorder/10">
               <i className="fas fa-pen-nib text-accent text-4xl mb-4 block" aria-hidden="true" />
               <h2 className="text-xl font-bold text-main mb-2">First post coming soon</h2>
-              <p className="text-muted">Working on some great content about React and Next.js.</p>
+              <p className="text-main/70">Working on some great content about React and Next.js.</p>
             </div>
           ) : (
             <div className="space-y-6">
@@ -59,11 +59,11 @@ export default function BlogListPage() {
                       {post.title}
                     </h2>
                     {/* Description */}
-                    <p className="text-muted text-sm leading-relaxed mb-4">
+                    <p className="text-main/80 text-sm leading-relaxed mb-4">
                       {post.description}
                     </p>
                     {/* Meta */}
-                    <div className="flex items-center gap-4 text-xs text-muted font-medium">
+                    <div className="flex items-center gap-4 text-xs text-main/70 font-medium">
                       <span>
                         <i className="fas fa-calendar-alt mr-1.5" aria-hidden="true" />
                         {post.date}

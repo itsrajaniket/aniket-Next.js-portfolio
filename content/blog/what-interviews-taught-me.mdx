@@ -1,0 +1,161 @@
+---
+title: "What Sitting Through Dozens of Frontend Interviews Actually Taught Me"
+description: "I mastered React, HTML, CSS, and JavaScript — and still kept failing interviews. Here's the real list of concepts I had to learn the hard way, so you don't have to."
+date: "2026-03-27"
+readingTime: "10 min read"
+tags: "Career, JavaScript, Web Performance, Security, Interviews"
+---
+
+I want to be honest with you about something.
+
+After self-teaching React for months, building projects, and feeling genuinely confident in my skills, I walked into my first set of technical interviews and got absolutely humbled.
+
+Not because I didn't know JavaScript. I did. Not because my React components were bad. They weren't.
+
+I failed because the interviewers weren't just testing my framework knowledge — they were testing whether I understood *the web itself*. And I didn't.
+
+This post is everything I wish someone had told me before I started that interview grind. These aren't concepts from a textbook. They're the exact topics that came up again and again, across company after company, until I finally built a mental model solid enough to talk about them confidently.
+
+---
+
+## The Painful Realization
+
+The moment it clicked for me was during an interview where the interviewer asked a simple question:
+
+> *"When a user types a URL and hits Enter, walk me through exactly what happens."*
+
+I said something about DNS and the server sending HTML back. That was it.
+
+The interviewer smiled, said "interesting", and moved on. I bombed that round.
+
+The correct answer involves DNS resolution, TCP handshake, TLS negotiation, HTTP request/response, the critical rendering path, JavaScript parsing, and layout/paint. I had *used* all of these things without ever understanding they existed.
+
+That was my wake-up call.
+
+---
+
+## 🔴 The Topics I Had to Learn First (Absolute Highest Priority)
+
+### 1. The Browser Rendering Pipeline
+
+This came up in literally every company after a certain level. Not as trivia — as a **performance debugging question.**
+
+What I had to learn:
+- **Critical Rendering Path:** HTML → DOM, CSS → CSSOM, merge into Render Tree, then Layout → Paint → Composite
+- **Reflow vs. Repaint:** Reading `offsetWidth` inside a loop causes reflow on every iteration — I had done this in my own projects without knowing
+- **The Event Loop:** Call stack → Web APIs → Microtask Queue (Promises) → Macro Task Queue (setTimeout) — and *why* a resolved Promise fires before `setTimeout(fn, 0)`
+
+The aha moment: My "smooth" scroll animations were janky on low-end devices because I was triggering layout in `requestAnimationFrame`. Once I understood compositing, I switched to `transform` and `opacity` only — which run on the GPU — and never had that issue again.
+
+### 2. HTTP Is Not Just `fetch()`
+
+I knew how to call an API. I had no idea what was actually happening underneath.
+
+The concepts that saved me:
+- **HTTP/1.1 vs HTTP/2:** Six connection limits per domain in HTTP/1.1 caused my image-heavy pages to load slowly. HTTP/2 multiplexing solved it.
+- **Status codes with intent:** The difference between `301` (permanent redirect, browser caches it) and `302` (temporary, browser re-checks every time) changed how I handled routing
+- **CORS:** I used to just Google "CORS fix" and paste the first answer. Now I understand it's a *browser* security feature, not a server one — and why the preflight `OPTIONS` request exists
+- **`Cache-Control` headers:** `no-cache`, `no-store`, `max-age`, `stale-while-revalidate` — these determine whether your fast API feels fast to the *second* user, not just the first
+
+### 3. The JavaScript Engine Internals I Was Missing
+
+I thought I knew JavaScript. I knew the syntax. The engine was a different story.
+
+- **Closures creating memory leaks:** I had written components that held references to DOM nodes through stale closures inside `useEffect`. I didn't know they were leaks — I just called it "a bug I couldn't find"
+- **`this` binding:** I failed a coding round by writing `this.handleClick` as a class method call without `.bind(this)` in a constructor. I knew hooks, but didn't understand why the old pattern worked the way it did
+- **Prototype chain:** Every interviewer who asks "how does inheritance work in JS?" is not asking about `class` — they want prototypes
+- **Execution context:** Understanding scope chains made me realize why my old "global variable" hacks were dangerous
+
+---
+
+## 🟠 The Second Wave of Pain (What Mid-Level Interviews Test)
+
+### 4. Web Security — The Topic I Was Most Embarrassed About
+
+I had shipped forms with user input to production and genuinely did not know what XSS was.
+
+- **XSS (Cross-Site Scripting):** When you trust user input and render it to the DOM, an attacker can inject a `<script>` tag. React's JSX escapes strings by default — but `dangerouslySetInnerHTML` bypasses that entirely. I had used it once "for convenience."
+- **CSRF:** If your site uses cookie-based auth, an attacker can trick a logged-in user into making requests to your server from another domain. `SameSite=Lax` cookie attribute is the modern defense.
+- **CSP (Content Security Policy):** A response header that tells the browser which scripts/styles to trust. It's the last line of defense against XSS, and most junior devs have never seen it.
+
+After learning this, I went back and audited every project I had. Found two places where I had `dangerouslySetInnerHTML` with unescaped user content in a notes app. That was... uncomfortable.
+
+### 5. Performance Is a Feature, Not a Finish Line
+
+I thought performance was about "Lighthouse score." It's actually about user psychology.
+
+The real framework I built:
+- **Core Web Vitals aren't arbitrary:** LCP is about perceived loading speed. CLS is about visual stability — if your button jumps before the user clicks, they might click the wrong thing. INP is about responsiveness.
+- **Code splitting:** I shipped 400KB of JavaScript on the initial load because I imported a charting library at the top level. `React.lazy` + `Suspense` cut that to 80KB.
+- **Image optimization:** `srcset` and `sizes` are not optional. They're how you ship the right image to the right screen. `next/image` does this automatically — it was one of the main reasons I migrated my portfolio to Next.js.
+
+### 6. Async Patterns Beyond `async/await`
+
+I knew how to use `async/await`. I didn't know when to use which async pattern.
+
+The questions that tripped me up:
+- **`Promise.all` vs `Promise.allSettled`:** `Promise.all` fails fast — if one promise rejects, the whole thing rejects. `Promise.allSettled` waits for all, giving you a results array. Use `allSettled` when you want to know about every failure, not just the first one.
+- **Debounce vs Throttle:** I could explain them in English but couldn't implement them. The interviewer asked me to write debounce from scratch. My first attempt was wrong. My second attempt was also wrong. I now know this by heart.
+- **WebSockets vs SSE:** SSE is one-directional (server → client) over regular HTTP. WebSockets are bidirectional but need a dedicated connection. For a live notification feed, SSE is simpler and often enough — you don't need WebSockets.
+
+---
+
+## 🟡 The Stuff That Made Me Look Senior Before I Was (Worth the Investment)
+
+### 7. Accessibility — The Most Underrated Differentiator
+
+Almost no fresher talks about accessibility. Which means if *you* can, you immediately stand out.
+
+What I learned:
+- A `<div onClick>` is not accessible. It has no keyboard focus, no role, no accessible name. A `<button>` gets all of that for free.
+- `aria-label`, `aria-describedby`, `role`, and `tabIndex` exist because sometimes semantic HTML alone isn't enough
+- Focus management in modals: when a modal opens, focus should move inside it. When it closes, focus should return to the trigger element. Getting this wrong makes modal-based UIs unusable with keyboard navigation.
+
+I added proper focus management to my portfolio's mobile nav during an interview take-home and it explicitly got called out in the feedback as a strength.
+
+### 8. State Architecture Thinking
+
+My React code had a pattern problem. I used `useState` wherever I needed data, and when things got complex, I reached for Redux. I skipped the middle.
+
+The mental model I wish I had earlier:
+- **Most "global state" is actually URL state or server state.** React Query / TanStack Query handles server state better than any Redux setup I've seen.
+- **Derived state is not stored state.** If you calculate a value from existing state, compute it during render — don't store it in a second `useState`. I used to sync two `useState` values with `useEffect`, which caused dozens of subtle bugs.
+- **Local state should stay local.** Lifting state too high makes components coupled in ways that are hard to reason about and test.
+
+### 9. CSS Has Architecture, Not Just Rules
+
+I thought I knew CSS. I could build any layout you showed me.
+
+What I didn't understand:
+- **Specificity wars** happen because CSS isn't organized — not because CSS is hard. Systems like BEM or utility-first CSS exist to prevent them.
+- **Stacking contexts:** The reason `z-index: 9999` "doesn't work" is almost always that the element is inside a stacking context with a lower z-index than a sibling. I spent hours debugging this before understanding it.
+- **CSS Custom Properties for theming:** `var(--color-accent)` isn't just convenient — it's how you build a proper theming system. My portfolio's three themes (Cyberpunk, Ignite, Boreal) all work off the same component tree because of CSS variables.
+
+---
+
+## What I'd Tell My Past Self
+
+If I could go back to the beginning of my interview preparation, here's the order I'd study:
+
+1. **How the browser renders a page** — everything else builds on this
+2. **The Event Loop and JavaScript engine internals** — it makes async code make sense
+3. **HTTP deeply** — request lifecycle, caching, CORS, status codes
+4. **Web security** — XSS, CSRF, CSP — even a surface-level understanding puts you ahead of 80% of freshers
+5. **Core Web Vitals and performance** — because every product company cares about this
+6. **Accessibility fundamentals** — it differentiates you immediately
+
+These aren't sexy topics. They don't go viral on Twitter. They don't have flashy tutorial courses with neon thumbnails.
+
+But they are exactly what separates developers who can *build things* from developers who can *build things that work* — reliably, securely, and for everyone.
+
+Every interview I passed after understanding these concepts, I passed not because I had the perfect answer, but because I could *reason* about the problem. I could say "it depends on the caching strategy" instead of "I'd use localStorage." That nuance is everything.
+
+---
+
+The good news? This stuff is learnable. Deeply, thoroughly learnable. It just requires studying the platform you've been building on all along — the web itself.
+
+Take your time with it. The interviews will wait.
+
+---
+
+_Building something interesting? [Let's talk](/#contact) — I'm always up for a good engineering discussion._

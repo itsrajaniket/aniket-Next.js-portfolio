@@ -56,13 +56,13 @@ export default async function BlogPostPage({
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-28 pb-20 px-6">
+      <main className="min-h-screen pt-32 pb-20 px-6">
         <article className="max-w-3xl mx-auto">
 
           {/* Back */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors mb-10"
+            className="inline-flex items-center gap-2 text-sm text-main/80 hover:text-accent transition-colors mb-10"
           >
             <i className="fas fa-arrow-left text-xs" aria-hidden="true" />
             Back to Blog
@@ -81,7 +81,7 @@ export default async function BlogPostPage({
           </h1>
 
           {/* Meta row */}
-          <div className="flex flex-wrap items-center gap-5 text-sm text-muted mb-10 pb-8 border-b border-surfaceBorder/10">
+          <div className="flex flex-wrap items-center gap-5 text-sm text-main/70 mb-10 pb-8 border-b border-surfaceBorder/10">
             <span className="flex items-center gap-1.5">
               <i className="fas fa-calendar-alt text-accent" aria-hidden="true" />
               {post.date}
@@ -114,7 +114,7 @@ export default async function BlogPostPage({
               </p>
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-inverseText font-bold rounded-xl hover:scale-105 transition-transform"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(34,211,238,0.2)]"
               >
                 Get in Touch
                 <i className="fas fa-arrow-right text-sm" aria-hidden="true" />
@@ -129,33 +129,47 @@ export default async function BlogPostPage({
 }
 
 // ── Minimal Markdown → HTML (replace with next-mdx-remote for production) ─
+// ── Markdown → HTML Parser (Fixed for hydration & truncation) ──────────
 function mdToHtml(md: string): string {
-  return md
-    // Code blocks (must come before inline code)
-    .replace(/```[\w]*\n([\s\S]*?)```/g, "<pre><code>$1</code></pre>")
-    // Headings
+  // 0. Escape raw HTML tags to prevent them from being parsed (e.g., <script>)
+  let processedMd = md
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  // 1. Initial global replacements for inline stuff
+  let html = processedMd
+    .replace(/\*\*(.+?)\*\*/g, "<strong class=\"text-main font-bold\">$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em class=\"text-main/90 italic\">$1</em>")
+    .replace(/`(.+?)`/g, "<code class=\"bg-primary/15 text-accent px-1.5 py-0.5 rounded text-sm font-mono\">$1</code>")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href=\"$2\" class=\"text-accent hover:underline\">$1</a>");
+
+  // 2. Global replacements for block-level markers
+  html = html
     .replace(/^### (.+)$/gm, "<h3 class=\"text-xl font-bold text-main mt-8 mb-3\">$1</h3>")
     .replace(/^## (.+)$/gm, "<h2 class=\"text-2xl font-bold text-main mt-10 mb-4\">$1</h2>")
     .replace(/^# (.+)$/gm, "<h1 class=\"text-3xl font-bold text-main mt-12 mb-6\">$1</h1>")
-    // Inline formatting
-    .replace(/\*\*(.+?)\*\*/g, "<strong class=\"text-main font-bold\">$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em class=\"text-muted italic\">$1</em>")
-    .replace(/`(.+?)`/g, "<code class=\"bg-primary/15 text-accent px-1.5 py-0.5 rounded text-sm font-mono\">$1</code>")
-    // Links
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href=\"$2\" class=\"text-accent hover:underline\">$1</a>")
-    // Horizontal rule
     .replace(/^---$/gm, "<hr class=\"border-surfaceBorder/10 my-8\" />")
-    // Lists
-    .replace(/^- (.+)$/gm, "<li class=\"ml-6 list-disc text-muted\">$1</li>")
-    .replace(/(<li[\s\S]*?<\/li>\n?)+/g, "<ul class=\"space-y-2 my-4\">$&</ul>")
-    // Paragraphs (double newline = paragraph break)
-    .split("\n\n")
-    .map((block) => {
-      if (block.startsWith("<h") || block.startsWith("<ul") || block.startsWith("<pre") || block.startsWith("<hr")) {
-        return block;
-      }
+    .replace(/^> (.+)$/gm, "<blockquote class=\"border-l-4 border-accent bg-accent/5 p-4 my-6 italic text-main/80 rounded-r-lg\">$1</blockquote>")
+    .replace(/^- (.+)$/gm, "<li class=\"ml-6 list-disc text-main/90\">$1</li>");
+
+  // 3. Wrap lists
+  html = html.replace(/(<li[\s\S]*?<\/li>\n?)+/g, "<ul class=\"space-y-2 my-4\">$&</ul>");
+
+  // 4. Wrap code blocks
+  html = html.replace(/```[\w]*\n?([\s\S]*?)```/g, "<pre class=\"bg-card/50 p-4 rounded-xl border border-surfaceBorder/10 overflow-x-auto my-6\"><code class=\"text-sm font-mono text-main/90\">$1</code></pre>");
+
+  // 5. Wrap remaining text in paragraphs, skipping blocks that already have block tags
+  return html
+    .split(/\n\n+/)
+    .map(block => {
       const trimmed = block.trim();
-      return trimmed ? `<p class="text-muted leading-relaxed my-4">${trimmed.replace(/\n/g, " ")}</p>` : "";
+      if (!trimmed) return "";
+      // If it starts with a block tag, don't wrap in <p>
+      if (/^<(h1|h2|h3|ul|li|pre|hr|blockquote)/.test(trimmed)) {
+        return trimmed;
+      }
+      return `<p class="text-main/90 leading-relaxed my-4">${trimmed.replace(/\n/g, " ")}</p>`;
     })
     .join("\n");
 }
