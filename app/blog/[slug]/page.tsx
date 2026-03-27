@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getPostBySlug, getAllSlugs } from "@/lib/blog";
+import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/blog";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ReadingProgress from "@/components/blog/ReadingProgress";
+import CodeHighlighter from "@/components/blog/CodeHighlighter";
 
 export const dynamic = "force-static";
 
@@ -56,6 +58,8 @@ export default async function BlogPostPage({
   return (
     <>
       <Navbar />
+      <ReadingProgress />
+      <CodeHighlighter />
       <main className="min-h-screen pt-32 pb-20 px-6">
         <article className="max-w-3xl mx-auto">
 
@@ -108,6 +112,34 @@ export default async function BlogPostPage({
 
           {/* Footer CTA */}
           <div className="mt-16 pt-8 border-t border-surfaceBorder/10">
+            {/* Related Posts */}
+            {(() => {
+              const { prev, next } = getRelatedPosts(slug);
+              if (!prev && !next) return null;
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                  {prev ? (
+                    <Link
+                      href={`/blog/${prev.slug}`}
+                      className="glass p-6 rounded-2xl border border-surfaceBorder/10 hover:border-accent/40 transition-all group"
+                    >
+                      <span className="text-xs text-accent uppercase tracking-wider mb-2 block">Previous Post</span>
+                      <h4 className="text-main font-bold line-clamp-1 group-hover:text-accent transition-colors">{prev.title}</h4>
+                    </Link>
+                  ) : <div />}
+                  {next ? (
+                    <Link
+                      href={`/blog/${next.slug}`}
+                      className="glass p-6 rounded-2xl border border-surfaceBorder/10 hover:border-accent/40 transition-all text-right group"
+                    >
+                      <span className="text-xs text-accent uppercase tracking-wider mb-2 block">Next Post</span>
+                      <h4 className="text-main font-bold line-clamp-1 group-hover:text-accent transition-colors">{next.title}</h4>
+                    </Link>
+                  ) : <div />}
+                </div>
+              );
+            })()}
+
             <div className="glass rounded-2xl p-6 border border-accent/20 text-center">
               <p className="text-muted mb-4">
                 Enjoyed this post? Let&apos;s connect and talk frontend!
@@ -156,15 +188,22 @@ function mdToHtml(md: string): string {
   // 3. Wrap lists
   html = html.replace(/(<li[\s\S]*?<\/li>\n?)+/g, "<ul class=\"space-y-2 my-4\">$&</ul>");
 
-  // 4. Wrap code blocks
-  html = html.replace(/```[\w]*\n?([\s\S]*?)```/g, "<pre class=\"bg-card/50 p-4 rounded-xl border border-surfaceBorder/10 overflow-x-auto my-6\"><code class=\"text-sm font-mono text-main/90\">$1</code></pre>");
-
-  // 5. Wrap remaining text in paragraphs, skipping blocks that already have block tags
+  // 4. Wrap remaining text in paragraphs, skipping blocks that already have block tags
   return html
     .split(/\n\n+/)
     .map(block => {
       const trimmed = block.trim();
       if (!trimmed) return "";
+
+      // Code blocks
+      if (trimmed.startsWith("```")) {
+        const langMatch = trimmed.match(/^```(\w+)/);
+        const lang = langMatch ? langMatch[1] : "javascript";
+        // Extract content between ``` and ```
+        const contentMatch = trimmed.match(/```[\w]*\n?([\s\S]*?)```/);
+        const content = contentMatch ? contentMatch[1] : trimmed.replace(/```/g, "");
+        return `<pre class="language-${lang} bg-card/50 p-4 rounded-xl border border-surfaceBorder/10 overflow-x-auto my-6"><code class="language-${lang} text-sm font-mono text-main/90">${content}</code></pre>`;
+      }
       // If it starts with a block tag, don't wrap in <p>
       if (/^<(h1|h2|h3|ul|li|pre|hr|blockquote)/.test(trimmed)) {
         return trimmed;

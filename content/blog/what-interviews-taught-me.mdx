@@ -47,6 +47,14 @@ What I had to learn:
 
 The aha moment: My "smooth" scroll animations were janky on low-end devices because I was triggering layout in `requestAnimationFrame`. Once I understood compositing, I switched to `transform` and `opacity` only — which run on the GPU — and never had that issue again.
 
+```javascript
+// Before: Triggering layout (Slow)
+element.style.width = scrollY + "px";
+
+// After: Triggering composite only (Fast)
+element.style.transform = `scaleX(${scrollY / 100})`;
+```
+
 ### 2. HTTP Is Not Just `fetch()`
 
 I knew how to call an API. I had no idea what was actually happening underneath.

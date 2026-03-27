@@ -73,3 +73,15 @@ export function getAllSlugs(): string[] {
     .filter((f) => f.endsWith(".mdx"))
     .map((f) => f.replace(".mdx", ""));
 }
+// ── Get Related Posts (Previous/Next) ────────────────────────────────────
+export function getRelatedPosts(currentSlug: string): { prev?: BlogPost; next?: BlogPost } {
+  const allPosts = getAllPosts();
+  const currentIndex = allPosts.findIndex((p) => p.slug === currentSlug);
+
+  if (currentIndex === -1) return {};
+
+  return {
+    prev: allPosts[currentIndex + 1], // Lower in list = older = previous
+    next: allPosts[currentIndex - 1], // Higher in list = newer = next
+  };
+}
