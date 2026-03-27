@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import CodeHighlighter from "@/components/blog/CodeHighlighter";
+import PdfViewer from "@/components/blog/PdfViewer";
 
 export const dynamic = "force-static";
 
@@ -54,6 +55,9 @@ export default async function BlogPostPage({
   if (!result) notFound();
 
   const { post, content } = result;
+  if (post.type === "pdf") {
+    console.log(`[DEBUG] Rendering PDF Blog Post: ${post.title}, URL: ${post.pdfUrl}`);
+  }
 
   return (
     <>
@@ -101,14 +105,18 @@ export default async function BlogPostPage({
           </div>
 
           {/* Content */}
-          {/* TODO: For full MDX (React components inside posts), install next-mdx-remote:
-              npm install next-mdx-remote
-              Then replace dangerouslySetInnerHTML with <MDXRemote source={content} />
-          */}
-          <div
-            className="prose-dark max-w-none leading-relaxed space-y-4"
-            dangerouslySetInnerHTML={{ __html: mdToHtml(content) }}
-          />
+          {post.type === "pdf" && post.pdfUrl ? (
+            <PdfViewer url={post.pdfUrl} title={post.title} />
+          ) : post.type === "pdf" ? (
+            <div className="p-8 border border-dashed border-accent/30 rounded-xl text-center text-main/60">
+              PDF source not found. Please contact the administrator.
+            </div>
+          ) : (
+            <div
+              className="prose-dark max-w-none leading-relaxed space-y-4"
+              dangerouslySetInnerHTML={{ __html: mdToHtml(content) }}
+            />
+          )}
 
           {/* Footer CTA */}
           <div className="mt-16 pt-8 border-t border-surfaceBorder/10">

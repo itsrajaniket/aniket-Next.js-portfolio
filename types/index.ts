@@ -63,4 +63,6 @@ export interface BlogPost {
   readingTime: string;
   tags: string[];
   coverImage?: string;
+  type?: "mdx" | "pdf";
+  pdfUrl?: string;
 }

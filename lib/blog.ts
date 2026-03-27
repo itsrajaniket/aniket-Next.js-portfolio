@@ -3,6 +3,7 @@ import path from "path";
 import type { BlogPost } from "@/types";
 
 const CONTENT_DIR = path.join(process.cwd(), "content/blog");
+const PDF_DIR = path.join(process.cwd(), "public/content/pdfs");
 
 // ── Read frontmatter from MDX file ────────────────────────────────────────
 function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
@@ -21,58 +22,107 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
 
 // ── Get all posts (list page) ─────────────────────────────────────────────
 export function getAllPosts(): BlogPost[] {
-  if (!fs.existsSync(CONTENT_DIR)) return [];
+  const posts: BlogPost[] = [];
 
-  const files = fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith(".mdx"));
-
-  return files
-    .map((file) => {
+  // 1. Load MDX posts
+  if (fs.existsSync(CONTENT_DIR)) {
+    const files = fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith(".mdx"));
+    files.forEach((file) => {
       const raw = fs.readFileSync(path.join(CONTENT_DIR, file), "utf-8");
       const { data } = parseFrontmatter(raw);
       const slug = file.replace(".mdx", "");
 
-      return {
+      posts.push({
         slug,
         title: data.title ?? slug,
         description: data.description ?? "",
         date: data.date ?? "",
         readingTime: data.readingTime ?? "5 min read",
-        tags: data.tags ? data.tags.split(",").map((t) => t.trim()) : [],
+        tags: data.tags ? data.tags.split(",").map((t: string) => t.trim()) : [],
         coverImage: data.coverImage,
-      } satisfies BlogPost;
-    })
-    .sort((a, b) => (a.date < b.date ? 1 : -1)); // newest first
+        type: "mdx",
+      });
+    });
+  }
+
+  // 2. Load PDF posts
+  if (fs.existsSync(PDF_DIR)) {
+    const files = fs.readdirSync(PDF_DIR).filter((f) => f.toLowerCase().endsWith(".pdf"));
+    files.forEach((file) => {
+      const stats = fs.statSync(path.join(PDF_DIR, file));
+      const slug = file.replace(".pdf", "").toLowerCase().replace(/[\s_]+/g, "-");
+      
+      // Basic human-readable title from filename
+      const title = file
+        .replace(".pdf", "")
+        .replace(/[-_]/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+
+      posts.push({
+        slug,
+        title,
+        description: `Technical Document: ${title}`,
+        date: stats.mtime.toISOString().split("T")[0],
+        readingTime: "PDF Document",
+        tags: ["PDF", "Documentation"],
+        type: "pdf",
+        pdfUrl: `/content/pdfs/${file}`,
+      });
+    });
+  }
+
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 // ── Get single post by slug ───────────────────────────────────────────────
 export function getPostBySlug(slug: string): { post: BlogPost; content: string } | null {
+  // Check MDX first
   const filePath = path.join(CONTENT_DIR, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
+  if (fs.existsSync(filePath)) {
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const { data, content } = parseFrontmatter(raw);
+    const post: BlogPost = {
+      slug,
+      title: data.title ?? slug,
+      description: data.description ?? "",
+      date: data.date ?? "",
+      readingTime: data.readingTime ?? "5 min read",
+      tags: data.tags ? data.tags.split(",").map((t: string) => t.trim()) : [],
+      coverImage: data.coverImage,
+      type: "mdx"
+    };
+    return { post, content };
+  }
 
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = parseFrontmatter(raw);
+  // Check PDF
+  if (fs.existsSync(PDF_DIR)) {
+    const pdfs = fs.readdirSync(PDF_DIR);
+    const match = pdfs.find(p => p.toLowerCase().replace(".pdf", "").replace(/[\s_]+/g, "-") === slug);
+    if (match) {
+      const stats = fs.statSync(path.join(PDF_DIR, match));
+      const title = match.replace(".pdf", "").replace(/[-_]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const post: BlogPost = {
+        slug,
+        title,
+        description: `Technical Document: ${title}`,
+        date: stats.mtime.toISOString().split("T")[0],
+        readingTime: "PDF Document",
+        tags: ["PDF", "Documentation"],
+        type: "pdf",
+        pdfUrl: `/content/pdfs/${match}`
+      };
+      return { post, content: "" };
+    }
+  }
 
-  const post: BlogPost = {
-    slug,
-    title: data.title ?? slug,
-    description: data.description ?? "",
-    date: data.date ?? "",
-    readingTime: data.readingTime ?? "5 min read",
-    tags: data.tags ? data.tags.split(",").map((t) => t.trim()) : [],
-    coverImage: data.coverImage,
-  };
-
-  return { post, content };
+  return null;
 }
 
 // ── Get all slugs for generateStaticParams ────────────────────────────────
 export function getAllSlugs(): string[] {
-  if (!fs.existsSync(CONTENT_DIR)) return [];
-  return fs
-    .readdirSync(CONTENT_DIR)
-    .filter((f) => f.endsWith(".mdx"))
-    .map((f) => f.replace(".mdx", ""));
+  return getAllPosts().map(p => p.slug);
 }
+
 // ── Get Related Posts (Previous/Next) ────────────────────────────────────
 export function getRelatedPosts(currentSlug: string): { prev?: BlogPost; next?: BlogPost } {
   const allPosts = getAllPosts();
@@ -81,7 +131,7 @@ export function getRelatedPosts(currentSlug: string): { prev?: BlogPost; next?: 
   if (currentIndex === -1) return {};
 
   return {
-    prev: allPosts[currentIndex + 1], // Lower in list = older = previous
-    next: allPosts[currentIndex - 1], // Higher in list = newer = next
+    prev: allPosts[currentIndex + 1],
+    next: allPosts[currentIndex - 1],
   };
 }
