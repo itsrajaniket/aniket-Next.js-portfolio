@@ -12,9 +12,11 @@ export default function ReadingProgress() {
   });
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-accent origin-left z-[100] shadow-[0_0_10px_rgba(34,211,238,0.5)]"
-      style={{ scaleX }}
-    />
+    <div className="fixed top-0 left-0 right-0 h-1.5 bg-white/5 z-[100]">
+      <motion.div
+        className="h-full bg-accent origin-left shadow-[0_0_20px_rgba(34,211,238,0.7)]"
+        style={{ scaleX }}
+      />
+    </div>
   );
 }
