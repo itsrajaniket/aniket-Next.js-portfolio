@@ -48,9 +48,9 @@ export default function Hero() {
             Available for Full Time Work ↗
           </a>
 
-          <SpotlightText 
-            text1="ANIKET" 
-            text2="RAJ" 
+          <SpotlightText
+            text1="ANIKET"
+            text2="RAJ"
             sizeClassName="text-5xl md:text-[7rem] lg:text-[8rem]"
           />
 

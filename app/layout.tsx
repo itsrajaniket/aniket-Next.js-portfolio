@@ -5,6 +5,7 @@ import MouseTrailCanvas from "@/components/visuals/MouseTrailCanvas";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import MotionWrapper from "@/components/animations/MotionWrapper";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
 
 // ── Fonts ──────────────────────────────────────────────────────────────────
 // Syne: geometric, distinctive, not overused. Perfect for headings.
@@ -105,6 +106,7 @@ export default function RootLayout({
       <body className="bg-base text-main font-sans antialiased transition-colors duration-500">
         <ThemeProvider attribute="data-theme" defaultTheme="cyberpunk" enableSystem={false}>
           <GoogleAnalytics />
+          <UmamiAnalytics />
           <MouseTrailCanvas />
           <MotionWrapper>
             <main id="main-content">{children}</main>
