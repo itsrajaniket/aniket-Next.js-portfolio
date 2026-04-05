@@ -6,6 +6,7 @@ import ScrollToTop from "@/components/ui/ScrollToTop";
 import MotionWrapper from "@/components/animations/MotionWrapper";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
+import { Analytics } from "@vercel/analytics/react";
 
 // ── Fonts ──────────────────────────────────────────────────────────────────
 // Syne: geometric, distinctive, not overused. Perfect for headings.
@@ -107,6 +108,7 @@ export default function RootLayout({
         <ThemeProvider attribute="data-theme" defaultTheme="cyberpunk" enableSystem={false}>
           <GoogleAnalytics />
           <UmamiAnalytics />
+          <Analytics />
           <MouseTrailCanvas />
           <MotionWrapper>
             <main id="main-content">{children}</main>
