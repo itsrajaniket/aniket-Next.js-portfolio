@@ -4,12 +4,12 @@ import SectionReveal from "@/components/animations/SectionReveal";
 import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; text: string; icon: string; glow: string }> = {
-  purple:  { border: "hover:border-purple-500/50",  bg: "bg-purple-500/10",  text: "text-purple-400",  icon: "group-hover:text-purple-300",  glow: "hover:shadow-[0_8px_30px_rgb(168,85,247,0.15)]" },
-  pink:    { border: "hover:border-pink-500/50",    bg: "bg-pink-500/10",    text: "text-pink-400",    icon: "group-hover:text-pink-300",    glow: "hover:shadow-[0_8px_30px_rgb(236,72,153,0.15)]" },
-  blue:    { border: "hover:border-blue-500/50",    bg: "bg-blue-500/10",    text: "text-blue-400",    icon: "group-hover:text-blue-300",    glow: "hover:shadow-[0_8px_30px_rgb(59,130,246,0.15)]" },
-  emerald: { border: "hover:border-emerald-500/50", bg: "bg-emerald-500/10", text: "text-emerald-400", icon: "group-hover:text-emerald-300", glow: "hover:shadow-[0_8px_30px_rgb(16,185,129,0.15)]" },
-  orange:  { border: "hover:border-orange-500/50",  bg: "bg-orange-500/10",  text: "text-orange-400",  icon: "group-hover:text-orange-300",  glow: "hover:shadow-[0_8px_30px_rgb(249,115,22,0.15)]" },
-  teal:    { border: "hover:border-teal-500/50",    bg: "bg-teal-500/10",    text: "text-teal-400",    icon: "group-hover:text-teal-300",    glow: "hover:shadow-[0_8px_30px_rgb(20,184,166,0.15)]" },
+  purple:  { border: "hover:border-purple-500/50",  bg: "bg-purple-500/10",  text: "text-purple-400",  icon: "group-hover:text-purple-300",  glow: "hover:shadow-[0_8px_30px_rgb(168,85,247/var(--glow-strength))]" },
+  pink:    { border: "hover:border-pink-500/50",    bg: "bg-pink-500/10",    text: "text-pink-400",    icon: "group-hover:text-pink-300",    glow: "hover:shadow-[0_8px_30px_rgb(236,72,153/var(--glow-strength))]" },
+  blue:    { border: "hover:border-blue-500/50",    bg: "bg-blue-500/10",    text: "text-blue-400",    icon: "group-hover:text-blue-300",    glow: "hover:shadow-[0_8px_30px_rgb(59,130,246/var(--glow-strength))]" },
+  emerald: { border: "hover:border-emerald-500/50", bg: "bg-emerald-500/10", text: "text-emerald-400", icon: "group-hover:text-emerald-300", glow: "hover:shadow-[0_8px_30px_rgb(16,185,129/var(--glow-strength))]" },
+  orange:  { border: "hover:border-orange-500/50",  bg: "bg-orange-500/10",  text: "text-orange-400",  icon: "group-hover:text-orange-300",  glow: "hover:shadow-[0_8px_30px_rgb(249,115,22/var(--glow-strength))]" },
+  teal:    { border: "hover:border-teal-500/50",    bg: "bg-teal-500/10",    text: "text-teal-400",    icon: "group-hover:text-teal-300",    glow: "hover:shadow-[0_8px_30px_rgb(20,184,166/var(--glow-strength))]" },
 };
 
 export default function Services() {

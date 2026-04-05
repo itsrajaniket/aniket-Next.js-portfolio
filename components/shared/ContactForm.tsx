@@ -149,7 +149,7 @@ export default function ContactForm() {
             type="submit"
             disabled={isSubmitting}
             className="w-full py-3 px-6 bg-gradient-to-r from-primary to-accent text-inverseText font-bold rounded-xl
-                       hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(var(--accent),0.4)]
+                       glow-shadow-hover hover:scale-[1.02]
                        disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100
                        transition-all duration-200 flex items-center justify-center gap-2"
             aria-label="Send your message"

@@ -68,14 +68,14 @@ export default function Hero() {
             <a
               href="#projects"
               className="px-8 py-4 bg-inverseBase text-inverseText font-bold rounded-xl
-                         hover:bg-accent hover:scale-105 transition-all shadow-lg shadow-surfaceBorder/5"
+                         glow-shadow-hover hover:bg-accent hover:scale-105 transition-all shadow-lg shadow-surfaceBorder/5"
             >
               Explore My Work
             </a>
             <a
               href="#contact"
               className="px-8 py-4 glass border border-surfaceBorder/10 text-main font-bold rounded-xl
-                         hover:border-accent hover:text-accent hover:bg-accent/5 transition-all"
+                         glow-shadow-hover hover:border-accent hover:text-accent hover:bg-accent/5 transition-all"
             >
               Let&apos;s Talk
             </a>

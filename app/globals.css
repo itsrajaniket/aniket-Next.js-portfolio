@@ -62,7 +62,7 @@
 html { scrollbar-width: thin; scrollbar-color: rgb(var(--primary)) rgb(var(--bg-base)); }
 
 /* ── Text selection ───────────────────────────────────────────────────────── */
-::selection { background: rgba(var(--accent), 0.25); color: rgb(var(--inverse-text)); }
+::selection { background: rgb(var(--accent) / 0.25); color: rgb(var(--inverse-text)); }
 
 /* ── Focus outline ───────────────────────────────────────────────────────── */
 :focus-visible {
@@ -99,7 +99,14 @@ section[id]:not(#home) {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .project-card:hover {
-  box-shadow: 0 0 30px rgba(var(--accent), var(--glow-strength)), 0 0 60px rgba(var(--accent), calc(var(--glow-strength) / 3));
+  box-shadow: 0 0 40px rgb(var(--accent) / var(--glow-strength)), 0 0 80px rgb(var(--accent) / calc(var(--glow-strength) / 4));
+}
+
+.glow-shadow {
+  box-shadow: 0 0 20px rgb(var(--accent) / var(--glow-strength));
+}
+.glow-shadow-hover:hover {
+  box-shadow: 0 0 30px rgb(var(--accent) / var(--glow-strength)), 0 20px 40px -10px rgb(var(--accent) / calc(var(--glow-strength) / 2));
 }
 
 /* ── Animation delays ────────────────────────────────────────────────────── */

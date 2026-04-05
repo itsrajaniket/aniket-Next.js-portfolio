@@ -331,7 +331,7 @@ function ShowcaseCard({
           opacity: anyHovered && !isHovered ? 0.55 : 1,
           transition: "opacity 0.3s ease",
           boxShadow: isHovered
-            ? `0 0 0 1px rgba(${project.accentRgb},0.4), 0 25px 60px -10px rgba(${project.accentRgb},0.25)`
+            ? `0 0 0 1px rgb(${project.accentRgb} / 0.4), 0 25px 60px -10px rgb(${project.accentRgb} / var(--glow-strength))`
             : "none",
         } as React.CSSProperties
       }

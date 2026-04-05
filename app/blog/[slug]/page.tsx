@@ -154,7 +154,7 @@ export default async function BlogPostPage({
               </p>
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(var(--accent),0.2)]"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-105 transition-transform glow-shadow"
               >
                 Get in Touch
                 <i className="fas fa-arrow-right text-sm" aria-hidden="true" />

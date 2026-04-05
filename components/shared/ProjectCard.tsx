@@ -45,7 +45,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       whileHover={
         prefersReduced ? undefined : {
           y: -10,
-          boxShadow: "0 20px 40px -10px rgba(var(--accent),0.15)",
           transition: { duration: 0.25 },
         }
       }
