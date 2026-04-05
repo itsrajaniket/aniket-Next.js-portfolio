@@ -173,14 +173,14 @@ export default async function BlogPostPage({
 function mdToHtml(md: string): string {
   // 1. Extract code blocks early to avoid paragraph splitting issues
   const codeBlocks: { lang: string; content: string }[] = [];
-  let placeholderMd = md.replace(/```(\w+)?\n?([\s\S]*?)```/g, (_, lang, content) => {
+  const placeholderMd = md.replace(/```(\w+)?\n?([\s\S]*?)```/g, (_, lang, content) => {
     const id = codeBlocks.length;
     codeBlocks.push({ lang: lang || "javascript", content });
     return `\n\nCODEBLOCKPLACEHOLDER${id}\n\n`;
   });
 
   // 2. Escape raw HTML in the remaining markdown
-  let processedMd = placeholderMd
+  const processedMd = placeholderMd
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");

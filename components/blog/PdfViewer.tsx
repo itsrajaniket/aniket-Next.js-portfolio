@@ -23,6 +23,7 @@ const PdfViewer: React.FC<PdfViewerProps> = ({ url, title }) => {
           data={`${url}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
           type="application/pdf"
           className="w-full h-full rounded-lg"
+          title={title}
         >
           <div className="flex items-center justify-center h-full text-main/60">
             PDF Viewer not supported in this browser.
@@ -33,7 +34,7 @@ const PdfViewer: React.FC<PdfViewerProps> = ({ url, title }) => {
       <div className="mt-4 flex justify-between items-center text-xs text-main/60 px-2 italic uppercase tracking-tighter">
         <span className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          // Secure Document Viewer v1.2 [READ-ONLY]
+          {"// Secure Document Viewer v1.2 [READ-ONLY]"}
         </span>
         <span className="text-accent/40 hidden md:block">
           UNAUTHORIZED DISTRIBUTION PROHIBITED

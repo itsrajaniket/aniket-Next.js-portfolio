@@ -3,7 +3,6 @@ import Image from "next/image";
 import SectionReveal from "@/components/animations/SectionReveal";
 import SpotlightText from "@/components/animations/SpotlightText";
 import SpotlightReveal from "@/components/animations/SpotlightReveal";
-import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
 const ABOUT_STATS = [
   { value: "15+", label: "Projects", sub: "shipped" },
