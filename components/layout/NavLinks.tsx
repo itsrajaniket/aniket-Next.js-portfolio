@@ -51,7 +51,7 @@ export default function NavLinks({ onLinkClick, className = "" }: NavLinksProps)
               <a
                 href={isHomePage ? href : `/${href}`}
                 onClick={(e) => handleAnchorClick(e, href)}
-                className={`nav-link text-sm font-semibold transition-colors hover:text-accent ${isActive ? "nav-active text-accent glow-shadow" : "text-muted"
+                className={`nav-link text-sm font-semibold transition-colors hover:text-accent ${isActive ? "nav-active text-accent" : "text-muted"
                   }`}
               >
                 {label}

@@ -22,7 +22,7 @@ const rgbVarsToHex = (rgb: string) => {
 };
 
 const THEME_VARIABLES = [
-  { name: "Accent", var: "--accent" },
+  { name: "Theme Color", var: "--accent" },
   { name: "Background", var: "--bg-base" },
   { name: "Card/Surface", var: "--bg-card" },
   { name: "Text Main", var: "--text-main" },
