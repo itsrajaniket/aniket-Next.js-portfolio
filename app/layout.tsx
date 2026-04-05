@@ -7,6 +7,7 @@ import MotionWrapper from "@/components/animations/MotionWrapper";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
 import { Analytics } from "@vercel/analytics/react";
+import ThemeCustomizer from "@/components/theme/ThemeCustomizer";
 
 // ── Fonts ──────────────────────────────────────────────────────────────────
 // Syne: geometric, distinctive, not overused. Perfect for headings.
@@ -110,6 +111,7 @@ export default function RootLayout({
           <UmamiAnalytics />
           <Analytics />
           <MouseTrailCanvas />
+          {process.env.NODE_ENV === "development" && <ThemeCustomizer />}
           <MotionWrapper>
             <main id="main-content">{children}</main>
           </MotionWrapper>

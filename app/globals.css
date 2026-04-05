@@ -6,8 +6,8 @@
   :root, [data-theme='cyberpunk'] {
     --primary: 99 102 241;
     --secondary: 168 85 247;
-    --accent: 34 211 238;
-
+    /* --accent: 34 211 238; */
+    --accent: 65 225 84;
     --bg-base: 2 6 23;        
     --bg-card: 30 41 59;      
     --bg-section-contact: 10 10 10;
