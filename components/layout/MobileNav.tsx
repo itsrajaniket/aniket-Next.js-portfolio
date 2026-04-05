@@ -64,7 +64,7 @@ export default function MobileNav() {
   }, [isOpen]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         ref={btnRef}
         onClick={toggle}

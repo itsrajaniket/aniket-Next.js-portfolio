@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion, useMotionValue, useTransform, useScroll, useSpring } from "framer-motion";
 import { useState, useRef, useCallback } from "react";
 import { useReducedMotion } from "@/hooks";
 import SectionReveal from "@/components/animations/SectionReveal";
@@ -162,6 +162,12 @@ export default function WorkExperience() {
   const prefersReduced = useReducedMotion();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
+  
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end end"]
+  });
 
   return (
     <section
@@ -193,21 +199,27 @@ export default function WorkExperience() {
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mt-6" />
         </SectionReveal>
 
-        {/* Showcase cards */}
-        <div className="space-y-10 mb-24">
-          {SHOWCASE.map((project, idx) => (
-            <ShowcaseCard
-              key={project.id}
-              project={project}
-              idx={idx}
-              prefersReduced={!!prefersReduced}
-              isHovered={hoveredId === project.id}
-              anyHovered={hoveredId !== null}
-              onHover={setHoveredId}
-              imgError={imgErrors.has(project.id)}
-              onImgError={() => setImgErrors((s) => new Set(s).add(project.id))}
-            />
-          ))}
+        {/* Showcase cards - Stacked Container (350vh for 3 cards) */}
+        <div ref={container} className="relative mb-24">
+          {SHOWCASE.map((project, idx) => {
+            const targetScale = 1 - ((SHOWCASE.length - idx) * 0.05);
+            return (
+              <ShowcaseCard
+                key={project.id}
+                project={project}
+                idx={idx}
+                progress={scrollYProgress}
+                range={[idx * 0.25, (idx + 1) * 0.25]}
+                targetScale={targetScale}
+                prefersReduced={!!prefersReduced}
+                isHovered={hoveredId === project.id}
+                anyHovered={hoveredId !== null}
+                onHover={setHoveredId}
+                imgError={imgErrors.has(project.id)}
+                onImgError={() => setImgErrors((s) => new Set(s).add(project.id))}
+              />
+            );
+          })}
         </div>
 
         {/* Career Timeline */}
@@ -291,6 +303,9 @@ export default function WorkExperience() {
 interface CardProps {
   project: (typeof SHOWCASE)[0];
   idx: number;
+  progress: any;
+  range: [number, number];
+  targetScale: number;
   prefersReduced: boolean;
   isHovered: boolean;
   anyHovered: boolean;
@@ -302,6 +317,9 @@ interface CardProps {
 function ShowcaseCard({
   project,
   idx,
+  progress,
+  range,
+  targetScale,
   prefersReduced,
   isHovered,
   anyHovered,
@@ -313,28 +331,38 @@ function ShowcaseCard({
   const tilt = useTilt(!prefersReduced);
   const [showPreview, setShowPreview] = useState(false);
 
+  const scale = useTransform(progress, range, [1, targetScale]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: prefersReduced ? 0 : 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{
-        duration: 0.65,
-        delay: idx * 0.1,
-        ease: [0.25, 0.46, 0.45, 0.94],
+    <div 
+      className="sticky mb-[20vh] flex items-center justify-center"
+      style={{ 
+        zIndex: idx + 1,
+        top: `calc(5rem + ${idx * 40}px)`
       }}
-      style={
-        {
-          rotateX: tilt.rotX,
-          rotateY: tilt.rotY,
-          transformStyle: "preserve-3d",
-          opacity: anyHovered && !isHovered ? 0.55 : 1,
-          transition: "opacity 0.3s ease",
-          boxShadow: isHovered
-            ? `0 0 0 1px rgb(${project.accentRgb} / 0.4), 0 25px 60px -10px rgb(${project.accentRgb} / var(--glow-strength))`
-            : "none",
-        } as React.CSSProperties
-      }
+    >
+      <motion.div
+        initial={{ opacity: 0, y: prefersReduced ? 0 : 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{
+          duration: 0.65,
+          delay: idx * 0.1,
+          ease: [0.25, 0.46, 0.45, 0.94],
+        }}
+        style={
+          {
+            scale,
+            rotateX: tilt.rotX,
+            rotateY: tilt.rotY,
+            transformStyle: "preserve-3d",
+            opacity: anyHovered && !isHovered ? 0.55 : 1,
+            transition: "opacity 0.3s ease",
+            boxShadow: isHovered
+              ? `0 0 0 1px rgb(${project.accentRgb} / 0.4), 0 25px 60px -10px rgb(${project.accentRgb} / var(--glow-strength))`
+              : "none",
+          } as any
+        }
       ref={tilt.ref}
       onMouseMove={tilt.onMove}
       onMouseLeave={() => {
@@ -585,5 +613,6 @@ function ShowcaseCard({
         </div>
       </div>
     </motion.div>
+    </div>
   );
 }

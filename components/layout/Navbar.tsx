@@ -31,7 +31,7 @@ export default function Navbar() {
             </span>
           </a>}
           {/* Desktop nav — Client Component (needs usePathname) */}
-          <div className="hidden md:flex">
+          <div className="hidden lg:flex">
             <NavLinks />
           </div>
 
