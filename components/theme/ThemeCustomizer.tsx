@@ -83,7 +83,7 @@ export default function ThemeCustomizer() {
   };
 
   const resetTheme = () => {
-    if (confirm("Reset theme to original defaults?")) {
+    if (confirm("Reset theme to defaults?")) {
       window.location.reload();
     }
   };
