@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useTransform, useScroll, useSpring } from "framer-motion";
+import { motion, useMotionValue, useTransform, useScroll, useSpring, type MotionValue } from "framer-motion";
 import { useState, useRef, useCallback } from "react";
 import { useReducedMotion } from "@/hooks";
 import SectionReveal from "@/components/animations/SectionReveal";
@@ -303,7 +303,7 @@ export default function WorkExperience() {
 interface CardProps {
   project: (typeof SHOWCASE)[0];
   idx: number;
-  progress: any;
+  progress: MotionValue<number>;
   range: [number, number];
   targetScale: number;
   prefersReduced: boolean;
@@ -361,7 +361,7 @@ function ShowcaseCard({
             boxShadow: isHovered
               ? `0 0 0 1px rgb(${project.accentRgb} / 0.4), 0 25px 60px -10px rgb(${project.accentRgb} / var(--glow-strength))`
               : "none",
-          } as any
+          }
         }
       ref={tilt.ref}
       onMouseMove={tilt.onMove}
