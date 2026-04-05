@@ -22,8 +22,6 @@ const rgbVarsToHex = (rgb: string) => {
 };
 
 const THEME_VARIABLES = [
-  { name: "Primary", var: "--primary" },
-  { name: "Secondary", var: "--secondary" },
   { name: "Accent", var: "--accent" },
   { name: "Background", var: "--bg-base" },
   { name: "Card/Surface", var: "--bg-card" },
@@ -34,6 +32,8 @@ const THEME_VARIABLES = [
 export default function ThemeCustomizer() {
   const [isOpen, setIsOpen] = useState(false);
   const [colors, setColors] = useState<Record<string, string>>({});
+  const [glow, setGlow] = useState(0.45);
+  const [particles, setParticles] = useState(1);
   const [mounted, setMounted] = useState(false);
 
   // Initialize from actual computed styles
@@ -41,12 +41,16 @@ export default function ThemeCustomizer() {
     setMounted(true);
     const initialColors: Record<string, string> = {};
     const styles = getComputedStyle(document.documentElement);
-    
+
     THEME_VARIABLES.forEach((item) => {
       const val = styles.getPropertyValue(item.var).trim();
       initialColors[item.var] = val;
     });
-    
+
+    const initialGlow = parseFloat(styles.getPropertyValue("--glow-strength").trim() || "0.45");
+    const initialParticles = parseFloat(styles.getPropertyValue("--particle-density").trim() || "1");
+    setGlow(initialGlow);
+    setParticles(initialParticles);
     setColors(initialColors);
   }, []);
 
@@ -56,14 +60,26 @@ export default function ThemeCustomizer() {
     setColors((prev) => ({ ...prev, [variable]: rgbValue }));
   };
 
+  const handleGlowChange = (val: number) => {
+    setGlow(val);
+    document.documentElement.style.setProperty("--glow-strength", val.toString());
+  };
+
+  const handleParticleChange = (val: number) => {
+    setParticles(val);
+    document.documentElement.style.setProperty("--particle-density", val.toString());
+    window.dispatchEvent(new CustomEvent("reinitParticles"));
+  };
+
   const copyConfig = () => {
     const cssBlock = THEME_VARIABLES.map(
       (v) => `    ${v.var}: ${colors[v.var]};`
-    ).join("\n");
-    
+    ).join("\n") + `\n    --glow-strength: ${glow};\n    --particle-density: ${particles};`;
+
     const fullBlock = `:root, [data-theme='cyberpunk'] {\n${cssBlock}\n}`;
     navigator.clipboard.writeText(fullBlock);
-    alert("Theme configuration copied to clipboard! Paste it into globals.css.");
+    alert("🚀 Theme copied! Share below with dev to update.");
+
   };
 
   const resetTheme = () => {
@@ -99,7 +115,7 @@ export default function ThemeCustomizer() {
             Experiment with the site&apos;s DNA. Changes are temporary and will reset on refresh.
           </p>
 
-          <div className="space-y-3.5 max-h-[50vh] overflow-y-auto pr-1 custom-scrollbar">
+          <div className="space-y-4">
             {THEME_VARIABLES.map((item) => (
               <div key={item.var} className="flex items-center justify-between gap-4">
                 <div className="flex flex-col">
@@ -116,6 +132,38 @@ export default function ThemeCustomizer() {
                 />
               </div>
             ))}
+
+            <div className="flex flex-col gap-2 pt-2 border-t border-white/5">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-bold text-main tracking-wide">Glow Strength</span>
+                <span className="text-[10px] font-mono text-accent">{Math.round(glow * 100)}%</span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.05"
+                value={glow}
+                onChange={(e) => handleGlowChange(parseFloat(e.target.value))}
+                className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-accent"
+              />
+            </div>
+
+            <div className="flex flex-col gap-2 pt-2">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-bold text-main tracking-wide">Spider Density</span>
+                <span className="text-[10px] font-mono text-accent">{Math.round(particles * 100)}%</span>
+              </div>
+              <input
+                type="range"
+                min="0.1"
+                max="2"
+                step="0.1"
+                value={particles}
+                onChange={(e) => handleParticleChange(parseFloat(e.target.value))}
+                className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-accent"
+              />
+            </div>
           </div>
 
           <div className="mt-6 flex flex-col gap-2">
@@ -137,10 +185,6 @@ export default function ThemeCustomizer() {
         </div>
       )}
 
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(var(--accent), 0.2); border-radius: 2px; }
-      `}</style>
     </div>
   );
 }

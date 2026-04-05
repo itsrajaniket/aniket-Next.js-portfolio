@@ -63,7 +63,9 @@ export default function SpiderCanvas() {
 
   const init = useCallback((canvas: HTMLCanvasElement) => {
     particlesRef.current = [];
-    const n = (canvas.width * canvas.height) / 6000;
+    const styles = getComputedStyle(document.documentElement);
+    const multiplier = parseFloat(styles.getPropertyValue("--particle-density").trim() || "1");
+    const n = ((canvas.width * canvas.height) / 6000) * multiplier;
     for (let i = 0; i < n; i++) {
       const size = Math.random() * 2.5 + 0.5;
       particlesRef.current.push(
@@ -172,10 +174,14 @@ export default function SpiderCanvas() {
     observer.observe(canvas.parentElement ?? canvas);
     animate();
 
+    const handleReinit = () => init(canvas);
+    window.addEventListener("reinitParticles", handleReinit);
+
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("reinitParticles", handleReinit);
       observer.disconnect();
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
