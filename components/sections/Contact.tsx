@@ -46,7 +46,7 @@ export default function Contact() {
           <SectionReveal delay={0.2} className="space-y-6">
 
             {/* Availability badge */}
-            <div className="bg-accent/5 rounded-2xl p-6 border border-accent/20 backdrop-blur-sm shadow-[0_0_20px_rgba(34,211,238,0.05)]">
+            <div className="bg-card/50 rounded-2xl p-6 border border-surfaceBorder/10 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse inline-block" />
                 <span className="text-green-400 text-sm font-bold tracking-wide uppercase">

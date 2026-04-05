@@ -35,7 +35,7 @@ export default function BlogPreview() {
           </div>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-card/60 border border-surfaceBorder/10
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-card/50 border border-surfaceBorder/10
                        text-muted hover:text-accent hover:border-accent/40
                        font-bold text-sm rounded-xl transition-all shrink-0 backdrop-blur-md"
           >
@@ -50,7 +50,7 @@ export default function BlogPreview() {
             <SectionReveal key={post.slug} delay={idx * 0.1}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block bg-card/40 rounded-2xl p-6 border border-surfaceBorder/10
+                className="group block bg-card/50 rounded-2xl p-6 border border-surfaceBorder/10
                            hover:border-accent/40 hover:-translate-y-1 hover:bg-card/60
                            transition-all duration-300 h-full backdrop-blur-sm will-change-transform"
                 aria-label={`Read: ${post.title}`}

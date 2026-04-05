@@ -63,7 +63,7 @@ export default function About() {
               aria-hidden="true"
             />
 
-            <div className="relative group rounded-2xl overflow-hidden border border-surfaceBorder/10 bg-card">
+            <div className="relative group rounded-2xl overflow-hidden border border-surfaceBorder/10 bg-card/50 backdrop-blur-md">
 
               {/* Photo */}
               <div className="relative w-full aspect-square">
@@ -75,7 +75,7 @@ export default function About() {
                   sizes="(max-width: 1024px) 100vw, 300px"
                 />
                 {/* Fade bottom */}
-                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-card to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-card/80 to-transparent" />
               </div>
 
               {/* Card footer */}

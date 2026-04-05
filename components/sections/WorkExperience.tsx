@@ -242,7 +242,7 @@ export default function WorkExperience() {
                   <motion.div
                     whileHover={prefersReduced ? undefined : { x: 4 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-card/40 rounded-2xl border border-surfaceBorder/10 hover:border-accent/30 p-5 transition-colors cursor-default backdrop-blur-sm will-change-transform"
+                    className="bg-card/50 rounded-2xl border border-surfaceBorder/10 hover:border-accent/30 p-5 transition-colors cursor-default backdrop-blur-sm will-change-transform"
                   >
                     <div className="flex flex-wrap items-center gap-3 mb-2">
                       <span className="font-mono text-xs text-accent font-bold tracking-widest uppercase">
@@ -458,7 +458,7 @@ function ShowcaseCard({
 
         {/* ── Content panel ─────────────────────────────────────────────── */}
         <div
-          className={`relative p-7 lg:p-10 flex flex-col justify-center bg-card/90 ${!isEven ? "lg:order-1" : ""}`}
+          className={`relative p-7 lg:p-10 flex flex-col justify-center bg-card/80 ${!isEven ? "lg:order-1" : ""}`}
         >
           {/* Subtle glow behind content */}
           <motion.div

@@ -44,7 +44,7 @@ export default function Services() {
             return (
               <SectionReveal key={service.title} delay={idx * 0.1}>
                 <div
-                  className={`group relative p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm hover:-translate-y-2 ${colors.border} transition-all duration-300 cursor-pointer overflow-hidden shadow-lg ${colors.glow} h-full`}
+                  className={`group relative p-6 rounded-2xl bg-card/50 border border-surfaceBorder/10 backdrop-blur-sm hover:-translate-y-2 ${colors.border} transition-all duration-300 cursor-pointer overflow-hidden shadow-lg ${colors.glow} h-full`}
                 >
                   {/* Hover tint */}
                   <div className={`absolute inset-0 bg-gradient-to-br from-transparent to-${service.accentColor}-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />

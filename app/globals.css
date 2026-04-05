@@ -10,13 +10,13 @@
     --accent: 65 225 84;
     --bg-base: 2 6 23;        
     --bg-card: 30 41 59;      
-    --bg-section-contact: 10 10 10;
-    --bg-section-blog: 6 12 24;
-    --bg-section-skills: 11 17 32;
-    --bg-section-projects: 6 13 26;
-    --bg-section-services: 7 14 27;
-    --bg-section-education: 8 15 28;
-    --bg-section-work: 7 16 31;
+    --bg-section-contact: var(--bg-base);
+    --bg-section-blog: var(--bg-base);
+    --bg-section-skills: var(--bg-base);
+    --bg-section-projects: var(--bg-base);
+    --bg-section-services: var(--bg-base);
+    --bg-section-education: var(--bg-base);
+    --bg-section-work: var(--bg-base);
     
     --text-main: 255 255 255; 
     --text-muted: 148 163 184;
@@ -29,20 +29,18 @@
   [data-theme='sunset'] {
     --primary: 244 63 94;
     --secondary: 249 115 22;
-    --accent: 245 158 11;
-
-    --bg-base: 253 251 247;
-    --bg-card: 255 246 240; 
-    --bg-section-contact: 253 251 247;
-    --bg-section-blog: 253 251 247;
-    --bg-section-skills: 253 251 247;
-    --bg-section-projects: 253 251 247;
-    --bg-section-services: 253 251 247;
-    --bg-section-education: 253 251 247;
-    --bg-section-work: 253 251 247;
-
-    --text-main: 45 36 34;
-    --text-muted: 120 107 104;
+    --accent: 18 65 161;
+    --bg-base: 224 255 227;
+    --bg-card: 176 197 232;
+    --bg-section-contact: var(--bg-base);
+    --bg-section-blog: var(--bg-base);
+    --bg-section-skills: var(--bg-base);
+    --bg-section-projects: var(--bg-base);
+    --bg-section-services: var(--bg-base);
+    --bg-section-education: var(--bg-base);
+    --bg-section-work: var(--bg-base);
+    --text-main: 0 0 0;
+    --text-muted: 24 22 22;
     --border-subtle: 45 36 34; 
     --inverse-base: 45 36 34;  
     --inverse-text: 253 251 247; 

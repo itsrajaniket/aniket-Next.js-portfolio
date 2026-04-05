@@ -54,7 +54,7 @@ export default function Skills() {
                   {category.skills.map((skill, skillIdx) => (
                     <div
                       key={skill.name}
-                      className={`group flex items-center p-3.5 bg-card/40 backdrop-blur-sm rounded-xl border border-surfaceBorder/5 ${skill.borderHover} animate-float hover:bg-card/60 transition-all duration-300 will-change-transform`}
+                      className={`group flex items-center p-3.5 bg-card/50 backdrop-blur-sm rounded-xl border border-surfaceBorder/5 ${skill.borderHover} animate-float hover:bg-card/60 transition-all duration-300 will-change-transform`}
                       style={{ animationDelay: `${skillIdx * 0.5}s` }}
                     >
                       <i

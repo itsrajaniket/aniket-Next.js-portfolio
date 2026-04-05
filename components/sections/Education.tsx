@@ -40,7 +40,7 @@ export default function Education() {
             return (
               <SectionReveal key={item.period} delay={idx * 0.1}>
                 <div
-                  className={`relative group h-full bg-card/60 backdrop-blur-md p-5 pt-6 rounded-xl border border-slate-800 hover:-translate-y-1 hover:border-${item.accentColor}-500/50 transition-all duration-300 shadow-lg flex flex-col`}
+                  className={`relative group h-full bg-card/50 backdrop-blur-md p-5 pt-6 rounded-xl border border-surfaceBorder/10 hover:-translate-y-1 hover:border-${item.accentColor}-500/50 transition-all duration-300 shadow-lg flex flex-col`}
                 >
                   {/* Animated top accent bar */}
                   <div className={`absolute top-0 left-4 w-12 h-1 ${colors.bar} rounded-b-md z-10 group-hover:w-full transition-all duration-500`} />
