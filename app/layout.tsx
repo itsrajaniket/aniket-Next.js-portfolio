@@ -111,7 +111,7 @@ export default function RootLayout({
           <UmamiAnalytics />
           <Analytics />
           <MouseTrailCanvas />
-          {process.env.NODE_ENV === "development" && <ThemeCustomizer />}
+          <ThemeCustomizer />
           <MotionWrapper>
             <main id="main-content">{children}</main>
           </MotionWrapper>

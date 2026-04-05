@@ -66,6 +66,12 @@ export default function ThemeCustomizer() {
     alert("Theme configuration copied to clipboard! Paste it into globals.css.");
   };
 
+  const resetTheme = () => {
+    if (confirm("Reset theme to original defaults?")) {
+      window.location.reload();
+    }
+  };
+
   if (!mounted) return null;
 
   return (
@@ -83,18 +89,22 @@ export default function ThemeCustomizer() {
       {isOpen && (
         <div className="pointer-events-auto w-72 glass rounded-2xl border border-surfaceBorder/10 p-6 shadow-2xl animate-fade-in">
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="font-display font-bold text-main">Theme Engine</h3>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20">
-              Live Mod
+            <h3 className="font-display font-bold text-main">Design Playground</h3>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20 animate-pulse">
+              Interactive
             </span>
           </div>
 
-          <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-1 custom-scrollbar">
+          <p className="text-[10px] text-muted mb-4 leading-tight">
+            Experiment with the site&apos;s DNA. Changes are temporary and will reset on refresh.
+          </p>
+
+          <div className="space-y-3.5 max-h-[50vh] overflow-y-auto pr-1 custom-scrollbar">
             {THEME_VARIABLES.map((item) => (
               <div key={item.var} className="flex items-center justify-between gap-4">
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-main">{item.name}</span>
-                  <span className="text-[9px] font-mono text-muted uppercase">
+                  <span className="text-xs font-bold text-main tracking-wide">{item.name}</span>
+                  <span className="text-[9px] font-mono text-muted uppercase opacity-60">
                     {item.var}
                   </span>
                 </div>
@@ -102,23 +112,28 @@ export default function ThemeCustomizer() {
                   type="color"
                   value={rgbVarsToHex(colors[item.var] || "")}
                   onChange={(e) => handleColorChange(item.var, e.target.value)}
-                  className="h-8 w-12 cursor-pointer bg-transparent border-none p-0 rounded-md"
+                  className="h-7 w-10 cursor-pointer bg-transparent border-none p-0 rounded-md overflow-hidden"
                 />
               </div>
             ))}
           </div>
 
-          <button
-            onClick={copyConfig}
-            className="mt-6 w-full py-3 bg-white/[0.03] hover:bg-accent hover:text-inverseText border border-surfaceBorder/10 rounded-xl text-xs font-bold transition-all"
-          >
-            <i className="fas fa-copy mr-2" />
-            Copy Current Config
-          </button>
-          
-          <p className="mt-3 text-[10px] text-muted text-center italic">
-            *Paste copied values into globals.css for persistence.
-          </p>
+          <div className="mt-6 flex flex-col gap-2">
+            <button
+              onClick={copyConfig}
+              className="w-full py-2.5 bg-white/[0.03] hover:bg-accent hover:text-inverseText border border-surfaceBorder/10 rounded-xl text-[11px] font-bold transition-all flex items-center justify-center"
+            >
+              <i className="fas fa-code mr-2" />
+              Export CSS for Devs
+            </button>
+            <button
+              onClick={resetTheme}
+              className="w-full py-2.5 bg-red-500/5 hover:bg-red-500/20 border border-red-500/10 text-red-400 rounded-xl text-[11px] font-bold transition-all flex items-center justify-center"
+            >
+              <i className="fas fa-undo mr-2" />
+              Reset to Defaults
+            </button>
+          </div>
         </div>
       )}
 

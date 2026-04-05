@@ -1,4 +1,4 @@
-"use client";
+see "use client";
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -51,9 +51,8 @@ export default function NavLinks({ onLinkClick, className = "" }: NavLinksProps)
               <a
                 href={isHomePage ? href : `/${href}`}
                 onClick={(e) => handleAnchorClick(e, href)}
-                className={`nav-link text-sm font-semibold transition-colors hover:text-accent ${
-                  isActive ? "nav-active" : "text-muted"
-                }`}
+                className={`nav-link text-sm font-semibold transition-colors hover:text-accent ${isActive ? "nav-active text-accent" : "text-muted"
+                  }`}
               >
                 {label}
               </a>
@@ -68,8 +67,8 @@ export default function NavLinks({ onLinkClick, className = "" }: NavLinksProps)
           download="Aniket_Raj_Resume.pdf"
           className="px-4 py-1 border border-accent text-accent rounded-full font-bold text-xs
                      hover:bg-accent hover:text-inverseText transition-all
-                     shadow-[0_0_10px_rgba(34,211,238,0.2)]
-                     hover:shadow-[0_0_25px_rgba(34,211,238,0.7)]"
+                     shadow-[0_0_10px_rgba(var(--accent),0.2)]
+                     hover:shadow-[0_0_25px_rgba(var(--accent),0.7)]"
           aria-label="Download Aniket Raj's Resume PDF"
         >
           Resume <i className="fas fa-download ml-1" aria-hidden="true" />

@@ -18,7 +18,7 @@ const PdfViewer: React.FC<PdfViewerProps> = ({ url, title }) => {
       {/* Visual Glitch/Glow Borders */}
       <div className="absolute -inset-1 blur-sm bg-gradient-to-r from-accent/30 via-primary/20 to-accent/30 rounded-xl" />
       
-      <div className="relative w-full h-full bg-black/80 rounded-xl border border-accent/30 p-1 md:p-2 shadow-[0_0_30px_rgba(34,211,238,0.15)]">
+      <div className="relative w-full h-full bg-black/80 rounded-xl border border-accent/30 p-1 md:p-2 shadow-[0_0_30px_rgba(var(--accent),0.15)]">
         <object
           data={`${url}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
           type="application/pdf"

@@ -127,7 +127,7 @@ export default function About() {
                   style={{ animationDuration: "12s" }}
                 >
                   {[
-                    { icon: "fab fa-react", color: "text-cyan-400", pos: "top-0 left-1/2 -translate-x-1/2 -mt-3" },
+                    { icon: "fab fa-react", color: "text-accent", pos: "top-0 left-1/2 -translate-x-1/2 -mt-3" },
                     { icon: "fab fa-js", color: "text-yellow-400", pos: "bottom-0 left-1/2 -translate-x-1/2 -mb-3" },
                     { icon: "fab fa-css3-alt", color: "text-blue-500", pos: "left-0 top-1/2 -translate-y-1/2 -ml-3" },
                     { icon: "fab fa-html5", color: "text-orange-500", pos: "right-0 top-1/2 -translate-y-1/2 -mr-3" },
@@ -193,7 +193,7 @@ export default function About() {
             <div className="flex flex-wrap gap-3 pt-2">
               <a
                 href="#projects"
-                className="px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm shadow-[0_0_20px_rgba(34,211,238,0.2)]"
+                className="px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm shadow-[0_0_20px_rgba(var(--accent),0.2)]"
               >
                 View Projects
               </a>

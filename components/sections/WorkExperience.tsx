@@ -537,7 +537,7 @@ function ShowcaseCard({
                   animate={{
                     borderColor: isHovered
                       ? `rgba(${project.accentRgb},0.35)`
-                      : "rgba(34,211,238,0.2)",
+                      : "rgba(var(--accent),0.2)",
                   }}
                   transition={{ duration: 0.3 }}
                 >

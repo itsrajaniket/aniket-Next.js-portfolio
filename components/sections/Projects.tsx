@@ -70,7 +70,7 @@ export default function Projects() {
               onClick={() => setActiveFilter(f)}
               className={`px-5 py-2 rounded-full text-sm font-bold border transition-all ${
                 activeFilter === f
-                  ? "bg-accent text-inverseText border-accent shadow-[0_0_20px_rgba(34,211,238,0.4)]"
+                  ? "bg-accent text-inverseText border-accent shadow-[0_0_20px_rgba(var(--accent),0.4)]"
                   : "glass border-surfaceBorder/10 text-muted hover:border-accent/50 hover:text-accent"
               }`}
               aria-pressed={activeFilter === f}
