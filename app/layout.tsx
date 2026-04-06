@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
-import MouseTrailCanvas from "@/components/visuals/MouseTrailCanvas";
+import dynamic from "next/dynamic";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import MotionWrapper from "@/components/animations/MotionWrapper";
-import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
-import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import ThemeCustomizer from "@/components/theme/ThemeCustomizer";
+import ClientLayoutProviders from "@/components/layout/ClientLayoutProviders";
 
 // ── Fonts ──────────────────────────────────────────────────────────────────
 // Syne: geometric, distinctive, not overused. Perfect for headings.
@@ -84,8 +80,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.rajaniket.com" },
 };
 
-import { ThemeProvider } from "@/components/theme/ThemeProvider";
-
 export default function RootLayout({
   children,
 }: {
@@ -98,6 +92,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Preconnect to external asset domains for faster discovery */}
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -105,18 +105,12 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-base text-main font-sans antialiased transition-colors duration-500">
-        <ThemeProvider attribute="data-theme" defaultTheme="cyberpunk" enableSystem={false}>
-          <GoogleAnalytics />
-          <UmamiAnalytics />
-          <Analytics />
-          <SpeedInsights />
-          <MouseTrailCanvas />
-          <ThemeCustomizer />
+        <ClientLayoutProviders>
           <MotionWrapper>
             <main id="main-content">{children}</main>
           </MotionWrapper>
           <ScrollToTop />
-        </ThemeProvider>
+        </ClientLayoutProviders>
       </body>
     </html>
   );

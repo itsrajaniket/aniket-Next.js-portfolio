@@ -1,11 +1,19 @@
-// Server Component — SpiderCanvas and Typewriter are Client Components
+"use client";
+
+// Client Component — uses dynamic imports for heavy animations
 import Image from "next/image";
-import SpiderCanvas from "@/components/visuals/SpiderCanvas";
+import dynamic from "next/dynamic";
 import Typewriter from "@/components/animations/Typewriter";
 import SpotlightText from "@/components/animations/SpotlightText";
 import { HERO_STATS, AUTHOR_LOCATION } from "@/lib/constants";
 import headImg from "@/public/images/head.png";
 import avatarImg from "@/public/images/3D-avatar.png";
+
+// ── Dynamic Import for Canvas ────────────────────────────────────────────────
+// SpiderCanvas is heavy on the main thread; defer it to ensure text is snappy.
+const SpiderCanvas = dynamic(() => import("@/components/visuals/SpiderCanvas"), {
+  ssr: false,
+});
 
 export default function Hero() {
   return (
@@ -99,6 +107,7 @@ export default function Hero() {
                 placeholder="blur"
                 className="w-full object-cover object-top transform group-hover:scale-110 transition-transform duration-700"
                 priority
+                sizes="(max-width: 768px) 0vw, 320px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-base/60 to-transparent opacity-60" />
             </div>

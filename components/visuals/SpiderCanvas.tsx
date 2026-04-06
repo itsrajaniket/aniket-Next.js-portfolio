@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { motion } from "framer-motion";
 
 class Particle {
   x: number;
@@ -65,7 +66,10 @@ export default function SpiderCanvas() {
     particlesRef.current = [];
     const styles = getComputedStyle(document.documentElement);
     const multiplier = parseFloat(styles.getPropertyValue("--particle-density").trim() || "1");
-    const n = ((canvas.width * canvas.height) / 6000) * multiplier;
+    // Reduce density on mobile for better main-thread performance
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const mobileReduction = isMobile ? 0.6 : 1;
+    const n = ((canvas.width * canvas.height) / 7500) * multiplier * mobileReduction;
     for (let i = 0; i < n; i++) {
       const size = Math.random() * 2.5 + 0.5;
       particlesRef.current.push(
@@ -108,16 +112,20 @@ export default function SpiderCanvas() {
     if (!ctx) return;
 
     // ── Resize ──────────────────────────────────────────────────────────
+    let resizeTimeout: NodeJS.Timeout;
     const resize = () => {
-      const parent = canvas.parentElement;
-      canvas.width = parent?.offsetWidth ?? window.innerWidth;
-      canvas.height = parent?.offsetHeight ?? window.innerHeight;
-      // Update existing particle bounds
-      particlesRef.current.forEach((p) => {
-        p.canvasW = canvas.width;
-        p.canvasH = canvas.height;
-      });
-      init(canvas);
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const parent = canvas.parentElement;
+        canvas.width = parent?.offsetWidth ?? window.innerWidth;
+        canvas.height = parent?.offsetHeight ?? window.innerHeight;
+        // Update existing particle bounds
+        particlesRef.current.forEach((p) => {
+          p.canvasW = canvas.width;
+          p.canvasH = canvas.height;
+        });
+        init(canvas);
+      }, 150); // Debounce resize for performance
     };
     resize();
     window.addEventListener("resize", resize, { passive: true });
@@ -188,8 +196,11 @@ export default function SpiderCanvas() {
   }, [init, connect]);
 
   return (
-    <canvas
+    <motion.canvas
       ref={canvasRef}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5, ease: "easeOut" }}
       className="absolute inset-0 pointer-events-none z-[1]"
       aria-hidden="true"
     />

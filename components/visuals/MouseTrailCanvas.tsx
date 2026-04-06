@@ -17,6 +17,7 @@ export default function MouseTrailCanvas() {
   const particlesRef = useRef<Particle[]>([]);
   const rafRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
+  const lastMouseMoveRef = useRef(0); // Throttle particle creation
 
   const createParticles = useCallback((x: number, y: number, count = 5) => {
     for (let i = 0; i < count; i++) {
@@ -79,6 +80,10 @@ export default function MouseTrailCanvas() {
 
     // ── Mouse / touch handlers ──────────────────────────────────────────
     const onMouseMove = (e: MouseEvent) => {
+      const now = Date.now();
+      if (now - lastMouseMoveRef.current < 16) return; // ~60fps throttle
+      lastMouseMoveRef.current = now;
+
       mouseRef.current = { x: e.clientX, y: e.clientY };
       createParticles(e.clientX, e.clientY, 4);
       if (!rafRef.current) rafRef.current = requestAnimationFrame(animate);
