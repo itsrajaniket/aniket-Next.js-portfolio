@@ -106,7 +106,7 @@ export default async function BlogPostPage({
 
           {/* Content */}
           {post.type === "pdf" && post.pdfUrl ? (
-            <PdfViewer url={post.pdfUrl} title={post.title} />
+            <PdfViewer url={post.pdfUrl} title={post.title} fileSize={post.fileSize} />
           ) : post.type === "pdf" ? (
             <div className="p-8 border border-dashed border-accent/30 rounded-xl text-center text-main/60">
               PDF source not found. Please contact the administrator.

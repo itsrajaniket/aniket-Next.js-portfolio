@@ -242,3 +242,27 @@ pre[class*="language-"] {
 
 /* ── Body scroll lock for mobile menu ────────────────────────────────────── */
 body.menu-open { overflow: hidden; }
+
+/* ── Anti-Print Protocols ────────────────────────────────────────────────── */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  body::before {
+    content: "SECURITY ALERT: DOCUMENT CLASSIFIED. UNAUTHORIZED PRINTING IS PROHIBITED. ACCESS LOGGED.";
+    visibility: visible !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: monospace;
+    font-size: 24pt;
+    color: red;
+    text-align: center;
+    width: 80%;
+  }
+  @page {
+    size: auto;
+    margin: 0mm;
+  }
+}

@@ -2,8 +2,27 @@ import fs from "fs";
 import path from "path";
 import type { BlogPost } from "@/types";
 
-const CONTENT_DIR = path.join(process.cwd(), "content/blog");
 const PDF_DIR = path.join(process.cwd(), "public/content/pdfs");
+const CONTENT_DIR = path.join(process.cwd(), "content/blog");
+
+// ── Helper: Format Byte Size ──────────────────────────────────────────────
+function formatBytes(bytes: number, decimals = 2) {
+  if (bytes === 0) return "0 Bytes";
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ["Bytes", "KB", "MB", "GB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+}
+
+// ── Helper: Slugify ──────────────────────────────────────────────────────
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .replace(".pdf", "")
+    .replace(/[^a-z0-9]+/g, "-") // Replace non-alphanumeric with -
+    .replace(/^-+|-+$/g, "");    // Remove leading/trailing hyphens
+}
 
 // ── Read frontmatter from MDX file ────────────────────────────────────────
 function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
@@ -50,7 +69,7 @@ export function getAllPosts(): BlogPost[] {
     const files = fs.readdirSync(PDF_DIR).filter((f) => f.toLowerCase().endsWith(".pdf"));
     files.forEach((file) => {
       const stats = fs.statSync(path.join(PDF_DIR, file));
-      const slug = file.replace(".pdf", "").toLowerCase().replace(/[\s_]+/g, "-");
+      const slug = slugify(file);
       
       // Basic human-readable title from filename
       const title = file
@@ -66,7 +85,8 @@ export function getAllPosts(): BlogPost[] {
         readingTime: "PDF Document",
         tags: ["PDF", "Documentation"],
         type: "pdf",
-        pdfUrl: `/content/pdfs/${file}`,
+        pdfUrl: `/content/pdfs/${encodeURIComponent(file)}`,
+        fileSize: formatBytes(stats.size),
       });
     });
   }
@@ -97,7 +117,7 @@ export function getPostBySlug(slug: string): { post: BlogPost; content: string }
   // Check PDF
   if (fs.existsSync(PDF_DIR)) {
     const pdfs = fs.readdirSync(PDF_DIR);
-    const match = pdfs.find(p => p.toLowerCase().replace(".pdf", "").replace(/[\s_]+/g, "-") === slug);
+    const match = pdfs.find(p => slugify(p) === slug);
     if (match) {
       const stats = fs.statSync(path.join(PDF_DIR, match));
       const title = match.replace(".pdf", "").replace(/[-_]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
@@ -109,7 +129,8 @@ export function getPostBySlug(slug: string): { post: BlogPost; content: string }
         readingTime: "PDF Document",
         tags: ["PDF", "Documentation"],
         type: "pdf",
-        pdfUrl: `/content/pdfs/${match}`
+        pdfUrl: `/content/pdfs/${encodeURIComponent(match)}`,
+        fileSize: formatBytes(stats.size),
       };
       return { post, content: "" };
     }

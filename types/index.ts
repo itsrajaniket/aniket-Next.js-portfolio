@@ -65,4 +65,5 @@ export interface BlogPost {
   coverImage?: string;
   type?: "mdx" | "pdf";
   pdfUrl?: string;
+  fileSize?: string;
 }
