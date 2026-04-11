@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useTransform, useScroll, useSpring, type MotionValue } from "framer-motion";
-import { useState, useRef, useCallback } from "react";
+import { motion, useMotionValue, useTransform, useScroll, useSpring, AnimatePresence, type MotionValue } from "framer-motion";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useReducedMotion } from "@/hooks";
 import SectionReveal from "@/components/animations/SectionReveal";
 import AnimatedTitle from "@/components/animations/AnimatedTitle";
@@ -16,14 +16,30 @@ const SHOWCASE = [
     title: "Maharani Food Plaza",
     subtitle: "Restaurant Website — Live Client Project",
     description:
-      "Full freelance delivery for a restaurant in Indore. Built a premium multi-page site with GSAP scroll animations, interactive menu filters, and EmailJS reservation form. Client went live with zero revisions.",
+      "Full freelance delivery for a restaurant in Indore. Built a premium multi-page site with GSAP scroll animations, interactive menu filters, and EmailJS reservation form.",
+    fullDetails: {
+      overview: "A mobile-first, zero-build restaurant ordering system designed for local Indian eateries. It bridges the gap between physical dining and digital ordering by utilizing WhatsApp as a serverless communication bridge, eliminating third-party commission fees.",
+      problem: "Local restaurants often face high overheads for native apps or lose revenue to delivery platforms. This project provides a lightning-fast digital menu with a high-fidelity 'app-like' feel.",
+      tech: "Built with a Zero-Build Architecture using HTML5, Vanilla JavaScript, and Tailwind CSS (via CDN) for maximum performance and hosting simplicity.",
+      features: [
+        "Serverless WhatsApp Checkout: Converts cart state into formatted orders sent directly to the owner.",
+        "Precision UX: Integrated haptic feedback (Vibration API) and mobile-optimized swipe menus.",
+        "Scroll-Spy Navigation: Auto-highlighting menu categories based on current viewport position.",
+        "Fuzzy Search: Real-time filtering and highlighting across the entire menu database."
+      ],
+      technicalHighlights: [
+        "GPU Accelerated Motion: Uses hardware-accelerated CSS transforms for strict 60FPS mobile parity.",
+        "Memory Management: Active cart store optimization that unmounts stale allocations to prevent memory leaks.",
+        "Zero-Build Pipeline: Achieves lightning-fast initial paints by bypassing standard JS bundling overhead."
+      ]
+    },
     highlights: [
-      "Client brief → design → delivery in under 2 weeks",
+      "Client brief to delivery in under 2 weeks",
       "GSAP ScrollTrigger animations throughout",
-      "Interactive menu with live category filtering",
-      "EmailJS reservation form — no backend required",
+      "Integrated haptic feedback for premium feel",
+      "EmailJS & WhatsApp API integrations",
     ],
-    tags: ["HTML5", "CSS3", "JAVASCRIPT", "GSAP", "EMAILJS"],
+    tags: ["HTML5", "CSS3", "JAVASCRIPT", "GSAP", "WHATSAPP API"],
     liveUrl: "https://itsrajaniket.github.io/freelance-restaurant-app/",
     github: null,
     image: "/images/project-maharani.jpg",
@@ -46,14 +62,30 @@ const SHOWCASE = [
     title: "Corporate Job Tracker",
     subtitle: "SaaS-style Productivity App — Vercel",
     description:
-      "Built to solve a real pain during my own job search. Kanban board with drag-and-drop columns, deadline alerts via Notification API, rich company notes, and one-click CSV export. Zero backend — fully client-side.",
+      "A centralized command center for job seekers targeting Indian corporate/IT sectors. Replaces inefficient spreadsheets with a database of 550+ companies.",
+    fullDetails: {
+      overview: "A high-performance React application serving as a centralized dashboard for job seekers. It features a master database of 550+ Indian IT and corporate firms with specific policy transparency (Notice Period, Buyout availability).",
+      problem: "Tracking high-volume applications and calculating complex tax/salary offers manually is error-prone. This tool provides instant market comparisons and cloud parity.",
+      tech: "Built with React 19, Firebase (Auth & Firestore) for real-time cloud sync, and Chart.js for visualizing market trends.",
+      features: [
+        "Career Calculators: A 6-tool suite for Tenure, Exit Dates, Tax splits, and precise 'In-Hand' salary projections.",
+        "Market Analytics: Interactive charts visualizing industry distributions and buyout policies across 550 firms.",
+        "Local-First Resilience: Offline-first architecture using a custom useLocalStorage hook for zero-latency updates.",
+        "Backup Engine: Secure JSON export/import logic for total data ownership."
+      ],
+      technicalHighlights: [
+        "Memoized Filtering: Wraps O(n) computations over 550+ entries in useMemo to eliminate search-bar stutter.",
+        "Auth Observers: Tight integration with Firebase's onAuthStateChanged for instant UI-gating upon login.",
+        "Bypass Logic: Critical number computations bypass heavy Virtual DOM load for high-precision reactivity."
+      ]
+    },
     highlights: [
-      "Drag-and-drop Kanban powered by @dnd-kit",
-      "Browser Notification API for deadline reminders",
-      "Company notes with rich text editing",
-      "CSV export — works fully offline",
+      "Track 550+ companies with market metrics",
+      "6 Precise financial & tenure calculators",
+      "Firebase Cloud-Sync with offline fallback",
+      "Visual market analytics using Chart.js",
     ],
-    tags: ["REACT", "DND-KIT", "TAILWIND CSS", "NOTIFICATION API"],
+    tags: ["REACT", "FIREBASE", "CHART.JS", "TAILWIND CSS"],
     liveUrl: "https://corporate-job-tracker.vercel.app/",
     github: "https://github.com/itsrajaniket",
     image: "/images/project-jobtracker.jpg",
@@ -76,14 +108,30 @@ const SHOWCASE = [
     title: "Habit Builder Kit",
     subtitle: "Productivity App — Redux Architecture",
     description:
-      "Fully offline productivity app with production-grade Redux Toolkit architecture. Framer Motion drives animated streak visualizations and progress rings. localStorage persistence — no backend, no cost.",
+      "A visually stunning, gamified daily habit tracker that turns consistency into a rewarding loop through XP, streaks, and procedural audio.",
+    fullDetails: {
+      overview: "A modern, high-fidelity daily habit tracker built for professionals. It utilizes visually rewarding gamification, seamless offline capabilities, and mental wellness tracking to solve the problem of abandoned goals.",
+      problem: "Goal abandonment usually happens when check-ins feel like a chore. This app turns daily check-ins into an addictive, rewarding loop.",
+      tech: "Built with React 18, Zustand (persisted state), Supabase for cloud sync, and Web Audio API for synthesized soundscapes.",
+      features: [
+        "Gamification Engine: XP leveling system with 'Streak Freezes' and badges to reward consistent dedication.",
+        "Procedural Audio: No MP3s—uses the Web Audio API to synthesize interactive chimes and UI sounds programmatically.",
+        "Mental Wellness Analytics: Correlates habit consistency vs. Mood/Motivation through complex line charts.",
+        "Share Card Generator: Uses HTML Canvas to generate stylized social media graphics of progress."
+      ],
+      technicalHighlights: [
+        "Zero-Wait Database Sink: Treats localStorage as source-of-truth for UI renders, obliterating loading spinners.",
+        "Zustand Slice Architecture: Modular domain state management merged into a single persisted global store.",
+        "SVG Logic: Implements real-time mathematical progress ring calculations with Framer Motion interpolation."
+      ]
+    },
     highlights: [
-      "Redux Toolkit with typed slices and selectors",
-      "Framer Motion streak & progress ring animations",
-      "Offline-first — works without internet",
-      "Dark glassmorphism UI built from scratch",
+      "Gamified XP & Leveling system",
+      "Web Audio API synthesized soundscapes",
+      "Mental wellness correlation charts",
+      "Zero-Latency local-first sync engine",
     ],
-    tags: ["REACT", "REDUX TOOLKIT", "FRAMER MOTION", "TAILWIND CSS"],
+    tags: ["REACT", "ZUSTAND", "SUPABASE", "WEB AUDIO API"],
     liveUrl: "https://habit-builder-kit.vercel.app/",
     github: "https://github.com/itsrajaniket",
     image: "/images/project-habit.jpg",
@@ -93,12 +141,13 @@ const SHOWCASE = [
     bgGrad: "from-cyan-950/80 via-slate-900/95 to-slate-900",
     icon: "fas fa-check-circle",
     metrics: [
-      { value: "Redux", label: "State" },
+      { value: "Zustand", label: "State" },
       { value: "Vercel", label: "Deployed" },
       { value: "100%", label: "Offline" },
     ],
   },
 ];
+
 const TIMELINE = [
   {
     period: "2024 — Present",
@@ -112,18 +161,6 @@ const TIMELINE = [
       "Building React/Next.js applications for clients. Delivered restaurant websites, job trackers, and portfolio tools. Specializing in animations, performance, and zero-backend architecture.",
     tags: ["REACT", "NEXT.JS", "TAILWIND", "TYPESCRIPT", "FRAMER MOTION"],
   },
-  // {
-  //   period: "2021 — 2024",
-  //   role: "UPSC Civil Services Preparation",
-  //   company: "Full-time · Career Sabbatical",
-  //   badge: "Sabbatical",
-  //   badgeClass: "bg-amber-500/15 border-amber-500/30 text-amber-300",
-  //   dot: "bg-amber-400",
-  //   pulse: false,
-  //   description:
-  //     "Three years of intensive preparation sharpened analytical thinking and structured problem decomposition — skills that transfer directly to software architecture and debugging.",
-  //   tags: ["ANALYTICAL THINKING", "SELF-DISCIPLINE", "PROBLEM SOLVING"],
-  // },
 ];
 
 // ── 3D tilt card hook ──────────────────────────────────────────────────────
@@ -162,12 +199,23 @@ export default function WorkExperience() {
   const prefersReduced = useReducedMotion();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
+  const [activeProject, setActiveProject] = useState<(typeof SHOWCASE)[0] | null>(null);
   
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start start", "end end"]
   });
+
+  // Lock scroll when modal is open
+  useEffect(() => {
+    if (activeProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => { document.body.style.overflow = "unset"; };
+  }, [activeProject]);
 
   return (
     <section
@@ -194,7 +242,7 @@ export default function WorkExperience() {
             className="mb-4" 
           />
           <p className="text-muted max-w-xl text-lg">
-            Real client work, real deployments. Click any card to explore.
+            Real client work, real deployments. Click any card to explore details.
           </p>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mt-6" />
         </SectionReveal>
@@ -217,6 +265,7 @@ export default function WorkExperience() {
                 onHover={setHoveredId}
                 imgError={imgErrors.has(project.id)}
                 onImgError={() => setImgErrors((s) => new Set(s).add(project.id))}
+                onClick={() => setActiveProject(project)}
               />
             );
           })}
@@ -295,6 +344,16 @@ export default function WorkExperience() {
           </div>
         </div>
       </div>
+
+      {/* Project Detail Modal */}
+      <AnimatePresence>
+        {activeProject && (
+          <ProjectDetailModal 
+            project={activeProject} 
+            onClose={() => setActiveProject(null)} 
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
@@ -312,6 +371,7 @@ interface CardProps {
   onHover: (id: string | null) => void;
   imgError: boolean;
   onImgError: () => void;
+  onClick: () => void;
 }
 
 function ShowcaseCard({
@@ -326,10 +386,10 @@ function ShowcaseCard({
   onHover,
   imgError,
   onImgError,
+  onClick,
 }: CardProps) {
   const isEven = idx % 2 === 0;
   const tilt = useTilt(!prefersReduced);
-  const [showPreview, setShowPreview] = useState(false);
 
   const scale = useTransform(progress, range, [1, targetScale]);
 
@@ -350,6 +410,7 @@ function ShowcaseCard({
           delay: idx * 0.1,
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
+        onClick={onClick}
         style={
           {
             scale,
@@ -377,8 +438,6 @@ function ShowcaseCard({
         {/* ── Image panel ──────────────────────────────────────────────── */}
         <div
           className={`relative min-h-[280px] lg:min-h-[400px] overflow-hidden ${!isEven ? "lg:order-2" : ""}`}
-          onMouseEnter={() => setShowPreview(true)}
-          onMouseLeave={() => setShowPreview(false)}
         >
           {/* Gradient background */}
           <div
@@ -434,26 +493,14 @@ function ShowcaseCard({
             </span>
           </motion.div>
 
-          {/* "Open project" hover hint */}
+          {/* Click hint */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            animate={{
-              opacity: showPreview ? 1 : 0,
-              scale: showPreview ? 1 : 0.8,
-            }}
-            transition={{ duration: 0.2 }}
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            animate={{ opacity: isHovered ? 1 : 0 }}
           >
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-xl font-bold text-sm text-inverseText flex items-center gap-2"
-              style={{ background: project.accentColor }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <i className="fas fa-external-link-alt text-xs" />
-              Open Live Site
-            </a>
+             <div className="bg-slate-900/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-xs font-bold text-accent">
+                Click to view details
+             </div>
           </motion.div>
 
           {/* Metrics strip */}
@@ -539,7 +586,7 @@ function ShowcaseCard({
                   key={h}
                   className="flex items-start gap-2.5 text-sm text-muted"
                   animate={{
-                    x: isHovered && !prefersReduced ? 0 : -4,
+                    x: isHovered ? 0 : -4,
                     opacity: isHovered ? 1 : 0.75,
                   }}
                   transition={{ duration: 0.3, delay: hIdx * 0.05 }}
@@ -574,45 +621,230 @@ function ShowcaseCard({
               ))}
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3">
-              {project.liveUrl && (
-                <motion.a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 font-bold rounded-xl text-sm text-inverseText"
-                  style={{ background: project.accentColor }}
-                  whileHover={prefersReduced ? undefined : { scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  aria-label={`Open ${project.title} live demo`}
-                >
-                  <i
-                    className="fas fa-external-link-alt text-xs"
-                    aria-hidden="true"
-                  />
-                  Live Demo
-                </motion.a>
-              )}
-              {project.github && (
-                <motion.a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 glass border border-surfaceBorder/10 text-main font-bold rounded-xl text-sm hover:text-accent transition-colors"
-                  whileHover={prefersReduced ? undefined : { scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  aria-label={`View ${project.title} source code`}
-                >
-                  <i className="fab fa-github text-sm" aria-hidden="true" />
-                  Source Code
-                </motion.a>
-              )}
+            {/* Direct CTA */}
+            <div className="flex items-center gap-4">
+               {project.liveUrl && (
+                  <motion.a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-2 px-6 py-3 font-bold rounded-xl text-sm text-inverseText"
+                    style={{ background: project.accentColor }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <i className="fas fa-external-link-alt text-xs" />
+                    Live Demo
+                  </motion.a>
+               )}
+               <button 
+                  onClick={onClick}
+                  className="text-xs font-bold text-muted hover:text-accent transition-colors flex items-center gap-2"
+               >
+                  About Project
+                  <i className="fas fa-plus text-[10px]" />
+               </button>
             </div>
           </div>
         </div>
       </div>
     </motion.div>
+    </div>
+  );
+}
+
+// ── Project Detail Modal Component ───────────────────────────────────────
+function ProjectDetailModal({ project, onClose }: { project: (typeof SHOWCASE)[0], onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10">
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl"
+      />
+
+      {/* Modal Content */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 30 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden bg-card border border-white/10 rounded-3xl shadow-2xl flex flex-col"
+      >
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-main hover:text-accent transition-colors"
+          aria-label="Close modal"
+        >
+          <i className="fas fa-times" />
+        </button>
+
+        <div className="overflow-y-auto custom-scrollbar flex-1">
+          {/* Hero Section */}
+          <div className="relative h-[250px] lg:h-[400px] w-full">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className={`absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent`} />
+            
+            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex flex-col gap-3"
+              >
+                <span className={`w-fit px-3 py-1 rounded-full border text-xs font-bold ${project.typeBadge}`}>
+                  {project.type}
+                </span>
+                <h2 className="text-4xl lg:text-6xl font-black text-main leading-none">
+                  {project.title}
+                </h2>
+                <p className="text-lg lg:text-xl font-semibold opacity-90" style={{ color: project.accentColor }}>
+                  {project.subtitle}
+                </p>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Details Content */}
+          <div className="p-8 lg:p-12 grid lg:grid-cols-3 gap-12">
+            {/* Main info */}
+            <div className="lg:col-span-2 space-y-10">
+              <section>
+                <h3 className="text-accent font-mono text-sm tracking-widest uppercase mb-4">01. Overview</h3>
+                <p className="text-muted text-lg leading-relaxed">
+                  {project.fullDetails.overview}
+                </p>
+              </section>
+
+              <section>
+                <h3 className="text-accent font-mono text-sm tracking-widest uppercase mb-4">02. The Problem</h3>
+                <p className="text-muted text-lg leading-relaxed">
+                  {project.fullDetails.problem}
+                </p>
+              </section>
+
+              <section>
+                <h3 className="text-accent font-mono text-sm tracking-widest uppercase mb-4">03. Key Features</h3>
+                <ul className="grid sm:grid-cols-2 gap-4">
+                  {project.fullDetails.features.map((feature, i) => (
+                    <motion.li 
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 + (i * 0.1) }}
+                      className="bg-slate-900/50 border border-white/5 p-4 rounded-2xl flex gap-3 items-start"
+                    >
+                      <i className="fas fa-bolt text-accent mt-1" />
+                      <span className="text-sm text-muted leading-snug">{feature}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </section>
+
+              {project.fullDetails.technicalHighlights && (
+                <section>
+                  <h3 className="text-accent font-mono text-sm tracking-widest uppercase mb-4">04. Technical Highlights</h3>
+                  <div className="space-y-3">
+                    {project.fullDetails.technicalHighlights.map((highlight, i) => {
+                      const [title, desc] = highlight.includes(":") 
+                        ? [highlight.split(":")[0], highlight.split(":")[1]] 
+                        : ["Insight", highlight];
+                      return (
+                        <motion.div 
+                          key={i}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.5 + (i * 0.1) }}
+                          className="p-4 rounded-2xl bg-slate-900/30 border border-white/5 border-l-2 border-l-accent"
+                        >
+                          <p className="text-sm text-main font-bold mb-1">
+                            {title}
+                          </p>
+                          <p className="text-xs text-muted leading-relaxed">
+                            {desc}
+                          </p>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </section>
+              )}
+            </div>
+
+            {/* Sidebar info */}
+            <div className="space-y-8">
+              <div className="bg-slate-900/50 border border-white/5 p-6 rounded-2xl">
+                <h4 className="text-main font-bold mb-4 flex items-center gap-2">
+                  <i className="fas fa-layer-group text-accent text-sm" />
+                  Technical Core
+                </h4>
+                <p className="text-sm text-muted leading-relaxed mb-6">
+                  {project.fullDetails.tech}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map(t => (
+                    <span key={t} className="tech-tag text-[10px] bg-slate-950/80">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-slate-900/50 border border-white/5 p-6 rounded-2xl">
+                <h4 className="text-main font-bold mb-4 flex items-center gap-2">
+                  <i className="fas fa-chart-line text-accent text-sm" />
+                  Key Metrics
+                </h4>
+                <div className="space-y-4">
+                  {project.metrics.map(m => (
+                    <div key={m.label} className="flex items-center justify-between border-b border-white/5 pb-2">
+                      <span className="text-xs text-muted uppercase tracking-wider font-bold">{m.label}</span>
+                      <span className="text-sm font-black text-main">{m.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black text-sm text-inverseText transition-transform active:scale-95"
+                    style={{ background: project.accentColor }}
+                  >
+                    <i className="fas fa-external-link-alt" />
+                    Visit Live Site
+                  </a>
+                )}
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black text-sm bg-slate-900 border border-white/10 text-main hover:bg-slate-800 transition-all active:scale-95"
+                  >
+                    <i className="fab fa-github" />
+                    View Source
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
