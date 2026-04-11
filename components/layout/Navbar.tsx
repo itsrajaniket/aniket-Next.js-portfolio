@@ -37,7 +37,6 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            {/* Mobile hamburger — Client Component (needs useState) */}
             <MobileNav />
           </div>
         </div>

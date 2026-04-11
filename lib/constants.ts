@@ -80,12 +80,29 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 // More personal, less generic AI output
+// export const TYPEWRITER_WORDS = [
+//   "React Developer",
+//   "Next.js Engineer",
+//   "UI Craftsman",
+//   "Frontend Obsessive",
+// ] as const;
 export const TYPEWRITER_WORDS = [
   "React Developer",
   "Next.js Engineer",
   "UI Craftsman",
   "Frontend Obsessive",
+  "MERN Stack Builder",
+  "Backend Explorer",
+  "Automation Enthusiast",
+  "Data-Driven Problem Solver",
+  "API Architect",
+  "Performance Optimizer",
+  "Clean Code Advocate",
+  "Tech Storyteller",
+  "Productivity Hacker",
+  "Design-to-Deployment Specialist",
 ] as const;
+
 
 export const HERO_STATS = [
   { value: "15+", label: "Projects shipped" },
