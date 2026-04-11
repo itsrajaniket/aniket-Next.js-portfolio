@@ -14,32 +14,35 @@ const SHOWCASE = [
     typeBadge: "bg-amber-500/15 border-amber-500/30 text-amber-300",
     period: "2025",
     title: "Maharani Food Plaza",
-    subtitle: "Restaurant Website — Live Client Project",
+    subtitle: "Restaurant Ordering App — Live Client Project",
     description:
-      "Full freelance delivery for a restaurant in Indore. Built a premium multi-page site with GSAP scroll animations, interactive menu filters, and EmailJS reservation form.",
+      "Full freelance delivery for a live restaurant client in Indore. A zero-build, mobile-first ordering platform with a serverless WhatsApp checkout — brief to deployment in under 2 weeks, zero revision cycles.",
     fullDetails: {
-      overview: "A mobile-first, zero-build restaurant ordering system designed for local Indian eateries. It bridges the gap between physical dining and digital ordering by utilizing WhatsApp as a serverless communication bridge, eliminating third-party commission fees.",
-      problem: "Local restaurants often face high overheads for native apps or lose revenue to delivery platforms. This project provides a lightning-fast digital menu with a high-fidelity 'app-like' feel.",
-      tech: "Built with a Zero-Build Architecture using HTML5, Vanilla JavaScript, and Tailwind CSS (via CDN) for maximum performance and hosting simplicity.",
+      overview: "A mobile-first, zero-build restaurant ordering system built for a live client in Indore. Bridges the gap between physical dining and digital ordering using WhatsApp as a serverless communication bridge — eliminating third-party delivery commissions entirely.",
+      problem: "Local restaurants face high overheads for native apps or lose revenue to delivery platforms. This project delivers a lightning-fast digital menu with a native app-like feel, hosted statically anywhere at zero running cost.",
+      tech: "Zero-Build Architecture using HTML5, Vanilla JavaScript ES6+, and Tailwind CSS via CDN — no Node, no bundler, no backend. Entire app runs from a single app.js file.",
       features: [
-        "Serverless WhatsApp Checkout: Converts cart state into formatted orders sent directly to the owner.",
-        "Precision UX: Integrated haptic feedback (Vibration API) and mobile-optimized swipe menus.",
-        "Scroll-Spy Navigation: Auto-highlighting menu categories based on current viewport position.",
-        "Fuzzy Search: Real-time filtering and highlighting across the entire menu database."
+        "Serverless WhatsApp Checkout: Cart state serialized, URI-encoded via encodeURIComponent, and dispatched as a formatted order to the owner via wa.me API — no payment gateway needed.",
+        "Real-Time Fuzzy Search: Filters and highlights matched text across the entire menuData array dynamically on every keystroke.",
+        "Scroll-Spy Navigation: Uses getBoundingClientRect() to auto-highlight the active menu category as users scroll.",
+        "Haptic Feedback: navigator.vibrate(50ms) on every cart interaction for a premium native app feel on mobile.",
+        "CSS Skeleton Screen: Hardcoded skeleton renders before JS execution for instant perceived performance.",
+        "Data-Driven Rendering: Entire menu UI, filters, and search generated from a single menuData array — update one object, entire UI adapts."
       ],
       technicalHighlights: [
-        "GPU Accelerated Motion: Uses hardware-accelerated CSS transforms for strict 60FPS mobile parity.",
-        "Memory Management: Active cart store optimization that unmounts stale allocations to prevent memory leaks.",
-        "Zero-Build Pipeline: Achieves lightning-fast initial paints by bypassing standard JS bundling overhead."
+        "GPU Accelerated Motion: All transitions use CSS transform and translate classes to bypass CPU repaints — strict 60FPS on mobile hardware.",
+        "Memory-Safe Cart: delete cart[itemId] when quantity hits 0, preventing stale key allocations from hanging in memory.",
+        "Zero-Build Pipeline: Tailwind config injected via app.js object, bypassing the need for a Node build environment entirely.",
+        "window.matchMedia: Detects OS-level dark/light preference on first load before any user interaction."
       ]
     },
     highlights: [
-      "Client brief to delivery in under 2 weeks",
-      "GSAP ScrollTrigger animations throughout",
-      "Integrated haptic feedback for premium feel",
-      "EmailJS & WhatsApp API integrations",
+      "Live client — brief to deployment in under 2 weeks",
+      "Zero revision cycles — shipped production-ready",
+      "Serverless WhatsApp checkout via wa.me API",
+      "Haptic feedback & scroll-spy navigation",
     ],
-    tags: ["HTML5", "CSS3", "JAVASCRIPT", "GSAP", "WHATSAPP API"],
+    tags: ["HTML5", "VANILLA JS", "TAILWIND CSS", "WHATSAPP API", "VIBRATION API"],
     liveUrl: "https://itsrajaniket.github.io/freelance-restaurant-app/",
     github: null,
     image: "/images/project-maharani.jpg",
@@ -49,43 +52,46 @@ const SHOWCASE = [
     bgGrad: "from-amber-950/80 via-slate-900/95 to-slate-900",
     icon: "fas fa-utensils",
     metrics: [
-      { value: "8 wks", label: "Delivery" },
-      { value: "4", label: "Revisions" },
+      { value: "< 2 wks", label: "Delivery" },
+      { value: "0", label: "Revisions" },
       { value: "Live", label: "Status" },
     ],
   },
   {
     id: "jobtracker",
-    type: "Freelance",
+    type: "Personal",
     typeBadge: "bg-purple-500/15 border-purple-500/30 text-purple-300",
     period: "2025",
     title: "Corporate Job Tracker",
-    subtitle: "SaaS-style Productivity App — Vercel",
+    subtitle: "SaaS-Style Dashboard — Firebase + React 19",
     description:
-      "A centralized command center for job seekers targeting Indian corporate/IT sectors. Replaces inefficient spreadsheets with a database of 550+ companies.",
+      "A full-stack job search command center for Indian IT job seekers. Searchable database of 550+ companies, Google OAuth, real-time Firestore sync, live market analytics, and a 6-tool salary calculator suite.",
     fullDetails: {
-      overview: "A high-performance React application serving as a centralized dashboard for job seekers. It features a master database of 550+ Indian IT and corporate firms with specific policy transparency (Notice Period, Buyout availability).",
-      problem: "Tracking high-volume applications and calculating complex tax/salary offers manually is error-prone. This tool provides instant market comparisons and cloud parity.",
-      tech: "Built with React 19, Firebase (Auth & Firestore) for real-time cloud sync, and Chart.js for visualizing market trends.",
+      overview: "A high-performance React 19 application serving as a centralized job search dashboard. Built to solve a real pain during the developer's own job hunt — it replaces scattered spreadsheets with a 550+ company database featuring policy transparency (Notice Period, Buyout availability), cloud-synced tracking, and financial planning tools.",
+      problem: "Tracking hundreds of applications manually and calculating complex tax/salary offers is error-prone and time-consuming. This tool centralizes everything — market data, application status, and career finances — into one offline-capable dashboard.",
+      tech: "React 19 with Vite, Firebase Auth (Google OAuth) and Firestore for real-time cloud sync, Chart.js for market analytics, and a custom useLocalStorage hook for offline-first state management.",
       features: [
-        "Career Calculators: A 6-tool suite for Tenure, Exit Dates, Tax splits, and precise 'In-Hand' salary projections.",
-        "Market Analytics: Interactive charts visualizing industry distributions and buyout policies across 550 firms.",
-        "Local-First Resilience: Offline-first architecture using a custom useLocalStorage hook for zero-latency updates.",
-        "Backup Engine: Secure JSON export/import logic for total data ownership."
+        "550+ Company Database: Searchable, filterable master list of Indian IT/corporate firms with Notice Period and Buyout policy data for each.",
+        "Google OAuth + Firestore Sync: Secure authentication with real-time cloud sync — application statuses update locally and push to Firestore in parallel.",
+        "6-Tool Salary Calculator Suite: In-Hand salary, Tax Breakup (New Regime), Offer Comparison, Exit Date, Tenure, and Hourly Value calculators — all auto-calculating in real time.",
+        "Market Analytics Dashboard: Chart.js Doughnut and Bar charts aggregating industry distributions and buyout availability across the entire company dataset.",
+        "JSON Backup & Restore: Complete data export via Blob + FileReader APIs — works fully offline, no server interaction.",
+        "Custom Company Integration: Add unlisted startups via CustomCompanyForm with duplicate-blocking deduplication logic."
       ],
       technicalHighlights: [
-        "Memoized Filtering: Wraps O(n) computations over 550+ entries in useMemo to eliminate search-bar stutter.",
-        "Auth Observers: Tight integration with Firebase's onAuthStateChanged for instant UI-gating upon login.",
-        "Bypass Logic: Critical number computations bypass heavy Virtual DOM load for high-precision reactivity."
+        "Memoized O(n) Filtering: useMemo wraps complex cross-filter computations over 550+ company records — eliminates search-bar stutter on every keystroke.",
+        "Offline-First Hybrid State: Custom useLocalStorage hook writes instantly to localStorage; async saveToCloud() pushes to Firestore in parallel — UI never waits on the network.",
+        "Firebase Auth Observer: onAuthStateChanged tightly integrated with useEffect for instant UI-gating — tracker visibility resolves the moment auth context switches.",
+        "Array Deduplication: Array.from(new Map()) intercepts identically-named entries before render mapping, preventing React key collision errors on 550+ item lists."
       ]
     },
     highlights: [
-      "Track 550+ companies with market metrics",
-      "6 Precise financial & tenure calculators",
-      "Firebase Cloud-Sync with offline fallback",
-      "Visual market analytics using Chart.js",
+      "550+ company database with policy transparency",
+      "Google OAuth + real-time Firestore cloud sync",
+      "6-tool salary & tax calculator suite",
+      "Offline-first with useMemo-optimized O(n) filtering",
     ],
-    tags: ["REACT", "FIREBASE", "CHART.JS", "TAILWIND CSS"],
+    tags: ["REACT 19", "FIREBASE", "FIRESTORE", "CHART.JS", "TAILWIND CSS"],
     liveUrl: "https://corporate-job-tracker.vercel.app/",
     github: "https://github.com/itsrajaniket",
     image: "/images/project-jobtracker.jpg",
@@ -95,9 +101,9 @@ const SHOWCASE = [
     bgGrad: "from-purple-950/80 via-slate-900/95 to-slate-900",
     icon: "fas fa-briefcase",
     metrics: [
-      { value: "Vercel", label: "Deployed" },
-      { value: "0 API", label: "Backend" },
-      { value: "Real", label: "Users" },
+      { value: "550+", label: "Companies" },
+      { value: "6 Tools", label: "Calculators" },
+      { value: "Live", label: "Deployed" },
     ],
   },
   {
@@ -106,32 +112,37 @@ const SHOWCASE = [
     typeBadge: "bg-cyan-500/15 border-cyan-500/30 text-cyan-300",
     period: "2026",
     title: "Habit Builder Kit",
-    subtitle: "Productivity App — Redux Architecture",
+    subtitle: "Full-Stack Productivity App — Zustand + Supabase",
     description:
-      "A visually stunning, gamified daily habit tracker that turns consistency into a rewarding loop through XP, streaks, and procedural audio.",
+      "A gamified, offline-first daily habit tracker with zero-latency local state, Supabase PostgreSQL cloud sync with Row Level Security, a Web Audio API sound engine, and a canvas confetti system — all without a single external asset.",
     fullDetails: {
-      overview: "A modern, high-fidelity daily habit tracker built for professionals. It utilizes visually rewarding gamification, seamless offline capabilities, and mental wellness tracking to solve the problem of abandoned goals.",
-      problem: "Goal abandonment usually happens when check-ins feel like a chore. This app turns daily check-ins into an addictive, rewarding loop.",
-      tech: "Built with React 18, Zustand (persisted state), Supabase for cloud sync, and Web Audio API for synthesized soundscapes.",
+      overview: "A modern, high-fidelity daily habit tracker built for professionals and self-improvement enthusiasts. Solves goal abandonment by turning daily check-ins into an addictive, rewarding loop through gamification, procedural audio, and mental wellness correlation analytics.",
+      problem: "Most habit apps feel like chores. This app makes consistency rewarding — XP gains, streak freezes, badge unlocks, and a synthesized sound effect on every check-in create a feedback loop that keeps users returning daily.",
+      tech: "React 18 with Vite, Zustand with persist middleware for offline-first state across 7 modular slices, Supabase PostgreSQL with Row Level Security for cloud sync, and Chart.js for wellness analytics.",
       features: [
-        "Gamification Engine: XP leveling system with 'Streak Freezes' and badges to reward consistent dedication.",
-        "Procedural Audio: No MP3s—uses the Web Audio API to synthesize interactive chimes and UI sounds programmatically.",
-        "Mental Wellness Analytics: Correlates habit consistency vs. Mood/Motivation through complex line charts.",
-        "Share Card Generator: Uses HTML Canvas to generate stylized social media graphics of progress."
+        "Zero-Latency Offline-First Engine: Zustand persist writes instantly to localStorage — UI never waits. A non-blocking background worker silently upserts to Supabase PostgreSQL in parallel.",
+        "7 Modular Zustand Slices: habits, completions, streaks, mentalState, notes, auth, and ui — Redux-style domain separation without Redux boilerplate.",
+        "Supabase Row Level Security: PostgreSQL RLS policy ensures each user can only read and write their own habit_data — auth.uid() enforced at the database level.",
+        "Web Audio API Sound Engine: createOscillator + createGain synthesizes check/uncheck chimes and level-up sounds entirely in-browser — zero MP3 files fetched.",
+        "Canvas Confetti Engine: requestAnimationFrame animates 120 custom particles on Perfect Day completion — built from scratch, no library.",
+        "Gamification: XP leveling, automatic Streak Freeze token awards on Perfect Days, and an organic Badge Board (7-day streak, 100 habits completed, etc.).",
+        "Mental Wellness Analytics: Daily Mood and Motivation logged on 1-10 sliders, correlated against habit completion in Chart.js line graphs.",
+        "Share Card Generator: HTML Canvas API composites user stats and gradients into a downloadable social media graphic via URL.createObjectURL()."
       ],
       technicalHighlights: [
-        "Zero-Wait Database Sink: Treats localStorage as source-of-truth for UI renders, obliterating loading spinners.",
-        "Zustand Slice Architecture: Modular domain state management merged into a single persisted global store.",
-        "SVG Logic: Implements real-time mathematical progress ring calculations with Framer Motion interpolation."
+        "Row Level Security (RLS): Supabase PostgreSQL policy — auth.uid() = user_id — enforces data isolation at the DB layer, not just the application layer.",
+        "Non-Blocking Database Sink: All Supabase upsert calls are fire-and-forget background tasks. localStorage is the single source of truth for renders — loading spinners eliminated entirely.",
+        "CSS Grid Heatmap: 365-day yearly heatmap rendered via CSS Grid calculations in dateUtils.js — no JS reflowing, remains performant across the full year.",
+        "Freemium Pro Gate: ProGate.jsx soft-caps free users at 5 habits, with a Razorpay checkout flow for lifetime Pro upgrade — demonstrating full product lifecycle thinking."
       ]
     },
     highlights: [
-      "Gamified XP & Leveling system",
-      "Web Audio API synthesized soundscapes",
-      "Mental wellness correlation charts",
-      "Zero-Latency local-first sync engine",
+      "Offline-first Zustand + Supabase sync with RLS",
+      "Web Audio API sound engine — zero external assets",
+      "Canvas confetti via requestAnimationFrame",
+      "Gamified XP, streak freezes & badge system",
     ],
-    tags: ["REACT", "ZUSTAND", "SUPABASE", "WEB AUDIO API"],
+    tags: ["REACT 18", "ZUSTAND", "SUPABASE", "WEB AUDIO API", "CHART.JS"],
     liveUrl: "https://habit-builder-kit.vercel.app/",
     github: "https://github.com/itsrajaniket",
     image: "/images/project-habit.jpg",
@@ -141,8 +152,8 @@ const SHOWCASE = [
     bgGrad: "from-cyan-950/80 via-slate-900/95 to-slate-900",
     icon: "fas fa-check-circle",
     metrics: [
-      { value: "Zustand", label: "State" },
-      { value: "Vercel", label: "Deployed" },
+      { value: "7", label: "Zustand Slices" },
+      { value: "RLS", label: "DB Security" },
       { value: "100%", label: "Offline" },
     ],
   },
@@ -158,8 +169,8 @@ const TIMELINE = [
     dot: "bg-green-400",
     pulse: true,
     description:
-      "Building React/Next.js applications for clients. Delivered restaurant websites, job trackers, and portfolio tools. Specializing in animations, performance, and zero-backend architecture.",
-    tags: ["REACT", "NEXT.JS", "TAILWIND", "TYPESCRIPT", "FRAMER MOTION"],
+      "Building production-grade React applications and delivering freelance projects end-to-end. Shipped a live client restaurant ordering app, a 550+ company job search dashboard with Firebase, and a full-stack gamified habit tracker with Supabase. Focused on offline-first architecture, browser API depth, and zero-backend patterns.",
+    tags: ["REACT", "NEXT.JS", "FIREBASE", "SUPABASE", "ZUSTAND", "TAILWIND", "TYPESCRIPT"],
   },
 ];
 
@@ -200,7 +211,7 @@ export default function WorkExperience() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
   const [activeProject, setActiveProject] = useState<(typeof SHOWCASE)[0] | null>(null);
-  
+
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -236,10 +247,10 @@ export default function WorkExperience() {
           <span className="text-accent font-mono tracking-widest uppercase text-sm mb-4 block">
             03. Experience & Work
           </span>
-          <AnimatedTitle 
-            text1="What I've" 
-            text2="Built & Delivered" 
-            className="mb-4" 
+          <AnimatedTitle
+            text1="What I've"
+            text2="Built & Delivered"
+            className="mb-4"
           />
           <p className="text-muted max-w-xl text-lg">
             Real client work, real deployments. Click any card to explore details.
@@ -348,9 +359,9 @@ export default function WorkExperience() {
       {/* Project Detail Modal */}
       <AnimatePresence>
         {activeProject && (
-          <ProjectDetailModal 
-            project={activeProject} 
-            onClose={() => setActiveProject(null)} 
+          <ProjectDetailModal
+            project={activeProject}
+            onClose={() => setActiveProject(null)}
           />
         )}
       </AnimatePresence>
@@ -394,9 +405,9 @@ function ShowcaseCard({
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
-    <div 
+    <div
       className="sticky mb-[20vh] flex items-center justify-center"
-      style={{ 
+      style={{
         zIndex: idx + 1,
         top: `calc(5rem + ${idx * 40}px)`
       }}
@@ -424,206 +435,206 @@ function ShowcaseCard({
               : "none",
           }
         }
-      ref={tilt.ref}
-      onMouseMove={tilt.onMove}
-      onMouseLeave={() => {
-        tilt.onLeave();
-        onHover(null);
-      }}
-      onMouseEnter={() => onHover(project.id)}
-      className="relative rounded-2xl overflow-hidden border border-surfaceBorder/10 cursor-pointer group"
-      aria-label={`Featured project: ${project.title}`}
-    >
-      <div className={`grid lg:grid-cols-2`}>
-        {/* ── Image panel ──────────────────────────────────────────────── */}
-        <div
-          className={`relative min-h-[280px] lg:min-h-[400px] overflow-hidden ${!isEven ? "lg:order-2" : ""}`}
-        >
-          {/* Gradient background */}
+        ref={tilt.ref}
+        onMouseMove={tilt.onMove}
+        onMouseLeave={() => {
+          tilt.onLeave();
+          onHover(null);
+        }}
+        onMouseEnter={() => onHover(project.id)}
+        className="relative rounded-2xl overflow-hidden border border-surfaceBorder/10 cursor-pointer group"
+        aria-label={`Featured project: ${project.title}`}
+      >
+        <div className={`grid lg:grid-cols-2`}>
+          {/* ── Image panel ──────────────────────────────────────────────── */}
           <div
-            className={`absolute inset-0 bg-gradient-to-br ${project.bgGrad}`}
-          />
-
-          {/* Project image */}
-          {!imgError ? (
-            <motion.div
-              className="absolute inset-0"
-              animate={{ scale: isHovered ? 1.06 : 1 }}
-              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            >
-              <Image
-                src={project.image}
-                alt={`${project.title} preview`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                onError={onImgError}
-              />
-              {/* Dark overlay that lifts on hover */}
-              <motion.div
-                className="absolute inset-0 bg-slate-950/60"
-                animate={{ opacity: isHovered ? 0.3 : 0.6 }}
-                transition={{ duration: 0.4 }}
-              />
-            </motion.div>
-          ) : (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <i
-                className={`${project.icon} text-8xl opacity-10 text-main`}
-                aria-hidden="true"
-              />
-            </div>
-          )}
-
-          {/* Edge fade toward content */}
-          <div
-            className={`absolute inset-0 bg-gradient-to-${isEven ? "r" : "l"} from-transparent via-transparent to-slate-900/70`}
-          />
-
-          {/* Type badge */}
-          <motion.div
-            className="absolute top-4 left-4"
-            animate={{ y: isHovered ? 0 : 4, opacity: 1 }}
-            initial={{ opacity: 1 }}
+            className={`relative min-h-[280px] lg:min-h-[400px] overflow-hidden ${!isEven ? "lg:order-2" : ""}`}
           >
-            <span
-              className={`px-3 py-1.5 rounded-full border text-xs font-bold backdrop-blur-sm ${project.typeBadge}`}
-            >
-              {project.type}
-            </span>
-          </motion.div>
+            {/* Gradient background */}
+            <div
+              className={`absolute inset-0 bg-gradient-to-br ${project.bgGrad}`}
+            />
 
-          {/* Click hint */}
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            animate={{ opacity: isHovered ? 1 : 0 }}
-          >
-             <div className="bg-slate-900/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-xs font-bold text-accent">
-                Click to view details
-             </div>
-          </motion.div>
-
-          {/* Metrics strip */}
-          <div className="absolute bottom-0 left-0 right-0 p-4">
-            <motion.div
-              className="flex gap-2"
-              animate={{ y: isHovered ? 0 : 8, opacity: isHovered ? 1 : 0.7 }}
-              transition={{ duration: 0.35 }}
-            >
-              {project.metrics.map((m) => (
-                <div
-                  key={m.label}
-                  className="flex-1 rounded-xl px-3 py-2 text-center border border-surfaceBorder/10 backdrop-blur-md"
-                  style={{ background: "rgba(2,6,23,0.7)" }}
-                >
-                  <p
-                    className="text-sm font-black"
-                    style={{ color: project.accentColor }}
-                  >
-                    {m.value}
-                  </p>
-                  <p className="text-xs text-muted uppercase tracking-wider font-bold leading-none mt-0.5">
-                    {m.label}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-
-        {/* ── Content panel ─────────────────────────────────────────────── */}
-        <div
-          className={`relative p-7 lg:p-10 flex flex-col justify-center bg-card/80 ${!isEven ? "lg:order-1" : ""}`}
-        >
-          {/* Subtle glow behind content */}
-          <motion.div
-            className="absolute inset-0 rounded-r-2xl pointer-events-none"
-            animate={{ opacity: isHovered ? 1 : 0 }}
-            transition={{ duration: 0.5 }}
-            style={{
-              background: `radial-gradient(ellipse at 0% 50%, rgba(${project.accentRgb},0.08) 0%, transparent 70%)`,
-            }}
-          />
-
-          <div className="relative z-10">
-            {/* Icon + period */}
-            <div className="flex items-center gap-3 mb-5">
+            {/* Project image */}
+            {!imgError ? (
               <motion.div
-                className="w-10 h-10 rounded-xl flex items-center justify-center border border-surfaceBorder/10"
-                style={{ background: `rgba(${project.accentRgb},0.15)` }}
-                animate={{ scale: isHovered ? 1.1 : 1 }}
-                transition={{ duration: 0.3 }}
+                className="absolute inset-0"
+                animate={{ scale: isHovered ? 1.06 : 1 }}
+                transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                <i
-                  className={`${project.icon} text-base`}
-                  style={{ color: project.accentColor }}
-                  aria-hidden="true"
+                <Image
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  onError={onImgError}
+                />
+                {/* Dark overlay that lifts on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-slate-950/60"
+                  animate={{ opacity: isHovered ? 0.3 : 0.6 }}
+                  transition={{ duration: 0.4 }}
                 />
               </motion.div>
-              <span className="text-xs text-muted font-mono font-bold uppercase tracking-widest">
-                {project.period}
-              </span>
-            </div>
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <i
+                  className={`${project.icon} text-8xl opacity-10 text-main`}
+                  aria-hidden="true"
+                />
+              </div>
+            )}
 
-            {/* Title */}
-            <h3 className="text-2xl lg:text-3xl font-black text-main mb-1 leading-tight">
-              {project.title}
-            </h3>
-            <p
-              className="text-sm font-semibold mb-4"
-              style={{ color: project.accentColor }}
+            {/* Edge fade toward content */}
+            <div
+              className={`absolute inset-0 bg-gradient-to-${isEven ? "r" : "l"} from-transparent via-transparent to-slate-900/70`}
+            />
+
+            {/* Type badge */}
+            <motion.div
+              className="absolute top-4 left-4"
+              animate={{ y: isHovered ? 0 : 4, opacity: 1 }}
+              initial={{ opacity: 1 }}
             >
-              {project.subtitle}
-            </p>
-            <p className="text-muted text-sm leading-relaxed mb-5">
-              {project.description}
-            </p>
+              <span
+                className={`px-3 py-1.5 rounded-full border text-xs font-bold backdrop-blur-sm ${project.typeBadge}`}
+              >
+                {project.type}
+              </span>
+            </motion.div>
 
-            {/* Highlights — animate in stagger on hover */}
-            <ul className="space-y-2 mb-5">
-              {project.highlights.map((h, hIdx) => (
-                <motion.li
-                  key={h}
-                  className="flex items-start gap-2.5 text-sm text-muted"
-                  animate={{
-                    x: isHovered ? 0 : -4,
-                    opacity: isHovered ? 1 : 0.75,
-                  }}
-                  transition={{ duration: 0.3, delay: hIdx * 0.05 }}
-                >
-                  <motion.i
-                    className="fas fa-check text-xs mt-1 shrink-0"
-                    style={{ color: project.accentColor }}
-                    animate={{ scale: isHovered ? 1.2 : 1 }}
-                    transition={{ duration: 0.2, delay: hIdx * 0.05 }}
-                    aria-hidden="true"
-                  />
-                  {h}
-                </motion.li>
-              ))}
-            </ul>
+            {/* Click hint */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              animate={{ opacity: isHovered ? 1 : 0 }}
+            >
+              <div className="bg-slate-900/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-xs font-bold text-accent">
+                Click to view details
+              </div>
+            </motion.div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tags.map((t) => (
-                <motion.span
-                  key={t}
-                  className="tech-tag"
-                  animate={{
-                    borderColor: isHovered
-                      ? `rgba(${project.accentRgb},0.35)`
-                      : "rgba(var(--accent),0.2)",
-                  }}
+            {/* Metrics strip */}
+            <div className="absolute bottom-0 left-0 right-0 p-4">
+              <motion.div
+                className="flex gap-2"
+                animate={{ y: isHovered ? 0 : 8, opacity: isHovered ? 1 : 0.7 }}
+                transition={{ duration: 0.35 }}
+              >
+                {project.metrics.map((m) => (
+                  <div
+                    key={m.label}
+                    className="flex-1 rounded-xl px-3 py-2 text-center border border-surfaceBorder/10 backdrop-blur-md"
+                    style={{ background: "rgba(2,6,23,0.7)" }}
+                  >
+                    <p
+                      className="text-sm font-black"
+                      style={{ color: project.accentColor }}
+                    >
+                      {m.value}
+                    </p>
+                    <p className="text-xs text-muted uppercase tracking-wider font-bold leading-none mt-0.5">
+                      {m.label}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+
+          {/* ── Content panel ─────────────────────────────────────────────── */}
+          <div
+            className={`relative p-7 lg:p-10 flex flex-col justify-center bg-card/80 ${!isEven ? "lg:order-1" : ""}`}
+          >
+            {/* Subtle glow behind content */}
+            <motion.div
+              className="absolute inset-0 rounded-r-2xl pointer-events-none"
+              animate={{ opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+              style={{
+                background: `radial-gradient(ellipse at 0% 50%, rgba(${project.accentRgb},0.08) 0%, transparent 70%)`,
+              }}
+            />
+
+            <div className="relative z-10">
+              {/* Icon + period */}
+              <div className="flex items-center gap-3 mb-5">
+                <motion.div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center border border-surfaceBorder/10"
+                  style={{ background: `rgba(${project.accentRgb},0.15)` }}
+                  animate={{ scale: isHovered ? 1.1 : 1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {t}
-                </motion.span>
-              ))}
-            </div>
+                  <i
+                    className={`${project.icon} text-base`}
+                    style={{ color: project.accentColor }}
+                    aria-hidden="true"
+                  />
+                </motion.div>
+                <span className="text-xs text-muted font-mono font-bold uppercase tracking-widest">
+                  {project.period}
+                </span>
+              </div>
 
-            {/* Direct CTA */}
-            <div className="flex items-center gap-4">
-               {project.liveUrl && (
+              {/* Title */}
+              <h3 className="text-2xl lg:text-3xl font-black text-main mb-1 leading-tight">
+                {project.title}
+              </h3>
+              <p
+                className="text-sm font-semibold mb-4"
+                style={{ color: project.accentColor }}
+              >
+                {project.subtitle}
+              </p>
+              <p className="text-muted text-sm leading-relaxed mb-5">
+                {project.description}
+              </p>
+
+              {/* Highlights — animate in stagger on hover */}
+              <ul className="space-y-2 mb-5">
+                {project.highlights.map((h, hIdx) => (
+                  <motion.li
+                    key={h}
+                    className="flex items-start gap-2.5 text-sm text-muted"
+                    animate={{
+                      x: isHovered ? 0 : -4,
+                      opacity: isHovered ? 1 : 0.75,
+                    }}
+                    transition={{ duration: 0.3, delay: hIdx * 0.05 }}
+                  >
+                    <motion.i
+                      className="fas fa-check text-xs mt-1 shrink-0"
+                      style={{ color: project.accentColor }}
+                      animate={{ scale: isHovered ? 1.2 : 1 }}
+                      transition={{ duration: 0.2, delay: hIdx * 0.05 }}
+                      aria-hidden="true"
+                    />
+                    {h}
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tags.map((t) => (
+                  <motion.span
+                    key={t}
+                    className="tech-tag"
+                    animate={{
+                      borderColor: isHovered
+                        ? `rgba(${project.accentRgb},0.35)`
+                        : "rgba(var(--accent),0.2)",
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {t}
+                  </motion.span>
+                ))}
+              </div>
+
+              {/* Direct CTA */}
+              <div className="flex items-center gap-4">
+                {project.liveUrl && (
                   <motion.a
                     href={project.liveUrl}
                     target="_blank"
@@ -637,19 +648,19 @@ function ShowcaseCard({
                     <i className="fas fa-external-link-alt text-xs" />
                     Live Demo
                   </motion.a>
-               )}
-               <button 
+                )}
+                <button
                   onClick={onClick}
                   className="text-xs font-bold text-muted hover:text-accent transition-colors flex items-center gap-2"
-               >
+                >
                   About Project
                   <i className="fas fa-plus text-[10px]" />
-               </button>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
     </div>
   );
 }
@@ -695,7 +706,7 @@ function ProjectDetailModal({ project, onClose }: { project: (typeof SHOWCASE)[0
               priority
             />
             <div className={`absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent`} />
-            
+
             <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -738,7 +749,7 @@ function ProjectDetailModal({ project, onClose }: { project: (typeof SHOWCASE)[0
                 <h3 className="text-accent font-mono text-sm tracking-widest uppercase mb-4">03. Key Features</h3>
                 <ul className="grid sm:grid-cols-2 gap-4">
                   {project.fullDetails.features.map((feature, i) => (
-                    <motion.li 
+                    <motion.li
                       key={i}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -757,11 +768,11 @@ function ProjectDetailModal({ project, onClose }: { project: (typeof SHOWCASE)[0
                   <h3 className="text-accent font-mono text-sm tracking-widest uppercase mb-4">04. Technical Highlights</h3>
                   <div className="space-y-3">
                     {project.fullDetails.technicalHighlights.map((highlight, i) => {
-                      const [title, desc] = highlight.includes(":") 
-                        ? [highlight.split(":")[0], highlight.split(":")[1]] 
+                      const [title, desc] = highlight.includes(":")
+                        ? [highlight.split(":")[0], highlight.split(":")[1]]
                         : ["Insight", highlight];
                       return (
-                        <motion.div 
+                        <motion.div
                           key={i}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
