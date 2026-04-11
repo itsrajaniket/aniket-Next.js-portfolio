@@ -98,7 +98,7 @@ export default function MobileNav() {
                             onClick={close}
                             className="text-xl font-bold text-main hover:text-accent transition-colors flex items-center gap-4 group"
                           >
-                            <span className="text-accent text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity uppercase tracking-tighter">0{i + 1}</span>
+                             <span className="text-accent text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity uppercase tracking-tighter">0{i+1}</span>
                             {label}
                           </Link>
                         ) : (
@@ -107,7 +107,7 @@ export default function MobileNav() {
                             onClick={(e) => handleAnchorClick(e, href)}
                             className="text-xl font-bold text-main hover:text-accent transition-colors flex items-center gap-4 group"
                           >
-                            <span className="text-accent text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity uppercase tracking-tighter">0{i + 1}</span>
+                            <span className="text-accent text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity uppercase tracking-tighter">0{i+1}</span>
                             {label}
                           </a>
                         )}
@@ -115,7 +115,7 @@ export default function MobileNav() {
                     ))}
                   </div>
 
-                  <motion.div
+                  <motion.div 
                     className="mt-12 pt-8 border-t border-surfaceBorder/10"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
