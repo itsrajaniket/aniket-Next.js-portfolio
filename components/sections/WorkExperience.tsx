@@ -174,18 +174,22 @@ const TIMELINE = [
   },
 ];
 
-// ── 3D tilt card hook ──────────────────────────────────────────────────────
+// ── 3D tilt card hook (Optimized) ─────────────────────────────────────────
 function useTilt(enabled: boolean) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  
+  // Reduced stiffness and added mass for a more 'buttery' smooth glide
   const rotX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), {
-    stiffness: 300,
-    damping: 30,
+    stiffness: 120,
+    damping: 20,
+    mass: 0.5,
   });
   const rotY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), {
-    stiffness: 300,
-    damping: 30,
+    stiffness: 120,
+    damping: 20,
+    mass: 0.5,
   });
 
   const onMove = useCallback(
@@ -428,11 +432,12 @@ function ShowcaseCard({
             rotateX: tilt.rotX,
             rotateY: tilt.rotY,
             transformStyle: "preserve-3d",
+            willChange: "transform", // Enforces GPU hardware acceleration
             opacity: anyHovered && !isHovered ? 0.55 : 1,
-            transition: "opacity 0.3s ease",
+            transition: "opacity 0.4s ease, box-shadow 0.4s ease", // Smooth transition for non-motion values
             boxShadow: isHovered
               ? `0 0 0 1px rgb(${project.accentRgb} / 0.4), 0 25px 60px -10px rgb(${project.accentRgb} / var(--glow-strength))`
-              : "none",
+              : "0 0 0 1px rgba(255,255,255,0.05), 0 0px 0px 0px rgba(0,0,0,0)",
           }
         }
         ref={tilt.ref}
@@ -442,7 +447,7 @@ function ShowcaseCard({
           onHover(null);
         }}
         onMouseEnter={() => onHover(project.id)}
-        className="relative rounded-2xl overflow-hidden border border-surfaceBorder/10 cursor-pointer group"
+        className="relative rounded-2xl overflow-hidden cursor-pointer group"
         aria-label={`Featured project: ${project.title}`}
       >
         <div className={`grid lg:grid-cols-2`}>
