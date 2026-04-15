@@ -28,6 +28,96 @@ const PdfViewer: React.FC<PdfViewerProps> = ({ url, title, fileSize }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Listen for iframe PDF load completion
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data === 'pdfLoaded') {
+        setIsLoaded(true);
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
+  // Secure fully custom canvas-based PDF renderer (bypasses browser PDF plugins)
+  const pdfJsHtml = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+        <style>
+          body { 
+            margin: 0; 
+            padding: 20px; 
+            background: transparent; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            overflow-y: auto; 
+            overflow-x: hidden; 
+            /* Stop text selection across PDF */
+            user-select: none;
+            -webkit-user-select: none;
+          }
+          canvas { 
+            max-width: 100%; 
+            height: auto; 
+            margin-bottom: 20px; 
+            border-radius: 4px;
+          }
+          ::-webkit-scrollbar { width: 6px; }
+          ::-webkit-scrollbar-track { background: transparent; }
+          ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+          ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+        </style>
+      </head>
+      <body oncontextmenu="return false;">
+        <div id="pdf-container"></div>
+        <script>
+          pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+          
+          window.onload = () => {
+             const rawUrl = "${url}";
+             const fileUrl = rawUrl.startsWith('http') ? rawUrl : window.parent.location.origin + (rawUrl.startsWith('/') ? '' : '/') + rawUrl;
+             
+             const loadingTask = pdfjsLib.getDocument(fileUrl);
+             loadingTask.promise.then((pdf) => {
+               const container = document.getElementById('pdf-container');
+               
+               // Render pages in sequence
+               const renderPage = (pageNum) => {
+                 if (pageNum > pdf.numPages) {
+                   window.parent.postMessage('pdfLoaded', '*');
+                   return;
+                 }
+                 pdf.getPage(pageNum).then((page) => {
+                   const viewport = page.getViewport({ scale: 1.5 });
+                   const canvas = document.createElement('canvas');
+                   const context = canvas.getContext('2d');
+                   canvas.height = viewport.height;
+                   canvas.width = viewport.width;
+                   container.appendChild(canvas);
+                   
+                   page.render({
+                     canvasContext: context,
+                     viewport: viewport
+                   }).promise.then(() => {
+                     renderPage(pageNum + 1);
+                   });
+                 });
+               };
+               
+               renderPage(1);
+             }).catch(err => {
+               console.error("Error loading PDF via canvas:", err);
+               window.parent.postMessage('pdfLoaded', '*'); // Fallback trigger
+             });
+          };
+        </script>
+      </body>
+    </html>
+  `;
+
   // Prevent right-click on the container
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -77,14 +167,7 @@ const PdfViewer: React.FC<PdfViewerProps> = ({ url, title, fileSize }) => {
           </div>
         )}
 
-        {/* Security Overlay - Blocks all click interactions with the PDF renderer */}
-        <div 
-          className="absolute inset-0 z-30 cursor-default" 
-          onClick={() => {
-            setSecurityAlert(true);
-            setTimeout(() => setSecurityAlert(false), 3000);
-          }}
-        />
+        {/* Security Overlay - Removed blocking overlay to allow scrolling */}
 
         {/* Security Banner */}
         {securityAlert && (
@@ -100,31 +183,14 @@ const PdfViewer: React.FC<PdfViewerProps> = ({ url, title, fileSize }) => {
           </motion.div>
         )}
 
-        {/* The Actual PDF - Only rendered when in view */}
+        {/* The Actual PDF - Rendered as Canvases within iframe sandbox */}
         {isInView && (
-          <object
-            data={`${url}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
-            type="application/pdf"
-            className={`w-full h-full rounded-lg transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-            onLoad={() => setIsLoaded(true)}
+          <iframe
+            srcDoc={pdfJsHtml}
+            className={`w-full h-full rounded-lg transition-all duration-1000 border-none ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
             title={title}
-          >
-            {/* Fallback for browsers that don't support objects/PDFs */}
-            <div className="flex flex-col items-center justify-center h-full text-main/60 p-8 text-center bg-black/40 backdrop-blur-sm rounded-lg border border-white/5">
-              <div className="mb-4 text-accent/50">
-                <svg className="w-16 h-16 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-              </div>
-              <h3 className="text-main font-bold mb-2 uppercase tracking-widest text-sm">Viewer Protocol Failure</h3>
-              <p className="text-xs mb-6 max-w-xs mx-auto leading-relaxed">
-                Native PDF rendering is restricted or unsupported by your terminal hardware. Document access requires Chrome, Safari, or Edge.
-              </p>
-              <div className="px-4 py-2 border border-accent/30 text-accent text-[10px] uppercase tracking-tighter bg-accent/5 rounded font-mono">
-                Error Ref: #NULL_RENDERER_0x12F
-              </div>
-            </div>
-          </object>
+            sandbox="allow-scripts allow-same-origin"
+          />
         )}
       </div>
 
