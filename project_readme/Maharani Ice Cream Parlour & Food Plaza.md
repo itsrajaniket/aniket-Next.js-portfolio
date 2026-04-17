@@ -20,7 +20,7 @@
 
 ---
 
-## 1. Project Overview
+## 1. Project Overview 
 **What is this project?**  
 Maharani Ice Cream Parlour & Food Plaza is a mobile-first, zero-build restaurant ordering web application. It acts as a digital menu and checkout system that allows users to seamlessly browse dishes, manage a shopping cart, and submit their orders directly to the restaurant.
 

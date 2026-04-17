@@ -25,17 +25,22 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Aniket Raj | React Developer & Frontend Engineer",
+    default: "Aniket Raj | MERN Stack Developer & Frontend Engineer",
     template: "%s | Aniket Raj",
   },
   description:
-    "Aniket Raj – React Developer specializing in high-performance React ecosystems, Redux, and modern frontend engineering. Based in Indore, India.",
+    "Aniket Raj – MERN Stack Developer specializing in building scalable web applications using MongoDB, Express.js, React, Node.js, and Next.js. Based in Indore, India.",
   keywords: [
     "Aniket Raj",
+    "MERN Stack Developer",
+    "Full Stack Developer",
     "React Developer",
-    "Frontend Developer",
-    "JavaScript",
+    "MongoDB",
+    "Express.js",
+    "React",
+    "Node.js",
     "Next.js",
+    "JavaScript",
     "Redux",
     "Tailwind CSS",
     "Portfolio",
@@ -55,24 +60,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.rajaniket.com",
-    title: "Aniket Raj | React Developer & Frontend Engineer",
+    title: "Aniket Raj | MERN Stack Developer & Frontend Engineer",
     description:
-      "Building high-performance React ecosystems. Open to new opportunities.",
+      "Building full-stack MERN applications and high-performance React ecosystems. Open to new opportunities.",
     siteName: "Aniket Raj Portfolio",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aniket Raj – React Developer",
+        alt: "Aniket Raj – MERN Stack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aniket Raj | React Developer",
+    title: "Aniket Raj | MERN Stack Developer",
     description:
-      "Building high-performance React ecosystems. Open to new opportunities.",
+      "Building full-stack MERN applications and high-performance React ecosystems. Open to new opportunities.",
     images: ["/og-image.png"],
     creator: "@Aniket_repo",
   },
