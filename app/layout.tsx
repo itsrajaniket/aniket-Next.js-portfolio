@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Aniket Raj",
   },
   description:
-    "Aniket Raj – MERN Stack Developer specializing in building scalable web applications using MongoDB, Express.js, React, Node.js, and Next.js. Based in Indore, India.",
+    "Aniket Raj – MERN Stack Developer specializing in building scalable web applications using MongoDB, Express.js, React, Node.js, and Next.js. Based in India.",
   keywords: [
     "Aniket Raj",
     "MERN Stack Developer",

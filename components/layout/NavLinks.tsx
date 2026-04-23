@@ -65,13 +65,13 @@ export default function NavLinks({ onLinkClick, className = "" }: NavLinksProps)
         <a
           href="/Aniket_Raj_Resume.pdf"
           download="Aniket_Raj_Resume.pdf"
-          className="px-4 py-1 border border-accent text-accent rounded-full font-bold text-xs
+          className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap px-4 py-1.5 border border-accent text-accent rounded-full font-bold text-xs
                      hover:bg-accent hover:text-inverseText transition-all
                      shadow-[0_0_10px_rgba(var(--accent),0.2)]
-                     hover:shadow-[0_0_25px_rgba(var(--accent),0.7)]"
+                     hover:shadow-[0_0_25px_rgba(var(--accent),0.7)] shrink-0"
           aria-label="Download Aniket Raj's Resume PDF"
         >
-          Resume <i className="fas fa-download ml-1" aria-hidden="true" />
+          Resume <i className="fas fa-download" aria-hidden="true" />
         </a>
       </li>
     </ul>

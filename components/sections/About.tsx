@@ -83,7 +83,7 @@ export default function About() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-bold text-main">Aniket Raj</p>
-                    <p className="text-xs text-muted">MERN Stack  Developer · Indore, India</p>
+                    <p className="text-xs text-muted">MERN Stack  Developer · India</p>
                   </div>
                   <span className="flex items-center gap-1.5 text-xs font-mono text-green-400 bg-green-400/10 border border-green-400/20 px-2.5 py-1 rounded-full">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse inline-block" />
