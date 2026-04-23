@@ -9,8 +9,22 @@ import weatherImg from "@/public/images/project-weather.jpg";
 import speechImg from "@/public/images/project-speech.jpg";
 import qrImg from "@/public/images/project-qr.jpg";
 import dogImg from "@/public/images/project-dog.jpg";
+import claudeImg from "@/public/images/project-claude.png";
 
 export const projects: Project[] = [
+  {
+    id: "claude-counter",
+    title: "Token Tracker for Claude",
+    description:
+      "A privacy-first modern browser extension for Claude.ai granting real-time token tracking, 5-minute context cache countdowns, and exact session usage bars injected seamlessly into the native UI.",
+    tags: ["JAVASCRIPT", "MANIFEST V3", "WEB APIS"],
+    github: "https://github.com/itsrajaniket/Claude-Counter-Browser-Extension",
+    live: "https://github.com/itsrajaniket/Claude-Counter-Browser-Extension",
+    image: claudeImg,
+    icon: "fas fa-puzzle-piece",
+    featured: true,
+    accentColor: "emerald",
+  },
   {
     id: "habit-builder-kit",
     title: "Habit Builder Kit",
