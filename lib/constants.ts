@@ -88,11 +88,11 @@ export const SOCIAL_LINKS = [
 //   "Frontend Obsessive",
 // ] as const;
 export const TYPEWRITER_WORDS = [
+  "MERN Stack Builder",
   "React Developer",
   "Next.js Engineer",
   "UI Craftsman",
   "Frontend Obsessive",
-  "MERN Stack Builder",
   "Backend Explorer",
   "Automation Enthusiast",
   "Data-Driven Problem Solver",

@@ -13,7 +13,7 @@ declare global {
 
 const SECTIONS = [
   "home", "about", "skills", "work",
-  "projects", "services", "education", "blog", "contact",
+  "projects", "services", "education", "certifications", "blog", "contact",
 ];
 
 export default function AnalyticsEvents() {
@@ -51,7 +51,13 @@ export default function AnalyticsEvents() {
     // Fires once at 25%, 50%, 75%, 100% scroll depth
     const milestones = new Set<number>();
 
+    let isThrottled = false;
     const trackScroll = () => {
+      // Throttle event execution to prevent 120hz blocking calculations on the main thread
+      if (isThrottled) return;
+      isThrottled = true;
+      setTimeout(() => { isThrottled = false; }, 250);
+
       const scrolled = window.scrollY;
       const total = document.documentElement.scrollHeight - window.innerHeight;
       const pct = Math.round((scrolled / total) * 100);

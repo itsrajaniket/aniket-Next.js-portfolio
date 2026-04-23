@@ -123,6 +123,7 @@ export default function CertificationsGallery({ certificates }: { certificates: 
               </button>
               
               {/* Standard img tag bypasses Next.js optimization limits for huge raw images */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={selectedCert.path}
                 alt={selectedCert.title}
