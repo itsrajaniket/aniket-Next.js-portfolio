@@ -3,6 +3,7 @@ import Image from "next/image";
 import SectionReveal from "@/components/animations/SectionReveal";
 import SpotlightText from "@/components/animations/SpotlightText";
 import SpotlightReveal from "@/components/animations/SpotlightReveal";
+import MagneticWrapper from "@/components/animations/MagneticWrapper";
 
 const ABOUT_STATS = [
   { value: "15+", label: "Projects", sub: "shipped" },
@@ -191,21 +192,25 @@ export default function About() {
 
             {/* CTAs */}
             <div className="flex items-center gap-4 pt-4 relative z-10">
-              <a
-                href="#projects"
-                className="inline-flex items-center justify-center whitespace-nowrap px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm shadow-[0_0_20px_rgba(var(--accent),0.2)] shrink-0"
-              >
-                View Projects
-              </a>
-              <a
-                href="/Aniket_Raj_Resume.pdf"
-                download="Aniket_Raj_Resume.pdf"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap px-6 py-3 glass border border-surfaceBorder/10 text-main font-bold rounded-xl hover:border-accent hover:text-accent transition-all text-sm shrink-0"
-                aria-label="Download Aniket Raj Resume PDF"
-              >
-                <i className="fas fa-download" aria-hidden="true" />
-                Resume
-              </a>
+              <MagneticWrapper strength={0.4}>
+                <a
+                  href="#projects"
+                  className="inline-flex items-center justify-center whitespace-nowrap px-6 py-3 bg-accent text-inverseText font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm shadow-[0_0_20px_rgba(var(--accent),0.2)] shrink-0"
+                >
+                  View Projects
+                </a>
+              </MagneticWrapper>
+              <MagneticWrapper strength={0.4}>
+                <a
+                  href="/Aniket_Raj_Resume.pdf"
+                  download="Aniket_Raj_Resume.pdf"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap px-6 py-3 glass border border-surfaceBorder/10 text-main font-bold rounded-xl hover:border-accent hover:text-accent transition-all text-sm shrink-0"
+                  aria-label="Download Aniket Raj Resume PDF"
+                >
+                  <i className="fas fa-download" aria-hidden="true" />
+                  Resume
+                </a>
+              </MagneticWrapper>
             </div>
 
             {/* Stats — borderline row */}

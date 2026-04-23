@@ -5,6 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import Typewriter from "@/components/animations/Typewriter";
 import SpotlightText from "@/components/animations/SpotlightText";
+import MagneticWrapper from "@/components/animations/MagneticWrapper";
 import { HERO_STATS, AUTHOR_LOCATION } from "@/lib/constants";
 import headImg from "@/public/images/head.png";
 import avatarImg from "@/public/images/3D-avatar.png";
@@ -73,20 +74,24 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <a
-              href="#projects"
-              className="px-8 py-4 bg-inverseBase text-inverseText font-bold rounded-xl
-                         glow-shadow-hover hover:bg-accent hover:scale-105 transition-all shadow-lg shadow-surfaceBorder/5"
-            >
-              Explore My Work
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-4 glass border border-surfaceBorder/10 text-main font-bold rounded-xl
-                         glow-shadow-hover hover:border-accent hover:text-accent hover:bg-accent/5 transition-all"
-            >
-              Let&apos;s Talk
-            </a>
+            <MagneticWrapper strength={0.5}>
+              <a
+                href="#projects"
+                className="px-8 py-4 bg-inverseBase text-inverseText font-bold rounded-xl
+                           glow-shadow-hover hover:bg-accent hover:scale-105 transition-all shadow-lg shadow-surfaceBorder/5 inline-block"
+              >
+                Explore My Work
+              </a>
+            </MagneticWrapper>
+            <MagneticWrapper strength={0.5}>
+              <a
+                href="#contact"
+                className="px-8 py-4 glass border border-surfaceBorder/10 text-main font-bold rounded-xl
+                           glow-shadow-hover hover:border-accent hover:text-accent hover:bg-accent/5 transition-all inline-block"
+              >
+                Let&apos;s Talk
+              </a>
+            </MagneticWrapper>
           </div>
         </div>
 
