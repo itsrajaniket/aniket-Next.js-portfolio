@@ -56,12 +56,23 @@ It provides a centralized, professional platform for developers and tech profess
 - **Spider Network Particle Canvas** ⭐
   - **Function:** A custom background engine rendering 100+ particles that connect via dynamic lines when in proximity. 
   - **Experience:** Interactive background that follows the mouse and pauses when off-screen to save battery and performance.
+- **Magnetic Physics UI** ⭐
+  - **Function:** Custom mathematical wrapper using `framer-motion` to detect cursor proximity and apply a localized gravity field ("pull") to major Call-To-Action buttons.
+  - **Experience:** Interfaces feel tactile and highly expensive, physically responding to user intent before a click.
+- **Fluid Cursor Trail Engine** ⭐
+  - **Function:** A globally persistent, buttery-smooth spring-lagged glowing ring tracking the mouse, which intelligently transforms its scale and opacity when hovering native clickables.
+  - **Experience:** Overrides boring interaction states with Awwwards-tier micro-interactivity, while seamlessly degrading on touchscreen mobile devices to prevent input event ghosting.
 - **Dynamic Theme Customizer**
   - **Function:** A real-time UI menu to switch between "Cyberpunk", "Light", and "Midnight" themes, modifying global CSS variables instantly.
   - **Experience:** Users can tailor the entire website aesthetic to their preference with a single click.
 - **Grayscale-to-Color Personal Photo**
   - **Function:** Applies an image-processing transition to the profile photo on hover.
   - **Experience:** Subtle professional touch that adds personality to the About section.
+
+### 🏆 Credentials & Showcasing
+- **High-Fidelity Certifications Lightbox**
+  - **Function:** A scattered, artistic masonry grid for professional credentials that leverages unoptimized semantic `<img>` tags over `next/image`.
+  - **Experience:** Completely bypasses standard framework image-compression bottlenecks to guarantee 4K legibility of micro-text on official certificates while interacting with the fullscreen lightbox.
 
 ### ✍️ Content & Blog Logic
 - **Hybrid MDX/PDF Blog Engine** ⭐
@@ -81,6 +92,12 @@ It provides a centralized, professional platform for developers and tech profess
 - **Device-Aware Performance Scaling** ⭐
   - **Function:** Detects mobile devices and automatically reduces particle density and animation complexity to ensure a smooth 60FPS experience.
   - **Experience:** The site feels fast and responsive even on low-powered mobile devices.
+- **Micro-Throttled Analytics Engine**
+  - **Function:** Formally integrated a `250ms` throttle block onto the `window.scroll` event listener powering the `AnalyticsEvents` component.
+  - **Experience:** Captures rich scroll-depth metrics without thrashing the main thread or dropping rendering frames during intense background paints.
+- **Microsoft Clarity Telemetry Integration**
+  - **Function:** Embedded directly into the root layout via Next.js `next/script` utilizing `strategy="afterInteractive"`.
+  - **Experience:** Provides deep, passive user session reporting and heatmap recordings entirely off the critical rendering path to maintain perfect Lighthouse FCP scores.
 - **Intersection-Linked Reveals**
   - **Function:** Uses the IntersectionObserver API to trigger entrance animations (reveal, fade-in, slide) only when sections enter the user's viewport.
   - **Experience:** Prevents hidden animations from consuming resources and creates a "revealing" scroll effect.
@@ -125,6 +142,8 @@ aniket-portfolio/
 │   │   └── UmamiAnalytics.tsx      # Umami self-hosted script
 │   ├── animations/                 # Reusable Framer Motion components
 │   │   ├── AnimatedTitle.tsx       # Staggered letter animations
+│   │   ├── CustomCursorTrail.tsx   # Global physics-based trailing cursor
+│   │   ├── MagneticWrapper.tsx     # Zero-gravity UI pull physics
 │   │   ├── MotionWrapper.tsx       # Page transition logic
 │   │   ├── SectionReveal.tsx       # Scroll-into-view revealing
 │   │   ├── SpotlightReveal.tsx     # Cursor-gradient revealing
