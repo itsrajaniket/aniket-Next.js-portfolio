@@ -852,7 +852,7 @@ function ProjectDetailModal({ project, onClose }: { project: (typeof SHOWCASE)[0
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black text-sm bg-slate-900 border border-white/10 text-main hover:bg-slate-800 transition-all active:scale-95"
                   >
-                    <i className="fab fa-github" />
+                    <i className="fa-brands fa-github" />
                     View Source
                   </a>
                 )}

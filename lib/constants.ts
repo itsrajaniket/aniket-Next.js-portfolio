@@ -22,7 +22,7 @@ export const NAV_SECTION_IDS = NAV_ITEMS.filter((n) => !n.isRoute).map((n) =>
 
 export const SOCIAL_LINKS = [
   {
-    icon: "fab fa-linkedin",
+    icon: "fa-brands fa-linkedin",
     href: "https://linkedin.com/in/itsaniketraj",
     label: "LinkedIn Profile",
     handle: "@itsaniketraj",
@@ -30,7 +30,7 @@ export const SOCIAL_LINKS = [
     bg: "bg-blue-500/10 border-blue-500/20",
   },
   {
-    icon: "fab fa-github",
+    icon: "fa-brands fa-github",
     href: "https://github.com/itsrajaniket",
     label: "GitHub Profile",
     handle: "@itsrajaniket",
@@ -46,7 +46,7 @@ export const SOCIAL_LINKS = [
     bg: "bg-yellow-500/10 border-yellow-500/20",
   },
   {
-    icon: "fab fa-twitter",
+    icon: "fa-brands fa-twitter",
     href: "https://twitter.com/Aniket_repo",
     label: "Twitter Profile",
     handle: "@Aniket_repo",
@@ -54,7 +54,7 @@ export const SOCIAL_LINKS = [
     bg: "bg-sky-500/10 border-sky-500/20",
   },
   {
-    icon: "fab fa-instagram",
+    icon: "fa-brands fa-instagram",
     href: "https://instagram.com/letscodehi",
     label: "Instagram Profile",
     handle: "@letscodehi",

@@ -95,7 +95,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 className="text-muted hover:text-main transition-colors"
                 aria-label={`View ${project.title} on GitHub`}
               >
-                <i className="fab fa-github text-xl" aria-hidden="true" />
+                <i className="fa-brands fa-github text-xl" aria-hidden="true" />
               </a>
             )}
             {project.live && (

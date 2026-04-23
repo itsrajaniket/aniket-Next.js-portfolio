@@ -119,7 +119,7 @@ export default function Projects() {
             className="inline-flex items-center gap-3 px-8 py-4 glass border border-surfaceBorder/10 text-main font-bold rounded-xl hover:border-accent hover:text-accent transition-all"
             aria-label="View all projects on GitHub"
           >
-            <i className="fab fa-github text-xl" aria-hidden="true" />
+            <i className="fa-brands fa-github text-xl" aria-hidden="true" />
             View All on GitHub
             <i className="fas fa-arrow-right text-sm" aria-hidden="true" />
           </a>

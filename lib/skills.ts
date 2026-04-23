@@ -8,7 +8,7 @@ export const skillCategories: SkillCategory[] = [
       {
         name: "JavaScript",
         subtitle: "ES6+ & Async",
-        icon: "fab fa-js",
+        icon: "fa-brands fa-js",
         color: "text-yellow-400",
         borderHover: "hover:border-yellow-400/50",
       },
@@ -22,21 +22,21 @@ export const skillCategories: SkillCategory[] = [
       {
         name: "HTML & CSS",
         subtitle: "Semantic",
-        icon: "fab fa-html5",
+        icon: "fa-brands fa-html5",
         color: "text-orange-500",
         borderHover: "hover:border-orange-500/50",
       },
       {
         name: "Java",
         subtitle: "OOP Logic",
-        icon: "fab fa-java",
+        icon: "fa-brands fa-java",
         color: "text-red-500",
         borderHover: "hover:border-red-500/50",
       },
       {
         name: "Python",
         subtitle: "Scripting",
-        icon: "fab fa-python",
+        icon: "fa-brands fa-python",
         color: "text-yellow-300",
         borderHover: "hover:border-yellow-300/50",
       },
@@ -49,7 +49,7 @@ export const skillCategories: SkillCategory[] = [
       {
         name: "React.js",
         subtitle: "Ecosystem Expert",
-        icon: "fab fa-react",
+        icon: "fa-brands fa-react",
         color: "text-cyan-400",
         borderHover: "hover:border-cyan-400/50",
       },
@@ -90,7 +90,7 @@ export const skillCategories: SkillCategory[] = [
       {
         name: "Git & GitHub",
         subtitle: "Version Control",
-        icon: "fab fa-git-alt",
+        icon: "fa-brands fa-git-alt",
         color: "text-orange-400",
         borderHover: "hover:border-orange-400/50",
       },
@@ -104,7 +104,7 @@ export const skillCategories: SkillCategory[] = [
       {
         name: "Figma",
         subtitle: "UI Design",
-        icon: "fab fa-figma",
+        icon: "fa-brands fa-figma",
         color: "text-purple-300",
         borderHover: "hover:border-purple-300/50",
       },

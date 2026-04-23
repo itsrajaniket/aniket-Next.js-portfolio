@@ -96,7 +96,7 @@ export default function Hero() {
 
             {/* Floating React icon badge */}
             <div className="absolute -top-6 -right-6 w-20 h-20 glass rounded-2xl flex items-center justify-center border border-surfaceBorder/20 shadow-xl z-10">
-              <i className="fab fa-react text-4xl text-accent animate-spin-slow" aria-hidden="true" />
+              <i className="fa-brands fa-react text-4xl text-accent animate-spin-slow" aria-hidden="true" />
             </div>
 
             {/* Avatar */}
@@ -131,7 +131,7 @@ export default function Hero() {
             <div className="grid grid-cols-3 gap-3">
               {[
                 { icon: "fas fa-code", color: "text-accent", label: "Projects", value: HERO_STATS[0].value },
-                { icon: "fab fa-github", color: "text-purple-400", label: "Repos", value: HERO_STATS[1].value },
+                { icon: "fa-brands fa-github", color: "text-purple-400", label: "Repos", value: HERO_STATS[1].value },
                 { icon: "fas fa-star", color: "text-yellow-400", label: "Year", value: "2025" },
               ].map(({ icon, color, label, value }) => (
                 <div key={label} className="bg-card/40 p-2 rounded-xl text-center border border-surfaceBorder/5 backdrop-blur-sm will-change-transform">

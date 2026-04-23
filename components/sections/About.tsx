@@ -83,7 +83,7 @@ export default function About() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-bold text-main">Aniket Raj</p>
-                    <p className="text-xs text-muted">React Developer · Indore, India</p>
+                    <p className="text-xs text-muted">MERN Stack  Developer · Indore, India</p>
                   </div>
                   <span className="flex items-center gap-1.5 text-xs font-mono text-green-400 bg-green-400/10 border border-green-400/20 px-2.5 py-1 rounded-full">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse inline-block" />
@@ -97,7 +97,7 @@ export default function About() {
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                   {[
                     { k: "Stack", v: "React · Next.js" },
-                    { k: "Focus", v: "Frontend eng." },
+                    { k: "Focus", v: "Full‑Stack Engineer" },
                     { k: "Available", v: "Immediately" },
                     { k: "Mode", v: "Remote / On-site" },
                   ].map(({ k, v }) => (
@@ -127,13 +127,13 @@ export default function About() {
                   style={{ animationDuration: "12s" }}
                 >
                   {[
-                    { icon: "fab fa-react", color: "text-accent", pos: "top-0 left-1/2 -translate-x-1/2 -mt-3" },
-                    { icon: "fab fa-js", color: "text-yellow-400", pos: "bottom-0 left-1/2 -translate-x-1/2 -mb-3" },
-                    { icon: "fab fa-css3-alt", color: "text-blue-500", pos: "left-0 top-1/2 -translate-y-1/2 -ml-3" },
-                    { icon: "fab fa-html5", color: "text-orange-500", pos: "right-0 top-1/2 -translate-y-1/2 -mr-3" },
-                  ].map(({ icon, color, pos }) => (
+                    { id: "mongo", icon: "fas fa-leaf", color: "text-green-500", pos: "top-0 left-1/2 -translate-x-1/2 -mt-3" },
+                    { id: "express", icon: "fas fa-server", color: "text-slate-400", pos: "bottom-0 left-1/2 -translate-x-1/2 -mb-3" },
+                    { id: "react", icon: "fas fa-atom", color: "text-cyan-400", pos: "left-0 top-1/2 -translate-y-1/2 -ml-3" },
+                    { id: "node", icon: "fa-brands fa-node-js", color: "text-green-400", pos: "right-0 top-1/2 -translate-y-1/2 -mr-3" },
+                  ].map(({ id, icon, color, pos }) => (
                     <i
-                      key={icon}
+                      key={id}
                       className={`${icon} ${color} text-base absolute ${pos} bg-base p-1.5 rounded-md border border-surfaceBorder/10`}
                       aria-hidden="true"
                     />
