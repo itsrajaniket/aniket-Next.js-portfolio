@@ -2,6 +2,16 @@ import type { ExperienceItem, EducationItem, ServiceItem } from "@/types";
 
 export const experiences: ExperienceItem[] = [
   {
+    period: "Apr 2026 — Present",
+    title: "MERN Full Stack Intern",
+    subtitle: "Alit Technologies · Indore (Hybrid)",
+    description:
+      "Developing scalable full-stack web applications using MongoDB, Express.js, React, and Node.js. Contributing to architectural decisions and performance optimizations within a hybrid team environment.",
+    badge: "Internship",
+    badgeColor: "green",
+    type: "work",
+  },
+  {
     period: "2024 — Present",
     title: "Frontend Developer",
     subtitle: "Freelance / Self-Employed",

@@ -161,6 +161,18 @@ const SHOWCASE = [
 
 const TIMELINE = [
   {
+    period: "Apr 2026 — Present",
+    role: "MERN Full Stack Intern",
+    company: "Alit Technologies · Indore",
+    badge: "Internship",
+    badgeClass: "bg-green-500/15 border-green-500/30 text-green-300",
+    dot: "bg-green-400",
+    pulse: true,
+    description:
+      "Developing scalable full-stack web applications utilizing MongoDB, Express.js, React, and Node.js. Contributing to architectural decisions, API design, and frontend performance optimizations within a collaborative hybrid engineering environment.",
+    tags: ["REACT", "NEXT.JS", "NODE.JS", "EXPRESS", "MONGODB"],
+  },
+  {
     period: "2024 — Present",
     role: "Freelance Frontend Developer",
     company: "Self-Employed · Remote · Indore",
@@ -179,7 +191,7 @@ function useTilt(enabled: boolean) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  
+
   // Reduced stiffness and added mass for a more 'buttery' smooth glide
   const rotX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), {
     stiffness: 120,
