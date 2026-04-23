@@ -2,7 +2,7 @@ export const SITE_URL = "https://www.rajaniket.com";
 export const SITE_NAME = "Aniket Raj Portfolio";
 export const AUTHOR_NAME = "Aniket Raj";
 export const AUTHOR_EMAIL = "aniketrajid@gmail.com";
-export const AUTHOR_LOCATION = "Indore, Madhya Pradesh, India";
+export const AUTHOR_LOCATION = "India";
 
 export const NAV_ITEMS = [
   { label: "Home", href: "#home", isRoute: false },

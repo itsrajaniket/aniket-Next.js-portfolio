@@ -175,7 +175,7 @@ const TIMELINE = [
   {
     period: "2024 — Present",
     role: "Freelance Frontend Developer",
-    company: "Self-Employed · Remote · Indore",
+    company: "Self-Employed · Remote · India",
     badge: "Active",
     badgeClass: "bg-green-500/15 border-green-500/30 text-green-300",
     dot: "bg-green-400",

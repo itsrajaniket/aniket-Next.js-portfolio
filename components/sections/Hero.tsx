@@ -116,7 +116,7 @@ export default function Hero() {
             <div className="pt-4 border-t border-surfaceBorder/10 flex justify-between items-center mb-4">
               <div>
                 <p className="text-xs uppercase tracking-widest text-muted font-bold">Location</p>
-                <p className="text-sm font-medium">{AUTHOR_LOCATION.split(",")[0]}, India</p>
+                <p className="text-sm font-medium">{AUTHOR_LOCATION}</p>
               </div>
               <div className="text-right">
                 <p className="text-xs uppercase tracking-widest text-muted font-bold">Status</p>
