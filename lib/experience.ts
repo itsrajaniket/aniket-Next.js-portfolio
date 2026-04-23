@@ -35,7 +35,7 @@ export const experiences: ExperienceItem[] = [
 
 export const education: EducationItem[] = [
   {
-    period: "2024 — Present",
+    period: "Present",
     degree: "Full-Stack Web Development",
     institution: "Self-Directed / Online",
     badge: "In Progress",

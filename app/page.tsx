@@ -6,6 +6,7 @@ import WorkExperience from "@/components/sections/WorkExperience";
 import Projects from "@/components/sections/Projects";
 import Services from "@/components/sections/Services";
 import Education from "@/components/sections/Education";
+import Certifications from "@/components/sections/Certifications";
 import BlogPreview from "@/components/sections/BlogPreview";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Projects />
       <Services />
       <Education />
+      <Certifications />
       <BlogPreview />
       <Contact />
       <Footer />

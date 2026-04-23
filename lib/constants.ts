@@ -12,6 +12,7 @@ export const NAV_ITEMS = [
   { label: "Projects", href: "#projects", isRoute: false },
   { label: "Services", href: "#services", isRoute: false },
   { label: "Education", href: "#education", isRoute: false },
+  { label: "Certifications", href: "#certifications", isRoute: false },
   { label: "Blog", href: "/blog", isRoute: true },
   { label: "Contact", href: "#contact", isRoute: false },
 ] as const;
