@@ -42,7 +42,7 @@ export default function Skills() {
           </SectionReveal>
 
           {/* Skills grid */}
-          <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {skillCategories.map((category, catIdx) => (
               <SectionReveal key={category.title} delay={catIdx * 0.12}>
                 <div className="space-y-4">
@@ -50,7 +50,7 @@ export default function Skills() {
                     <i className={`${category.icon} text-accent mr-3`} aria-hidden="true" />
                     {category.title}
                   </h3>
- 
+
                   {category.skills.map((skill, skillIdx) => (
                     <div
                       key={skill.name}
