@@ -2,7 +2,7 @@ import type { SkillCategory } from "@/types";
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Core",
+    title: "Core Languages",
     icon: "fas fa-code",
     skills: [
       {
@@ -43,7 +43,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: "Frameworks",
+    title: "Frontend Architecture",
     icon: "fas fa-layer-group",
     skills: [
       {
@@ -61,7 +61,7 @@ export const skillCategories: SkillCategory[] = [
         borderHover: "hover:border-white/50",
       },
       {
-        name: "Redux Toolkit",
+        name: "Redux / Zustand",
         subtitle: "State Mgmt",
         icon: "fas fa-atom",
         color: "text-purple-400",
@@ -84,7 +84,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: "Backend & Database",
+    title: "Backend Architecture",
     icon: "fas fa-server",
     skills: [
       {
@@ -125,7 +125,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: "Tools",
+    title: "Development Tools",
     icon: "fas fa-tools",
     skills: [
       {
@@ -143,11 +143,11 @@ export const skillCategories: SkillCategory[] = [
         borderHover: "hover:border-blue-500/50",
       },
       {
-        name: "Figma",
-        subtitle: "UI Design",
-        icon: "fa-brands fa-figma",
-        color: "text-purple-300",
-        borderHover: "hover:border-purple-300/50",
+        name: "Postman",
+        subtitle: "API Testing",
+        icon: "fas fa-rocket",
+        color: "text-orange-500",
+        borderHover: "hover:border-orange-500/50",
       },
       {
         name: "Vite",
