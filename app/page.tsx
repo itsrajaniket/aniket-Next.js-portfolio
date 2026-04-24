@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
+import MemoryGame from "@/components/game/MemoryGame";
 import WorkExperience from "@/components/sections/WorkExperience";
 import Projects from "@/components/sections/Projects";
 import Services from "@/components/sections/Services";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Hero />
       <About />
       <Skills />
+      <MemoryGame />
       <WorkExperience />
       <Projects />
       <Services />
