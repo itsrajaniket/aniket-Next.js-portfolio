@@ -5,7 +5,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
-import { NAV_ITEMS } from "@/lib/constants";
+import { ALL_NAV_ITEMS } from "@/lib/constants";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,7 +85,7 @@ export default function MobileNav() {
               >
                 <div className="flex-1 flex flex-col p-8 pt-24 overflow-y-auto custom-scrollbar">
                   <div className="flex flex-col space-y-4">
-                    {NAV_ITEMS.map(({ label, href, isRoute }, i) => (
+                    {ALL_NAV_ITEMS.map(({ label, href, isRoute }, i) => (
                       <motion.div
                         key={href}
                         initial={{ opacity: 0, x: 20 }}
@@ -98,7 +98,7 @@ export default function MobileNav() {
                             onClick={close}
                             className="text-xl font-bold text-main hover:text-accent transition-colors flex items-center gap-4 group"
                           >
-                             <span className="text-accent text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity uppercase tracking-tighter">0{i+1}</span>
+                             <span className="text-accent text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity uppercase tracking-tighter">{i < 9 ? `0${i+1}` : i+1}</span>
                             {label}
                           </Link>
                         ) : (
@@ -107,7 +107,7 @@ export default function MobileNav() {
                             onClick={(e) => handleAnchorClick(e, href)}
                             className="text-xl font-bold text-main hover:text-accent transition-colors flex items-center gap-4 group"
                           >
-                            <span className="text-accent text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity uppercase tracking-tighter">0{i+1}</span>
+                            <span className="text-accent text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity uppercase tracking-tighter">{i < 9 ? `0${i+1}` : i+1}</span>
                             {label}
                           </a>
                         )}

@@ -4,7 +4,7 @@ export const AUTHOR_NAME = "Aniket Raj";
 export const AUTHOR_EMAIL = "aniketrajid@gmail.com";
 export const AUTHOR_LOCATION = "India";
 
-export const NAV_ITEMS = [
+export const ALL_NAV_ITEMS = [
   { label: "Home", href: "#home", isRoute: false },
   { label: "About", href: "#about", isRoute: false },
   { label: "Skills", href: "#skills", isRoute: false },
@@ -13,6 +13,19 @@ export const NAV_ITEMS = [
   { label: "Services", href: "#services", isRoute: false },
   { label: "Education", href: "#education", isRoute: false },
   { label: "Certifications", href: "#certifications", isRoute: false },
+  { label: "Blog", href: "/blog", isRoute: true },
+  { label: "Playground", href: "/playground", isRoute: true },
+  { label: "Contact", href: "#contact", isRoute: false },
+] as const;
+
+// Essential links for the desktop Navbar to maintain a clean UI
+export const NAV_ITEMS = [
+  { label: "Home", href: "#home", isRoute: false },
+  { label: "About", href: "#about", isRoute: false },
+  { label: "Work", href: "#work", isRoute: false },
+  { label: "Projects", href: "#projects", isRoute: false },
+  { label: "Credentials", href: "#certifications", isRoute: false },
+  { label: "Playground", href: "/playground", isRoute: true },
   { label: "Blog", href: "/blog", isRoute: true },
   { label: "Contact", href: "#contact", isRoute: false },
 ] as const;

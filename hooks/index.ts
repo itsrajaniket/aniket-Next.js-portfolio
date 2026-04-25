@@ -61,3 +61,26 @@ export function useScrolled(threshold = 500): boolean {
 
   return scrolled;
 }
+
+// ── useScrollDirection ──────────────────────────────────────────────────────
+export function useScrollDirection(): "up" | "down" {
+  const [scrollDir, setScrollDir] = useState<"up" | "down">("up");
+
+  useEffect(() => {
+    let lastScrollY = window.pageYOffset;
+
+    const updateScrollDir = () => {
+      const scrollY = window.pageYOffset;
+      // Minimum scroll threshold to avoid jitter
+      if (Math.abs(scrollY - lastScrollY) < 10) return;
+
+      setScrollDir(scrollY > lastScrollY ? "down" : "up");
+      lastScrollY = scrollY > 0 ? scrollY : 0;
+    };
+
+    window.addEventListener("scroll", updateScrollDir);
+    return () => window.removeEventListener("scroll", updateScrollDir);
+  }, []);
+
+  return scrollDir;
+}

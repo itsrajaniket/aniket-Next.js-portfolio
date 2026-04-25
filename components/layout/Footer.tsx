@@ -1,6 +1,6 @@
 // Server Component
 import Link from "next/link";
-import { SOCIAL_LINKS, NAV_ITEMS, AUTHOR_NAME } from "@/lib/constants";
+import { SOCIAL_LINKS, ALL_NAV_ITEMS, AUTHOR_NAME } from "@/lib/constants";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Quick nav — renders anchors or Link based on isRoute */}
           <nav aria-label="Footer navigation">
             <ul className="flex flex-wrap gap-x-5 gap-y-2 justify-center">
-              {NAV_ITEMS.filter((_, i) => i > 0).map(({ label, href, isRoute }) => (
+              {ALL_NAV_ITEMS.filter((_, i) => i > 0).map(({ label, href, isRoute }) => (
                 <li key={href}>
                   {isRoute ? (
                     <Link href={href} className="text-sm text-muted hover:text-accent transition-colors">
