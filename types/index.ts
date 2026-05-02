@@ -63,7 +63,7 @@ export interface BlogPost {
   date: string;
   readingTime: string;
   tags: string[];
-  coverImage?: string;
+  coverImage?: string | StaticImageData;
   type?: "mdx" | "pdf";
   pdfUrl?: string;
   fileSize?: string;

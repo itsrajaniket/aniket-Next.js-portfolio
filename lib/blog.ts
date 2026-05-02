@@ -92,7 +92,7 @@ export function getAllPosts(): BlogPost[] {
           date: "2026-05-01",
           readingTime: "Case Study",
           tags: ["Project", ...project.tags.slice(0, 2)],
-          coverImage: typeof project.image === 'string' ? project.image : undefined,
+          coverImage: project.image,
           type: "mdx",
         });
       }
