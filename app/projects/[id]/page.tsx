@@ -27,6 +27,9 @@ export async function generateMetadata({
   return {
     title: `${result.project.title} | Case Study`,
     description: result.project.description,
+    openGraph: {
+      images: [{ url: typeof result.project.image === 'string' ? result.project.image : (result.project.image as any).src }],
+    }
   };
 }
 

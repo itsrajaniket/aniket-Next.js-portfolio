@@ -35,7 +35,9 @@ export async function generateMetadata({
       description: post.description,
       type: "article",
       publishedTime: post.date,
-      images: post.coverImage ? [{ url: post.coverImage }] : [{ url: "/og-image.png" }],
+      images: post.coverImage 
+        ? [{ url: typeof post.coverImage === 'string' ? post.coverImage : (post.coverImage as any).src }] 
+        : [{ url: "/og-image.png" }],
     },
     twitter: {
       card: "summary_large_image",
