@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { StaticImageData } from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/blog";
@@ -36,7 +37,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.date,
       images: post.coverImage 
-        ? [{ url: typeof post.coverImage === 'string' ? post.coverImage : (post.coverImage as any).src }] 
+        ? [{ url: typeof post.coverImage === 'string' ? post.coverImage : (post.coverImage as StaticImageData).src }] 
         : [{ url: "/og-image.png" }],
     },
     twitter: {

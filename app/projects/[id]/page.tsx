@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { StaticImageData } from "next/image";
 import Image from "next/image";
 import { getProjectCaseStudy, getAllProjectIds } from "@/lib/projects-content";
 import { mdToHtml } from "@/lib/markdown";
@@ -28,7 +29,7 @@ export async function generateMetadata({
     title: `${result.project.title} | Case Study`,
     description: result.project.description,
     openGraph: {
-      images: [{ url: typeof result.project.image === 'string' ? result.project.image : (result.project.image as any).src }],
+      images: [{ url: typeof result.project.image === 'string' ? result.project.image : (result.project.image as StaticImageData).src }],
     }
   };
 }
