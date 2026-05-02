@@ -27,7 +27,7 @@ interface CardData {
 const playSound = (type: 'flip' | 'match' | 'error' | 'win') => {
   if (typeof window === 'undefined') return;
   try {
-    const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+    const AudioContext = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
     const osc = ctx.createOscillator();
