@@ -6,8 +6,6 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import MouseTrailCanvas from "@/components/visuals/MouseTrailCanvas";
-import ThemeCustomizer from "@/components/theme/ThemeCustomizer";
 import React from "react";
 
 // ── Dynamic Imports for Performance ───────────────────────────────────────────
