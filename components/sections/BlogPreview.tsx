@@ -49,7 +49,7 @@ export default function BlogPreview() {
           {posts.map((post, idx) => (
             <SectionReveal key={post.slug} delay={idx * 0.1}>
               <Link
-                href={`/blog/${post.slug}`}
+                href={post.slug}
                 className="group block bg-card/50 rounded-2xl p-6 border border-surfaceBorder/10
                            hover:border-accent/40 hover:-translate-y-1 hover:bg-card/60
                            transition-all duration-300 h-full backdrop-blur-sm will-change-transform"

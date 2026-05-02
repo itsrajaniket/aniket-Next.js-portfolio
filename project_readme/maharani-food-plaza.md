@@ -1,4 +1,4 @@
-# 🍦 Maharani Ice Cream Parlour & Food Plaza
+﻿# 🍦 Maharani Ice Cream Parlour & Food Plaza
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -22,10 +22,10 @@
 
 ## 1. Project Overview 
 **What is this project?**  
-Maharani Ice Cream Parlour & Food Plaza is a mobile-first, zero-build restaurant ordering web application. It acts as a digital menu and checkout system that allows users to seamlessly browse dishes, manage a shopping cart, and submit their orders directly to the restaurant.
+# 🍦 Maharani Ice Cream Parlour & Food Plaza
 
 **What real problem does it solve and who is it built for?**  
-It is built for local restaurants and cafés who need an instant, app-like mobile presence without the overhead of native app development, complex backend servers, or third-party delivery commission fees. It bridges the gap between physical dining and digital ordering by utilizing WhatsApp as the communication bridge.
+It is built for local restaurants and cafÃ©s who need an instant, app-like mobile presence without the overhead of native app development, complex backend servers, or third-party delivery commission fees. It bridges the gap between physical dining and digital ordering by utilizing WhatsApp as the communication bridge.
 
 **Value proposition:**  
 *A zero-build, mobile-first ordering engine turning casual browsers into paying customers via a seamless WhatsApp checkout.*
@@ -34,7 +34,7 @@ It is built for local restaurants and cafés who need an instant, app-like mobil
 
 ## 2. Live Demo & Visuals
 
-[🔗 Live Demo Link Placeholder](https://itsrajaniket.github.io/freelance-restaurant-app/)
+[ðŸ”— Live Demo Link Placeholder](https://itsrajaniket.github.io/freelance-restaurant-app/)
 
 <!-- **Visuals:**
 - ![Hero Section & Menu View](./assets/placeholder-hero.png)
@@ -68,13 +68,13 @@ It is built for local restaurants and cafés who need an instant, app-like mobil
 
 ## 4. Core Features
 
-- ⭐ **Mobile-First App-Like Experience**
+- â­ **Mobile-First App-Like Experience**
   - **What it does:** Mimics a native iOS/Android application perfectly within the browser.
   - **User Experience:** Provides smooth drawer modals (`cartPill` & `checkoutModal`), sticky bottom sheets, and responsive card layouts heavily optimized for 360px-430px screens.
-- ⭐ **Zero-Build Dynamic Rendering**
+- â­ **Zero-Build Dynamic Rendering**
   - **What it does:** Renders the entire menu layout, categories, and dynamic buttons directly from a static JSON-like array (`menuData`).
   - **User Experience:** Ensures lightning speed load times and instant UI generation without any page reloads.
-- ⭐ **Real-Time Fuzzy Search & Highlighting**
+- â­ **Real-Time Fuzzy Search & Highlighting**
   - **What it does:** Filters through the `menuData` array dynamically based on user input, matching category items on the fly.
   - **User Experience:** Users see immediate search results, and their exact matched text is visually highlighted dynamically.
 - **Intelligent Scroll-Spy Navigation**
@@ -93,10 +93,10 @@ It is built for local restaurants and cafés who need an instant, app-like mobil
 
 ```text
 shop/
-├── assets/           # Stores static assets like logos and brand imagery (e.g., logo2.png, logof.png)
-├── index.html        # Main entry point; contains semantic layout, drawer templates, and CDN imports
-├── style.css         # Custom CSS logic for granular details (animations, patterns, glassmorphism overrides)
-└── app.js            # The primary brain tracking state, data source array, DOM rendering, and event handlers
+â”œâ”€â”€ assets/           # Stores static assets like logos and brand imagery (e.g., logo2.png, logof.png)
+â”œâ”€â”€ index.html        # Main entry point; contains semantic layout, drawer templates, and CDN imports
+â”œâ”€â”€ style.css         # Custom CSS logic for granular details (animations, patterns, glassmorphism overrides)
+â””â”€â”€ app.js            # The primary brain tracking state, data source array, DOM rendering, and event handlers
 ```
 - **`app.js` is the core file**, executing the heavy lifting for DOM and state management where usually a component framework would step in.
 

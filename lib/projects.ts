@@ -24,6 +24,7 @@ export const projects: Project[] = [
     icon: "fas fa-puzzle-piece",
     featured: true,
     accentColor: "emerald",
+    hasCaseStudy: true,
   },
   {
     id: "habit-builder-kit",
@@ -37,6 +38,7 @@ export const projects: Project[] = [
     icon: "fas fa-check-circle",
     featured: true,
     accentColor: "cyan",
+    hasCaseStudy: true,
   },
   {
     id: "markdown-studio",
@@ -50,6 +52,7 @@ export const projects: Project[] = [
     icon: "fas fa-file-code",
     featured: true,
     accentColor: "indigo",
+    hasCaseStudy: true,
   },
   {
     id: "beatreactor-synth",
@@ -63,6 +66,7 @@ export const projects: Project[] = [
     icon: "fas fa-compact-disc",
     featured: true,
     accentColor: "purple",
+    hasCaseStudy: true,
   },
   {
     id: "corporate-job-tracker",
@@ -76,6 +80,7 @@ export const projects: Project[] = [
     icon: "fas fa-briefcase",
     featured: true,
     accentColor: "violet",
+    hasCaseStudy: true,
   },
   {
     id: "maharani-food-plaza",
@@ -88,6 +93,7 @@ export const projects: Project[] = [
     image: maharaniImg,
     icon: "fas fa-utensils",
     accentColor: "amber",
+    hasCaseStudy: true,
   },
   {
     id: "weather-app",

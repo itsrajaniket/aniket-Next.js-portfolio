@@ -14,6 +14,7 @@ export interface Project {
   icon: string;
   featured?: boolean;
   accentColor?: string;
+  hasCaseStudy?: boolean;
 }
 
 export interface SkillItem {

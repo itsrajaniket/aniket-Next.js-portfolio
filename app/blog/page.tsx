@@ -47,7 +47,7 @@ export default function BlogListPage() {
                   key={post.slug}
                   className="group glass rounded-2xl p-7 border border-surfaceBorder/10 hover:border-accent/40 transition-all hover:-translate-y-1"
                 >
-                  <Link href={`/blog/${post.slug}`} className="block">
+                  <Link href={post.slug} className="block">
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-3">
                       {post.tags.map((tag) => (

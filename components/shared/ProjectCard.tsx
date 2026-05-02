@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Link from "next/link";
 import { useReducedMotion } from "@/hooks";
 import type { Project } from "@/types";
 
@@ -57,7 +58,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           <Image
             src={project.image}
             alt={`${project.title} screenshot`}
-            placeholder="blur"
             fill
             className="object-cover transform group-hover:scale-105 transition-transform duration-700"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -128,16 +128,29 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
           
           {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-bold uppercase tracking-wider text-muted hover:text-accent transition-colors shrink-0 group/link flex items-center gap-1"
-              aria-label={`Open ${project.title} live demo`}
-            >
-              Demo 
-              <i className="fas fa-arrow-right text-[10px] group-hover/link:translate-x-1 transition-transform" aria-hidden="true" />
-            </a>
+            <div className="flex items-center gap-4">
+              {project.hasCaseStudy && (
+                <Link
+                  href={`/projects/${project.id}`}
+                  className="text-xs font-bold uppercase tracking-wider text-accent hover:text-accent/80 transition-colors group/case flex items-center gap-1"
+                  aria-label={`Read case study for ${project.title}`}
+                >
+                  Read Story
+                  <i className="fas fa-book-open text-[10px] group-hover/case:scale-110 transition-transform" aria-hidden="true" />
+                </Link>
+              )}
+
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-bold uppercase tracking-wider text-muted hover:text-accent transition-colors shrink-0 group/link flex items-center gap-1"
+                aria-label={`Open ${project.title} live demo`}
+              >
+                Demo 
+                <i className="fas fa-arrow-right text-[10px] group-hover/link:translate-x-1 transition-transform" aria-hidden="true" />
+              </a>
+            </div>
           )}
         </div>
       </div>
