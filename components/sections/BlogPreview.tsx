@@ -1,6 +1,6 @@
 // Server Component — reads blog posts at build/request time
 import Link from "next/link";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, formatDate } from "@/lib/blog";
 import SectionReveal from "@/components/animations/SectionReveal";
 import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
@@ -27,8 +27,8 @@ export default function BlogPreview() {
               07. Writing
             </span>
             <AnimatedTitle 
-              text1="From the" 
-              text2="Blog" 
+              text1="The Technical" 
+              text2="Journal" 
               className="text-4xl lg:text-5xl" 
             />
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mt-4" />
@@ -39,7 +39,7 @@ export default function BlogPreview() {
                        text-muted hover:text-accent hover:border-accent/40
                        font-bold text-sm rounded-xl transition-all shrink-0 backdrop-blur-md"
           >
-            All Posts
+            Explore All Writing
             <i className="fas fa-arrow-right text-xs" aria-hidden="true" />
           </Link>
         </SectionReveal>
@@ -50,42 +50,40 @@ export default function BlogPreview() {
             <SectionReveal key={post.slug} delay={idx * 0.1}>
               <Link
                 href={post.slug}
-                className="group block bg-card/50 rounded-2xl p-6 border border-surfaceBorder/10
+                className="group flex flex-col bg-card/50 rounded-2xl p-7 border border-surfaceBorder/10
                            hover:border-accent/40 hover:-translate-y-1 hover:bg-card/60
                            transition-all duration-300 h-full backdrop-blur-sm will-change-transform"
                 aria-label={`Read: ${post.title}`}
               >
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-5">
                   {post.tags.slice(0, 2).map((tag) => (
-                    <span key={tag} className="tech-tag">{tag}</span>
+                    <span key={tag} className="tech-tag text-[10px] font-bold tracking-widest uppercase bg-accent/5 text-accent border-accent/10 px-2.5 py-1">
+                      {tag}
+                    </span>
                   ))}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-main mb-3 leading-snug
+                <h3 className="text-xl font-bold text-main mb-3 leading-tight
                                group-hover:text-accent transition-colors line-clamp-2">
                   {post.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-muted text-sm leading-relaxed mb-5 line-clamp-3">
+                <p className="text-muted text-sm leading-relaxed mb-6 line-clamp-3">
                   {post.description}
                 </p>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between text-xs text-muted font-medium mt-auto pt-4 border-t border-surfaceBorder/5">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-center justify-between text-[10px] text-muted/60 font-bold mt-auto pt-5 border-t border-surfaceBorder/5 uppercase tracking-widest">
+                  <div className="flex items-center gap-4">
                     <span className="flex items-center gap-1.5">
-                      <i className="fas fa-calendar-alt text-accent/60" aria-hidden="true" />
-                      {post.date}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <i className="fas fa-clock text-accent/60" aria-hidden="true" />
-                      {post.readingTime}
+                      <i className="fas fa-calendar-alt text-accent/40" aria-hidden="true" />
+                      {formatDate(post.date)}
                     </span>
                   </div>
-                  <span className="text-accent group-hover:translate-x-1 transition-transform inline-block font-bold">
+                  <span className="text-accent group-hover:translate-x-1 transition-transform inline-block font-black">
                     Read →
                   </span>
                 </div>

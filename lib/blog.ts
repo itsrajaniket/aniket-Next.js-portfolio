@@ -10,9 +10,8 @@ const PROJECTS_DIR = path.join(process.cwd(), "project_readme");
 // ── Simple Dev Cache ──────────────────────────────────────────────────────
 let cachedPosts: BlogPost[] | null = null;
 let lastCacheTime = 0;
-const CACHE_DURATION = 5000; // 5 seconds cache for dev
+const CACHE_DURATION = 5000;
 
-// ── Helper: Format Byte Size ──────────────────────────────────────────────
 function formatBytes(bytes: number, decimals = 2) {
   if (bytes === 0) return "0 Bytes";
   const k = 1024;
@@ -22,7 +21,6 @@ function formatBytes(bytes: number, decimals = 2) {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 }
 
-// ── Helper: Slugify ──────────────────────────────────────────────────────
 function slugify(text: string) {
   return text
     .toLowerCase()
@@ -31,7 +29,19 @@ function slugify(text: string) {
     .replace(/^-+|-+$/g, "");
 }
 
-// ── Read frontmatter from MD/MDX file ────────────────────────────────────
+// ── Human Readable Date Formatter ─────────────────────────────────────────
+export function formatDate(dateStr: string) {
+  try {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    });
+  } catch (e) {
+    return dateStr;
+  }
+}
+
 function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
   const fmRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
   const match = raw.match(fmRegex);
@@ -46,9 +56,7 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
   return { data, content: match[2] };
 }
 
-// ── Get all posts (including projects) ───────────────────────────────────
 export function getAllPosts(): BlogPost[] {
-  // Use cache in development to speed up routing
   const now = Date.now();
   if (cachedPosts && (now - lastCacheTime < CACHE_DURATION)) {
     return cachedPosts;
@@ -68,10 +76,10 @@ export function getAllPosts(): BlogPost[] {
         posts.push({
           slug: `/blog/${slug}`,
           title: data.title ?? slug,
-          description: data.description ?? "",
-          date: data.date ?? "2026-01-01",
+          description: data.description ?? "Deep dive into modern web development and architectural patterns.",
+          date: data.date ?? "2026-05-01",
           readingTime: data.readingTime ?? "5 min read",
-          tags: data.tags ? data.tags.split(",").map((t: string) => t.trim()) : [],
+          tags: data.tags ? data.tags.split(",").map((t: string) => t.trim()) : ["Engineering"],
           coverImage: data.coverImage,
           type: "mdx",
         });
@@ -91,7 +99,7 @@ export function getAllPosts(): BlogPost[] {
           description: project.description,
           date: "2026-05-01",
           readingTime: "Case Study",
-          tags: ["Project", ...project.tags.slice(0, 2)],
+          tags: ["Case Study", ...project.tags.slice(0, 1)],
           coverImage: project.image,
           type: "mdx",
         });
@@ -106,15 +114,27 @@ export function getAllPosts(): BlogPost[] {
       try {
         const stats = fs.statSync(path.join(PDF_DIR, file));
         const slug = slugify(file);
-        const title = file.replace(".pdf", "").replace(/[-_]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+        
+        // Custom logic for professional labels based on filenames
+        let title = file.replace(".pdf", "").replace(/[-_]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+        let description = "A comprehensive technical guide for frontend and backend mastery.";
+        let tags = ["Deep Dive", "Guide"];
+
+        if (title.toLowerCase().includes("interview") || title.toLowerCase().includes("knows")) {
+          tags = ["Interview Prep", "Senior Level"];
+          description = "Master common technical interview patterns and architecture decisions.";
+        } else if (title.toLowerCase().includes("react")) {
+          tags = ["React", "Performance"];
+          description = "Advanced patterns for scaling high-performance React applications.";
+        }
 
         posts.push({
           slug: `/blog/${slug}`,
           title,
-          description: `Technical Document: ${title}`,
+          description,
           date: stats.mtime.toISOString().split("T")[0],
-          readingTime: "PDF Document",
-          tags: ["PDF", "Documentation"],
+          readingTime: "Technical Guide",
+          tags,
           type: "pdf",
           pdfUrl: `/content/pdfs/${encodeURIComponent(file)}`,
           fileSize: formatBytes(stats.size),
@@ -139,10 +159,10 @@ export function getPostBySlug(slug: string): { post: BlogPost; content: string }
     const post: BlogPost = {
       slug: `/blog/${slug}`,
       title: data.title ?? slug,
-      description: data.description ?? "",
-      date: data.date ?? "2026-01-01",
+      description: data.description ?? "Deep dive into modern web development.",
+      date: data.date ?? "2026-05-01",
       readingTime: data.readingTime ?? "5 min read",
-      tags: data.tags ? data.tags.split(",").map((t: string) => t.trim()) : [],
+      tags: data.tags ? data.tags.split(",").map((t: string) => t.trim()) : ["Engineering"],
       coverImage: data.coverImage,
       type: "mdx"
     };
@@ -158,10 +178,10 @@ export function getPostBySlug(slug: string): { post: BlogPost; content: string }
       const post: BlogPost = {
         slug: `/blog/${slug}`,
         title,
-        description: `Technical Document: ${title}`,
+        description: `Comprehensive guide for ${title}.`,
         date: stats.mtime.toISOString().split("T")[0],
-        readingTime: "PDF Document",
-        tags: ["PDF", "Documentation"],
+        readingTime: "Technical Guide",
+        tags: ["Deep Dive"],
         type: "pdf",
         pdfUrl: `/content/pdfs/${encodeURIComponent(match)}`,
         fileSize: formatBytes(stats.size),

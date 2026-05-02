@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { StaticImageData } from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/blog";
+import { getPostBySlug, getAllSlugs, getRelatedPosts, formatDate } from "@/lib/blog";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ReadingProgress from "@/components/blog/ReadingProgress";
@@ -96,7 +96,7 @@ export default async function BlogPostPage({
           <div className="flex flex-wrap items-center gap-5 text-sm text-main/70 mb-10 pb-8 border-b border-surfaceBorder/10">
             <span className="flex items-center gap-1.5">
               <i className="fas fa-calendar-alt text-accent" aria-hidden="true" />
-              {post.date}
+              {formatDate(post.date)}
             </span>
             <span className="flex items-center gap-1.5">
               <i className="fas fa-clock text-accent" aria-hidden="true" />

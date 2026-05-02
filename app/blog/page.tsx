@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, formatDate } from "@/lib/blog";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -25,10 +25,10 @@ export default function BlogListPage() {
               Writing
             </span>
             <h1 className="text-5xl font-bold text-main mb-4 font-display">
-              The Blog
+              The Journal
             </h1>
             <p className="text-main/80 text-lg">
-              Thoughts on React, performance, Next.js migrations, and building things on the web.
+              Technical deep dives, interview prep guides, and case studies from the engineering frontlines.
             </p>
             <div className="w-16 h-1 bg-accent rounded-full mt-6" />
           </div>
@@ -49,31 +49,33 @@ export default function BlogListPage() {
                 >
                   <Link href={post.slug} className="block">
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-3">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {post.tags.map((tag) => (
-                        <span key={tag} className="tech-tag">{tag}</span>
+                        <span key={tag} className="tech-tag text-[10px] font-bold tracking-wider uppercase bg-accent/10 text-accent border-accent/20 px-3 py-1">
+                          {tag}
+                        </span>
                       ))}
                     </div>
                     {/* Title */}
-                    <h2 className="text-xl font-bold text-main mb-2 group-hover:text-accent transition-colors">
+                    <h2 className="text-2xl font-bold text-main mb-3 group-hover:text-accent transition-colors leading-tight">
                       {post.title}
                     </h2>
                     {/* Description */}
-                    <p className="text-main/80 text-sm leading-relaxed mb-4">
+                    <p className="text-main/70 text-base leading-relaxed mb-6 line-clamp-2">
                       {post.description}
                     </p>
                     {/* Meta */}
-                    <div className="flex items-center gap-4 text-xs text-main/70 font-medium">
-                      <span>
-                        <i className="fas fa-calendar-alt mr-1.5" aria-hidden="true" />
-                        {post.date}
+                    <div className="flex items-center gap-6 text-xs text-main/50 font-medium pt-4 border-t border-surfaceBorder/5">
+                      <span className="flex items-center gap-2">
+                        <i className="fas fa-calendar-alt text-accent/60" aria-hidden="true" />
+                        {formatDate(post.date)}
                       </span>
-                      <span>
-                        <i className="fas fa-clock mr-1.5" aria-hidden="true" />
+                      <span className="flex items-center gap-2">
+                        <i className="fas fa-clock text-accent/60" aria-hidden="true" />
                         {post.readingTime}
                       </span>
-                      <span className="ml-auto text-accent group-hover:translate-x-1 transition-transform inline-block">
-                        Read more →
+                      <span className="ml-auto text-accent font-bold group-hover:translate-x-1 transition-transform">
+                        Read Story →
                       </span>
                     </div>
                   </Link>
