@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import NavLinks from "./NavLinks";
 import MobileNav from "./MobileNav";
@@ -32,7 +33,7 @@ export default function Navbar() {
         `}>
 
           {/* Logo */}
-          <a
+          <Link
             href="/#home"
             className="flex items-center pl-3 border-l-2 border-accent hover:border-primary transition-colors duration-300"
             aria-label="Aniket Raj — Go to top"
@@ -40,7 +41,7 @@ export default function Navbar() {
             <span className="text-sm font-medium tracking-[0.18em] uppercase text-main/90 hover:text-main transition-colors duration-300">
               Aniket.
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden lg:flex">

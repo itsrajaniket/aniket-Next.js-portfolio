@@ -60,7 +60,6 @@ export function mdToHtml(md: string): string {
       // Skip the separator row | :--- | ---: |
       if (line.includes("---")) continue;
       
-      const cells = line.split("|").filter(c => c.trim() !== "" || (line.startsWith("|") && line.endsWith("|") && line.split("|").length > 2));
       // Handle the case where split might leave empty first/last elements
       const actualCells = line.split("|").slice(1, -1).map(c => c.trim());
       
