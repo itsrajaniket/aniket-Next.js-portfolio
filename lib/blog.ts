@@ -37,7 +37,7 @@ export function formatDate(dateStr: string) {
       month: "long",
       year: "numeric",
     });
-  } catch (e) {
+  } catch (_e) {
     return dateStr;
   }
 }
@@ -116,7 +116,7 @@ export function getAllPosts(): BlogPost[] {
         const slug = slugify(file);
         
         // Custom logic for professional labels based on filenames
-        let title = file.replace(".pdf", "").replace(/[-_]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+        const title = file.replace(".pdf", "").replace(/[-_]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
         let description = "A comprehensive technical guide for frontend and backend mastery.";
         let tags = ["Deep Dive", "Guide"];
 
