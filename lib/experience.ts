@@ -16,7 +16,7 @@ export const experiences: ExperienceItem[] = [
     title: "Frontend Developer",
     subtitle: "Freelance / Self-Employed",
     description:
-      "Building production-grade React applications, portfolio sites, and interactive web tools for clients. Focused on performance optimization and modern Next.js architecture.",
+      "Building production-grade React applications and delivering end-to-end SaaS solutions. Shipped ReviewClick AI (a reputation management platform using Gemini 1.5 Flash), a live restaurant ordering app, and a 550+ company job search dashboard. Focused on performance optimization and modern Next.js architecture.",
     badge: "Active",
     badgeColor: "green",
     type: "work",

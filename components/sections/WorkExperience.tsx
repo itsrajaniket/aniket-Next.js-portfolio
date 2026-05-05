@@ -9,6 +9,55 @@ import AnimatedTitle from "@/components/animations/AnimatedTitle";
 
 const SHOWCASE = [
   {
+    id: "reviewclick",
+    type: "SaaS",
+    typeBadge: "bg-blue-500/15 border-blue-500/30 text-blue-300",
+    period: "2026",
+    title: "ReviewClick AI",
+    subtitle: "AI-Powered Reputation Engine — Next.js 15 + Gemini 1.5 Flash",
+    description:
+      "A full-stack SaaS platform turning physical business QR scans into 5-star Google Reviews using generative AI and sentiment-based routing.",
+    fullDetails: {
+      overview: "ReviewClick AI is a high-performance reputation management platform designed to help physical businesses (restaurants, salons, clinics, etc.) skyrocket their Google Review count. By replacing static review links with an AI-powered frictionless funnel, it eliminates the 'reviewer's block' that prevents customers from leaving feedback.",
+      problem: "Most customers want to help but find writing reviews time-consuming or difficult. ReviewClick AI solves this with a 30-second QR-code-to-Google workflow that generates personalized, high-quality review templates based on the customer's specific experience.",
+      tech: "Next.js 15 (App Router), React 19, Google Gemini 1.5 Flash, Supabase (PostgreSQL), Prisma ORM, Clerk Auth, Tailwind CSS 4.0, and Razorpay/Stripe for global billing.",
+      features: [
+        "AI Review Generation: Creates 4 distinct, natural-sounding review templates for every customer scan using Gemini 1.5 Flash.",
+        "Sentiment-Based Routing: Dynamically detects customer 'vibe' — 4-5 star reviews are encouraged public; 1-3 star reviews are routed to a private manager inbox.",
+        "Multi-Lingual Mastery: Generates localized reviews in English, Hindi, Tamil, Telugu, Kannada, Marathi, and Bengali.",
+        "Real-time Scan Tracking: Uses Prisma and Supabase to log every QR scan, tracking geolocation and time of visit for business analytics.",
+        "SaaS Billing Pipeline: Integrated Razorpay and Stripe with tiered subscription plans (Free, Growth, Pro) for business owners.",
+        "Dynamic SEO & Branding: Next.js metadata API generates custom OG tags and business-specific branding for every review funnel link."
+      ],
+      technicalHighlights: [
+        "AI Latency Optimization: Gemini 1.5 Flash implementation ensures review generation remains under 800ms for a seamless user experience.",
+        "Type-Safe Data Modeling: Prisma ORM used for robust PostgreSQL schemas, handling complex relationships between Users, Businesses, and Feedback.",
+        "Zero-Build Design Tokens: Leveraging Tailwind CSS 4.0's latest styling engine for a high-performance, utility-first design system.",
+        "Secure Auth Guard: Clerk Auth integration with Clerk-to-Prisma sync logic for secure multi-tenant business management."
+      ]
+    },
+    highlights: [
+      "AI-powered review generation under 800ms",
+      "Sentiment-based routing (Private vs Public)",
+      "Multi-lingual support (7+ Indian languages)",
+      "Full SaaS billing & analytics dashboard",
+    ],
+    tags: ["NEXT.JS 15", "GEMINI AI", "SUPABASE", "CLERK", "PRISMA"],
+    liveUrl: "https://reviewclick.vercel.app/",
+    github: "https://github.com/itsrajaniket",
+    image: "/images/project-reviewclick.png",
+    accentColor: "#3b82f6",
+    accentRgb: "59,130,246",
+    accentGrad: "from-blue-500 to-indigo-600",
+    bgGrad: "from-blue-950/80 via-slate-900/95 to-slate-900",
+    icon: "fas fa-magic",
+    metrics: [
+      { value: "800ms", label: "AI Latency" },
+      { value: "7+", label: "Languages" },
+      { value: "SaaS", label: "Architecture" },
+    ],
+  },
+  {
     id: "maharani",
     type: "Freelance",
     typeBadge: "bg-amber-500/15 border-amber-500/30 text-amber-300",
@@ -181,7 +230,7 @@ const TIMELINE = [
     dot: "bg-green-400",
     pulse: true,
     description:
-      "Building production-grade React applications and delivering freelance projects end-to-end. Shipped a live client restaurant ordering app, a 550+ company job search dashboard with Firebase, and a full-stack gamified habit tracker with Supabase. Focused on offline-first architecture, browser API depth, and zero-backend patterns.",
+      "Building production-grade React applications and delivering end-to-end SaaS solutions. Shipped ReviewClick AI (reputation engine using Gemini 1.5 Flash), a live restaurant ordering app, and a 550+ company job search dashboard. Focused on performance optimization, browser API depth, and modern Next.js architecture.",
     tags: ["REACT", "NEXT.JS", "FIREBASE", "SUPABASE", "ZUSTAND", "TAILWIND", "TYPESCRIPT"],
   },
 ];

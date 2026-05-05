@@ -10,8 +10,23 @@ import speechImg from "@/public/images/project-speech.jpg";
 import qrImg from "@/public/images/project-qr.jpg";
 import dogImg from "@/public/images/project-dog.jpg";
 import claudeImg from "@/public/images/project-claude.png";
+import reviewclickImg from "@/public/images/project-reviewclick.png";
 
 export const projects: Project[] = [
+  {
+    id: "reviewclick-ai",
+    title: "ReviewClick AI",
+    description:
+      "A high-performance reputation management platform that turns physical business scans into 5-star Google Reviews using a frictionless AI funnel and Gemini 1.5 Flash.",
+    tags: ["NEXT.JS", "GEMINI AI", "SUPABASE", "CLERK"],
+    github: "https://github.com/itsrajaniket",
+    live: "https://reviewclick.vercel.app/",
+    image: reviewclickImg,
+    icon: "fas fa-magic",
+    featured: true,
+    accentColor: "blue",
+    hasCaseStudy: true,
+  },
   {
     id: "claude-counter",
     title: "Token Tracker for Claude",
