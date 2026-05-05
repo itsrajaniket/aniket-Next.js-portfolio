@@ -16,13 +16,10 @@
 ## 2. Live Demo & Visuals
 - **Live Demo Link:** [https://corporate-job-tracker.vercel.app/]
 
-<!-- ### Screenshots
-*Will Replace the placeholders below with actual paths once screenshots are captured.*
-
-- ![Hero & Dashboard Stats](./screenshots/hero-stats.png)
-- ![Application Tracker Table](./screenshots/tracker-table.png)
-- ![Salary & Career Tools](./screenshots/calculators.png)
-- ![Market Analytics Charts](./screenshots/market-charts.png) -->
+### Screenshots
+- ![Dashboard View](/images/projects/job-dashboard.png)
+- ![Market Analytics Charts](/images/projects/job-analytics.png)
+- ![Salary & Career Tools](/images/projects/job-calculators.png)
 
 ---
 

@@ -22,7 +22,7 @@ ReviewClick AI is a high-performance reputation management platform designed to 
 
 | Dashboard Overview | AI Review Funnel | QR Manager |
 |:---:|:---:|:---:|
-| ![Dashboard](./screenshots/dashboard.png) | ![Funnel](./screenshots/funnel.png) | ![QR Manager](./screenshots/qr-manager.png) |
+| ![Dashboard](/images/projects/reviewclick-dashboard.png) | ![Funnel](/images/projects/reviewclick-funnel.png) | ![QR Manager](/images/projects/reviewclick-qr.png) |
 
 ---
 

@@ -1,4 +1,4 @@
-﻿# 📝 Markdown Studio
+# 📝 Markdown Studio
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
@@ -15,10 +15,8 @@
 ## 2. Live Demo & Visuals
 # 📝 Markdown Studio
 
-<!-- ### Screenshots
-- ![Dashboard View](./screenshots/dashboard.png)
-- ![Editing Split Pane](./screenshots/split-pane-editing.png)
-- ![Help Cheat Sheet Modal](./screenshots/cheat-sheet.png) -->
+### Screenshots
+- ![Markdown Editor](/images/projects/markdown-editor.png)
 
 *(Note: Replace the screenshot paths with your actual image paths once they are captured.)*
 

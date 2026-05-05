@@ -1,4 +1,4 @@
-﻿# 🍦 Maharani Ice Cream Parlour & Food Plaza
+# 🍦 Maharani Ice Cream Parlour & Food Plaza
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -36,11 +36,8 @@ It is built for local restaurants and cafÃ©s who need an instant, app-like mob
 
 [ðŸ”— Live Demo Link Placeholder](https://itsrajaniket.github.io/freelance-restaurant-app/)
 
-<!-- **Visuals:**
-- ![Hero Section & Menu View](./assets/placeholder-hero.png)
-- ![Category Scroll Navigation](./assets/placeholder-scroll.png)
-- ![Cart Checkout Drawer](./assets/placeholder-checkout.png)
-- ![Dark Theme & Light Theme](./assets/placeholder-theme.png) -->
+### Visuals
+![Maharani Food Plaza Hero View](/images/project-maharani.jpg)
 
 ---
 
