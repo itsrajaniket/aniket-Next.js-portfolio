@@ -1,16 +1,16 @@
 import type { Project } from "@/types";
 
-import habitImg from "@/public/images/project-habit.jpg";
-import markdownImg from "@/public/images/project-markdown.png";
-import beatreactorImg from "@/public/images/project-beatreactor.jpg";
-import jobtrackerImg from "@/public/images/project-jobtracker.jpg";
-import maharaniImg from "@/public/images/project-maharani.jpg";
-import weatherImg from "@/public/images/project-weather.jpg";
-import speechImg from "@/public/images/project-speech.jpg";
-import qrImg from "@/public/images/project-qr.jpg";
-import dogImg from "@/public/images/project-dog.jpg";
-import claudeImg from "@/public/images/project-claude.png";
-import reviewclickImg from "@/public/images/project-reviewclick.png";
+import habitImg from "@/public/images/projects/project-habit.jpg";
+import markdownImg from "@/public/images/projects/project-markdown.png";
+import beatreactorImg from "@/public/images/projects/project-beatreactor.jpg";
+import jobtrackerImg from "@/public/images/projects/project-jobtracker.jpg";
+import maharaniImg from "@/public/images/projects/project-maharani.jpg";
+import weatherImg from "@/public/images/projects/project-weather.jpg";
+import speechImg from "@/public/images/projects/project-speech.jpg";
+import qrImg from "@/public/images/projects/project-qr.jpg";
+import dogImg from "@/public/images/projects/project-dog.jpg";
+import claudeImg from "@/public/images/projects/project-claude.png";
+import reviewclickImg from "@/public/images/projects/project-reviewclick.png";
 
 export const projects: Project[] = [
   {
