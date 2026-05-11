@@ -4,6 +4,7 @@ import SectionReveal from "@/components/animations/SectionReveal";
 import SpotlightText from "@/components/animations/SpotlightText";
 import SpotlightReveal from "@/components/animations/SpotlightReveal";
 import MagneticWrapper from "@/components/animations/MagneticWrapper";
+import { RESUME_PATH, RESUME_FILENAME } from "@/lib/constants";
 
 const ABOUT_STATS = [
   { value: "15+", label: "Projects", sub: "shipped" },
@@ -202,8 +203,8 @@ export default function About() {
               </MagneticWrapper>
               <MagneticWrapper strength={0.4}>
                 <a
-                  href="/Aniket_Raj_Resume.pdf"
-                  download="Aniket_Raj_Resume.pdf"
+                  href={RESUME_PATH}
+                  download={RESUME_FILENAME}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap px-6 py-3 glass border border-surfaceBorder/10 text-main font-bold rounded-xl hover:border-accent hover:text-accent transition-all text-sm shrink-0"
                   aria-label="Download Aniket Raj Resume PDF"
                 >

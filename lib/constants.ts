@@ -126,3 +126,6 @@ export const HERO_STATS = [
   { value: "3 yrs", label: "UPSC discipline" },
   { value: "2026", label: "Ready to join" },
 ] as const;
+
+export const RESUME_PATH = "/resume/resume.pdf";
+export const RESUME_FILENAME = "Aniket_Raj_AI_MERN_Full_Stack.pdf";

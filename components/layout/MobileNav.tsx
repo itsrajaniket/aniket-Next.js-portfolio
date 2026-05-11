@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
-import { ALL_NAV_ITEMS } from "@/lib/constants";
+import { ALL_NAV_ITEMS, RESUME_PATH, RESUME_FILENAME } from "@/lib/constants";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -122,8 +122,8 @@ export default function MobileNav() {
                     transition={{ delay: 0.4 }}
                   >
                     <a
-                      href="/Aniket_Raj_Resume.pdf"
-                      download="Aniket_Raj_Resume.pdf"
+                      href={RESUME_PATH}
+                      download={RESUME_FILENAME}
                       onClick={close}
                       className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl bg-accent text-inverseText font-black text-lg shadow-xl shadow-accent/20 hover:scale-[1.02] active:scale-95 transition-all"
                     >

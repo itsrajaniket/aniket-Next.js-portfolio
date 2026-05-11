@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useActiveSection } from "@/hooks";
-import { NAV_ITEMS, NAV_SECTION_IDS } from "@/lib/constants";
+import { NAV_ITEMS, NAV_SECTION_IDS, RESUME_PATH, RESUME_FILENAME } from "@/lib/constants";
 import MagneticWrapper from "@/components/animations/MagneticWrapper";
 
 interface NavLinksProps {
@@ -65,8 +65,8 @@ export default function NavLinks({ onLinkClick, className = "" }: NavLinksProps)
       <li>
         <MagneticWrapper strength={0.3}>
           <a
-            href="/Aniket_Raj_Resume.pdf"
-            download="Aniket_Raj_Resume.pdf"
+            href={RESUME_PATH}
+            download={RESUME_FILENAME}
             className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap px-4 py-1.5 border border-accent text-accent rounded-full font-bold text-xs
                        hover:bg-accent hover:text-inverseText transition-all
                        shadow-[0_0_10px_rgba(var(--accent),0.2)]
