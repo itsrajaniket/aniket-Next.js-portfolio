@@ -35,6 +35,15 @@ const nextConfig = {
           { key: "Content-Security-Policy", value: "frame-ancestors 'self';" },
         ],
       },
+      {
+        source: "/resume/:path*",
+        headers: [
+          {
+            key: "Content-Disposition",
+            value: 'attachment; filename="Aniket_Raj_AI_MERN_Full_Stack.pdf"',
+          },
+        ],
+      },
     ];
   },
   // Removed custom headers to let framework defaults/middleware handle security.
