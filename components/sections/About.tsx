@@ -215,7 +215,7 @@ export default function About() {
             </div>
 
             {/* Stats — borderline row */}
-            <div className="grid grid-cols-4 gap-3 pt-2 border-t border-surfaceBorder/10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-2 border-t border-surfaceBorder/10">
               {ABOUT_STATS.map(({ value, label, sub }) => (
                 <div key={label} className="pt-5">
                   <p className="text-2xl lg:text-3xl font-black font-display text-accent leading-none">

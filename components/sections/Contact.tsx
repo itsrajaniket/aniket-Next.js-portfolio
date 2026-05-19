@@ -85,7 +85,7 @@ export default function Contact() {
               <p className="text-xs text-muted font-bold uppercase tracking-widest mb-3">
                 Find me on
               </p>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {SOCIAL_LINKS.filter((s) => s.href !== `mailto:${AUTHOR_EMAIL}`).map(
                   ({ icon, href, label, handle, color, bg }) => (
                     <a

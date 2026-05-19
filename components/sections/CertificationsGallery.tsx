@@ -76,7 +76,7 @@ export default function CertificationsGallery({ certificates }: { certificates: 
                 src={cert.path}
                 alt={cert.title}
                 fill
-                className="object-cover object-center grayscale-[25%] group-hover:grayscale-0 transition-all duration-700 blur-[2px] group-hover:blur-0"
+                className="object-cover object-center md:grayscale-[25%] group-hover:grayscale-0 transition-all duration-700 md:blur-[2px] group-hover:blur-0"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500" />

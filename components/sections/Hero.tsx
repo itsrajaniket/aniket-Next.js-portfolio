@@ -96,7 +96,7 @@ export default function Hero() {
         </div>
 
         {/* ── Right: avatar card ───────────────────────────────────────── */}
-        <div className="hidden md:flex justify-center relative">
+        <div className="flex justify-center relative mt-8 md:mt-0">
           <div className="animate-float glass p-5 rounded-3xl border border-surfaceBorder/10 w-80 relative">
 
             {/* Floating React icon badge */}

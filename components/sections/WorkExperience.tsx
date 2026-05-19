@@ -471,11 +471,11 @@ function ShowcaseCard({
 
   return (
     <div
-      className="sticky mb-[20vh] flex items-center justify-center"
+      className="relative lg:sticky mb-12 lg:mb-[20vh] flex items-center justify-center lg:[top:var(--sticky-top)]"
       style={{
         zIndex: idx + 1,
-        top: `calc(5rem + ${idx * 40}px)`
-      }}
+        "--sticky-top": `calc(5rem + ${idx * 40}px)`
+      } as React.CSSProperties}
     >
       <motion.div
         initial={{ opacity: 0, y: prefersReduced ? 0 : 60 }}
