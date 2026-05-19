@@ -64,6 +64,11 @@ html { scrollbar-width: thin; scrollbar-color: rgb(var(--primary)) rgb(var(--bg-
 /* ── Text selection ───────────────────────────────────────────────────────── */
 ::selection { background: rgb(var(--accent) / 0.25); color: rgb(var(--inverse-text)); }
 
+html, body {
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
 /* ── Focus outline ───────────────────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid rgb(var(--accent));
