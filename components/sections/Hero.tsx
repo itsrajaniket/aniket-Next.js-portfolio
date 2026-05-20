@@ -112,7 +112,7 @@ export default function Hero() {
                 placeholder="blur"
                 className="w-full object-cover object-top transform group-hover:scale-110 transition-transform duration-700"
                 priority
-                sizes="(max-width: 768px) 0vw, 320px"
+                sizes="320px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-base/60 to-transparent opacity-60" />
             </div>
