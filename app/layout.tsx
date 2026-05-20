@@ -80,9 +80,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.rajaniket.com",
-    title: "Aniket Raj | Full-Stack Dev (MERN + Next.js) & AI/GenAI Engineer",
+    title: "Aniket Raj 👨‍💻 | Full-Stack Dev (MERN + Next.js) & AI/GenAI Engineer 🚀",
     description:
-      "Built 3 live SaaS apps with AI integration (OpenAI, Claude, Gemini), Razorpay/Stripe payments, and full-stack MERN + Next.js. Immediate joiner.",
+      "⚡ Building modern live SaaS apps with AI integration (OpenAI, Claude, Gemini), Razorpay/Stripe payments, and full-stack MERN + Next.js. Immediate joiner.",
     siteName: "Aniket Raj",
     images: [
       {
@@ -95,9 +95,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aniket Raj | Full-Stack Dev & AI/GenAI Engineer",
+    title: "Aniket Raj 👨‍💻 | Full-Stack Dev & AI/GenAI Engineer 🚀 ",
     description:
-      "Built 3 live SaaS apps with AI (OpenAI, Claude, Gemini) + Razorpay/Stripe. MERN + Next.js. Immediate joiner.",
+      "⚡ Building modern live SaaS apps with AI (OpenAI, Claude, Gemini) + Razorpay/Stripe. MERN + Next.js. Immediate joiner.",
     images: ["/og-image.png"],
     creator: "@Aniket_repo",
   },
