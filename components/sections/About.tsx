@@ -73,7 +73,7 @@ export default function About() {
                   src="/images/selfphoto.png"
                   alt="Aniket Raj — Frontend Developer"
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition duration-700"
+                  className="object-contain grayscale group-hover:grayscale-0 transition duration-700"
                   sizes="(max-width: 1024px) 100vw, 300px"
                 />
                 {/* Fade bottom */}
