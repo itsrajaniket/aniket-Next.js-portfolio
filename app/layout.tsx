@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     url: "https://www.rajaniket.com",
     title: "Aniket Raj 👨‍💻 | Full-Stack Dev (MERN + Next.js) & AI/GenAI Engineer 🚀",
     description:
-      "⚡ Building modern live SaaS apps with AI integration (OpenAI, Claude, Gemini), Razorpay/Stripe payments, and full-stack MERN + Next.js. Immediate joiner.",
+      "⚡ Building modern live SaaS apps with AI integration (OpenAI, Claude, Gemini) and full-stack MERN + Next.js. Immediate joiner.",
     siteName: "Aniket Raj",
     images: [
       {
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     description:
       "⚡ Building modern live SaaS apps with AI (OpenAI, Claude, Gemini) + Razorpay/Stripe. MERN + Next.js. Immediate joiner.",
     images: ["/og-image.png"],
-    creator: "@Aniket_repo",
+    creator: "@Aniket_repo"
   },
   robots: {
     index: true,
