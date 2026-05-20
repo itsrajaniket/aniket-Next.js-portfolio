@@ -1,0 +1,21 @@
+{
+  "name": "Aniket Raj - Portfolio",
+  "short_name": "Aniket",
+  "description": "Full-Stack Developer (MERN + Next.js) & AI/GenAI Engineer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#38cc5d",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
