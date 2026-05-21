@@ -22,8 +22,25 @@ export default function Hero() {
   const [showCanvas, setShowCanvas] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowCanvas(true), 1000);
-    return () => clearTimeout(timer);
+    const handleInteraction = () => {
+      setShowCanvas(true);
+      ['mousemove', 'scroll', 'touchstart', 'keydown'].forEach((event) =>
+        window.removeEventListener(event, handleInteraction)
+      );
+    };
+
+    const timer = setTimeout(handleInteraction, 4000);
+
+    ['mousemove', 'scroll', 'touchstart', 'keydown'].forEach((event) =>
+      window.addEventListener(event, handleInteraction, { once: true })
+    );
+
+    return () => {
+      clearTimeout(timer);
+      ['mousemove', 'scroll', 'touchstart', 'keydown'].forEach((event) =>
+        window.removeEventListener(event, handleInteraction)
+      );
+    };
   }, []);
 
   return (
