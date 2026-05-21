@@ -40,7 +40,7 @@ export default function Typewriter() {
   }, [charIndex, deleting, wordIndex]);
 
   return (
-    <span aria-live="polite" aria-atomic="true">
+    <span aria-live="polite" aria-atomic="true" className="inline-block min-w-[18ch]">
       <span className="text-accent">{displayed}</span>
       <span className="cursor-blink text-accent ml-0.5" aria-hidden="true">|</span>
     </span>
