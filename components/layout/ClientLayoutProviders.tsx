@@ -16,6 +16,9 @@ const DynamicMouseTrail = dynamic(() => import("@/components/visuals/MouseTrailC
 const DynamicThemeCustomizer = dynamic(() => import("@/components/theme/ThemeCustomizer"), {
   ssr: false,
 });
+const DynamicCursorTrail = dynamic(() => import("@/components/animations/CustomCursorTrail"), {
+  ssr: false,
+});
 
 export default function ClientLayoutProviders({
   children,
@@ -29,6 +32,7 @@ export default function ClientLayoutProviders({
       <Analytics />
       <SpeedInsights />
       <DynamicMouseTrail />
+      <DynamicCursorTrail />
       <DynamicThemeCustomizer />
       {children}
     </ThemeProvider>

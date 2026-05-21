@@ -16,7 +16,16 @@ const SpiderCanvas = dynamic(() => import("@/components/visuals/SpiderCanvas"), 
   ssr: false,
 });
 
+import { useState, useEffect } from "react";
+
 export default function Hero() {
+  const [showCanvas, setShowCanvas] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowCanvas(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id="home"
@@ -38,7 +47,7 @@ export default function Hero() {
       </div>
 
       {/* Spider-network particle canvas */}
-      <SpiderCanvas />
+      {showCanvas && <SpiderCanvas />}
 
       {/* Ambient glow blobs */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[120px] glow-effect pointer-events-none" />

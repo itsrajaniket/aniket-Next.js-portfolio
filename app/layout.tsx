@@ -5,7 +5,7 @@ import Script from "next/script";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import MotionWrapper from "@/components/animations/MotionWrapper";
 import ClientLayoutProviders from "@/components/layout/ClientLayoutProviders";
-import CustomCursorTrail from "@/components/animations/CustomCursorTrail";
+
 
 // ── Fonts ──────────────────────────────────────────────────────────────────
 // Syne: geometric, distinctive, not overused. Perfect for headings.
@@ -144,7 +144,6 @@ export default function RootLayout({
           `}
         </Script>
         <ClientLayoutProviders>
-          <CustomCursorTrail />
           <MotionWrapper>
             <main id="main-content">{children}</main>
           </MotionWrapper>
