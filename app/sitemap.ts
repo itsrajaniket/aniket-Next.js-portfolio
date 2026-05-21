@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllSlugs } from "@/lib/blog";
 
-const BASE_URL = "https://itsrajaniket.github.io";
+const BASE_URL = "https://www.rajaniket.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const slugs = getAllSlugs();

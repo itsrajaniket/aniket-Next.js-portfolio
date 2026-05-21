@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://itsrajaniket.github.io/sitemap.xml",
+    sitemap: "https://www.rajaniket.com/sitemap.xml",
   };
 }
