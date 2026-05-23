@@ -31,8 +31,9 @@ export default function Skills() {
             <span className="text-accent font-mono tracking-widest uppercase text-sm mb-6 block">
               02. Proficiency
             </span>
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-main mb-8 tracking-tight leading-none whitespace-nowrap">
-              My Tech <span className="text-[#64748b]">Arsenal.</span>
+            <h2 className="text-4xl lg:text-6xl font-bold text-main mb-8 tracking-tight leading-none">
+              My Tech <br />
+              <span className="text-[#64748b]">Arsenal.</span>
             </h2>
             <p className="text-muted text-base leading-relaxed mb-10 max-w-md">
               A focused arsenal of modern tools designed for performance, scalability, and user experience.
@@ -41,7 +42,7 @@ export default function Skills() {
           </SectionReveal>
 
           {/* Skills grid */}
-          <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 lg:gap-3 xl:gap-5">
             {skillCategories.map((category, catIdx) => (
               <SectionReveal key={category.title} delay={catIdx * 0.12}>
                 <div className="space-y-4">
