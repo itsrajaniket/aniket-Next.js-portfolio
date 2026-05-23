@@ -172,21 +172,15 @@ export default function About() {
               <div className="space-y-4 text-muted leading-relaxed">
                 <p>
                   I&apos;m <span className="text-main font-semibold">Aniket Raj</span> — a
-                  self-taught React developer from Indore, India. My M.Sc. in Electronics &amp;
+                  self-taught full-stack developer from Indore, India. My M.Sc. in Electronics &amp;
                   Communication (CGPA 8.81) gave me an analytical, systems-first mindset that I
-                  now bring to every line of frontend code.
+                  now bring to every line of code.
                 </p>
                 <p>
-                  From 2021–2024 I stepped away from tech to prepare seriously for the UPSC civil
-                  services exams. That pause taught me depth, discipline, and how to learn hard
-                  things from scratch. When I returned to code, I came back{" "}
-                  <span className="text-primary font-semibold">more structured than ever.</span>
+                  I stepped away from tech from 2021–2024 to prepare for the UPSC civil services, a gap that built deep self-discipline.
                 </p>
                 <p>
-                  I care about performance you can measure, code a teammate can read six months
-                  later, and UIs that feel fast and right. Outside work I&apos;m tinkering with
-                  Web Audio synthesis in React and writing about what I learn, because
-                  explaining something is the best test of whether I actually understand it.
+                  Today, I integrate AI (Gemini, Claude, OpenAI) into full-stack products and have shipped Razorpay + Stripe payment flows in production. I care about performance you can measure, clean code, and building things that actually work.
                 </p>
               </div>
             </SpotlightReveal>

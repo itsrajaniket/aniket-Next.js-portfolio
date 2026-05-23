@@ -90,45 +90,31 @@ export const education: EducationItem[] = [
 
 export const services: ServiceItem[] = [
   {
-    title: "Frontend Development",
+    title: "Full-Stack SaaS Development",
     description:
-      "Building responsive, interactive, and highly performant user interfaces using modern frameworks like React and Next.js.",
+      "MERN + Next.js end-to-end development. Building scalable, performant web applications with responsive frontends and robust backends.",
     icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
     accentColor: "purple",
   },
   {
-    title: "UI/UX Design",
+    title: "AI/GenAI Integration",
     description:
-      "Crafting intuitive user experiences with clean, modern aesthetics and user-centric design principles.",
-    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
-    accentColor: "pink",
-  },
-  {
-    title: "Backend & APIs",
-    description:
-      "Developing secure, scalable server-side logic and RESTful APIs using Node.js and Next.js Route Handlers.",
-    icon: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
-    accentColor: "blue",
-  },
-  {
-    title: "Performance Tuning",
-    description:
-      "Optimizing load times, Core Web Vitals, and web architecture to ensure lightning-fast user experiences.",
-    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+      "Embedding OpenAI, Claude, and Gemini into web applications to build intelligent workflows, prompt pipelines, and agentic systems.",
+    icon: "M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.969 0 1.371 1.24.588 1.81l-3.97 2.883a1 1 0 00-.364 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.97-2.883a1 1 0 00-1.178 0l-3.97 2.883c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.05 10.1c-.783-.57-.38-1.81.588-1.81h4.908a1 1 0 00.95-.69l1.519-4.674z",
     accentColor: "emerald",
   },
   {
-    title: "Component Systems",
+    title: "Payment Gateway Integration",
     description:
-      "Architecting scalable, reusable design systems and component libraries with Storybook and Radix UI.",
-    icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
-    accentColor: "orange",
+      "Implementing secure checkout experiences and subscription flows in production using Razorpay and Stripe.",
+    icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z",
+    accentColor: "pink",
   },
   {
-    title: "SEO & Accessibility",
+    title: "API Design & Backend Architecture",
     description:
-      "Implementing semantic HTML, ARIA attributes, and Next.js metadata APIs for maximum search visibility and WCAG compliance.",
-    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-    accentColor: "teal",
+      "Designing clean REST APIs, robust authentication layers with JWT, and scalable Node.js microservices.",
+    icon: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
+    accentColor: "blue",
   },
 ];

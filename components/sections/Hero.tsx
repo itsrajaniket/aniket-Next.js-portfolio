@@ -94,9 +94,9 @@ export default function Hero() {
           </h2>
 
           <p className="text-muted text-lg max-w-lg leading-relaxed">
-            Specializing in building high-performance{" "}
-            <span className="text-accent italic font-medium">React ecosystems</span>{" "}
-            and optimizing complex algorithms. Based in India.
+            Full-Stack MERN + Next.js developer building{" "}
+            <span className="text-accent italic font-medium">AI-powered SaaS apps</span>{" "}
+            using OpenAI, Claude, and Gemini. 3 live apps. Immediate joiner.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
@@ -163,7 +163,7 @@ export default function Hero() {
               {[
                 { icon: "fas fa-code", color: "text-accent", label: "Projects", value: HERO_STATS[0].value },
                 { icon: "fa-brands fa-github", color: "text-purple-400", label: "Repos", value: HERO_STATS[1].value },
-                { icon: "fas fa-star", color: "text-yellow-400", label: "Year", value: "2025" },
+                { icon: "fas fa-star", color: "text-yellow-400", label: "Year", value: "2026" },
               ].map(({ icon, color, label, value }) => (
                 <div key={label} className="bg-card/40 p-2 rounded-xl text-center border border-surfaceBorder/5 backdrop-blur-sm will-change-transform">
                   <i className={`${icon} ${color} text-sm mb-1 block`} aria-hidden="true" />
