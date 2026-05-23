@@ -203,14 +203,8 @@ export const skillCategories: SkillCategory[] = [
         icon: "fas fa-terminal",
         color: "text-cyan-400",
         borderHover: "hover:border-cyan-400/50",
-      },
-      {
-        name: "Agentic Workflows",
-        subtitle: "Autonomous Agents",
-        icon: "fas fa-network-wired",
-        color: "text-purple-400",
-        borderHover: "hover:border-purple-400/50",
-      },
+      }
+
     ],
   },
   {
