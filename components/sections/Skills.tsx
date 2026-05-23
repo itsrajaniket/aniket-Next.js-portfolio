@@ -31,9 +31,8 @@ export default function Skills() {
             <span className="text-accent font-mono tracking-widest uppercase text-sm mb-6 block">
               02. Proficiency
             </span>
-            <h2 className="text-4xl lg:text-6xl font-bold text-main mb-8 tracking-tight leading-none">
-              My Tech <br />
-              <span className="text-[#64748b]">Arsenal.</span>
+            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-main mb-8 tracking-tight leading-none whitespace-nowrap">
+              My Tech <span className="text-[#64748b]">Arsenal.</span>
             </h2>
             <p className="text-muted text-base leading-relaxed mb-10 max-w-md">
               A focused arsenal of modern tools designed for performance, scalability, and user experience.
