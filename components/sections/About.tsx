@@ -74,7 +74,7 @@ export default function About() {
                   alt="Aniket Raj — Frontend Developer"
                   fill
                   className="object-cover object-top grayscale group-hover:grayscale-0 transition duration-700"
-                  sizes="(max-width: 1024px) 100vw, 300px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
                 />
                 {/* Fade bottom */}
                 <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-card/80 to-transparent" />
