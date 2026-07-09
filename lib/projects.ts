@@ -11,6 +11,7 @@ import qrImg from "@/public/images/projects/project-qr.jpg";
 import dogImg from "@/public/images/projects/project-dog.jpg";
 import claudeImg from "@/public/images/projects/project-claude.png";
 import reviewclickImg from "@/public/images/projects/project-reviewclick.png";
+import aihouseplanImg from "@/public/images/projects/project-aihouseplan.png";
 
 export const projects: Project[] = [
   {
@@ -25,6 +26,20 @@ export const projects: Project[] = [
     icon: "fas fa-magic",
     featured: true,
     accentColor: "blue",
+    hasCaseStudy: true,
+  },
+  {
+    id: "ai-house-planner",
+    title: "AI House Map Planner",
+    description:
+      "Proportional residential 2D floor plan generation tool with structural staircase vertical locking and traditional Vastu Shastra orientation guidelines.",
+    tags: ["NEXT.JS", "TYPESCRIPT", "GEMINI API", "TAILWIND CSS"],
+    github: "https://github.com/itsrajaniket/aihouseplanner",
+    live: "https://aihouseplanner.vercel.app/",
+    image: aihouseplanImg,
+    icon: "fas fa-home",
+    featured: true,
+    accentColor: "teal",
     hasCaseStudy: true,
   },
   {

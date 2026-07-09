@@ -58,6 +58,55 @@ const SHOWCASE = [
     ],
   },
   {
+    id: "aihouseplanner",
+    type: "Personal",
+    typeBadge: "bg-teal-500/15 border-teal-500/30 text-teal-300",
+    period: "2026",
+    title: "AI House Map Planner",
+    subtitle: "AI-Powered Residential Floor Plan Generator",
+    description:
+      "A web-based layout drafting tool for individual plot owners to visualize proportional residential floor plans with multi-floor layout generation and Vastu Shastra layout alignment.",
+    fullDetails: {
+      overview: "AI house map planner is a web-based layout drafting tool designed for individual plot owners to visualize proportional residential floor plans. The application maps custom plot widths and depths in feet alongside orientation directions, producing architectural drawings with door placements, window apertures, and scale indicators.",
+      problem: "Early-stage home building involves high cost overhead and design friction. This application serves as an instant structural plan visualizer that accelerates early layout validation for homebuilders, mitigating architectural design iterations and overhead costs.",
+      tech: "Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4.0, Google Generative AI (Gemini 2.5 Flash), SVG for vector rendering.",
+      features: [
+        "Multi-floor layout generation: Generates vertically-aligned multi-story blueprints (up to 3 levels) locking the staircase footprint.",
+        "High-resolution SVG/PNG exporter: Compiles client-side vector files and super-samples graphics onto a canvas context for PNG downloads.",
+        "Vastu Shastra layout alignment: Applies traditional orientation guidelines to quadrant calculations for room and door offsets.",
+        "Adaptive room sizing & dropping: Adjusts room footprint calculations dynamically based on plot dimensions.",
+        "Proportional CAD rendering & dynamic labels: Uses area-based scaling factor parameters and a position clamp helper to prevent furniture symbols from overlapping walls.",
+        "Door & window geometry constraints: Automatically computes door/window apertures."
+      ],
+      technicalHighlights: [
+        "Client-Server Architecture: The React client captures plot parameters and forwards them via POST requests to the API route handler, determining if layout generation should run locally via procedural math rule files or server-side via Gemini API calls.",
+        "Strict validation pipeline: Evaluates layout plans against a strict flat 0.3 ft sizing tolerance.",
+        "SVG Scaling: Uses a scale unit calculation (default 20 SVG units = 1 foot) to adapt layouts dynamically.",
+        "State Management: State is centralized in the parent component using React hooks. The application state stores inputs, floor plans, the current floor tab, loading states, and the locked engine type."
+      ]
+    },
+    highlights: [
+      "Multi-floor layout generation with staircase locks",
+      "Vastu Shastra alignment and validation",
+      "High-resolution SVG/PNG exporter",
+      "Adaptive room sizing and geometry constraints",
+    ],
+    tags: ["NEXT.JS 16", "TYPESCRIPT", "TAILWIND CSS", "GEMINI AI", "SVG"],
+    liveUrl: "https://github.com/itsrajaniket/aihouseplanner",
+    github: "https://github.com/itsrajaniket/aihouseplanner",
+    image: "/images/projects/project-aihouseplan.png",
+    accentColor: "#14b8a6",
+    accentRgb: "20,184,166",
+    accentGrad: "from-teal-500 to-emerald-600",
+    bgGrad: "from-teal-950/80 via-slate-900/95 to-slate-900",
+    icon: "fas fa-home",
+    metrics: [
+      { value: "3", label: "Max Floors" },
+      { value: "0.3ft", label: "Tolerance" },
+      { value: "AI/Math", label: "Engines" },
+    ],
+  },
+  {
     id: "maharani",
     type: "Freelance",
     typeBadge: "bg-amber-500/15 border-amber-500/30 text-amber-300",
