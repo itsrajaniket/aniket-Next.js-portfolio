@@ -130,6 +130,11 @@ export default function Hero() {
               <i className="fa-brands fa-react text-4xl text-accent animate-spin-slow" aria-hidden="true" />
             </div>
 
+            {/* Floating AWS AI Practitioner badge */}
+            <div className="absolute -left-6 top-10 w-24 h-24 glass rounded-full overflow-hidden flex items-center justify-center border border-surfaceBorder/20 shadow-xl z-10 hover:scale-110 transition-transform cursor-pointer" title="AWS Certified AI Practitioner">
+              <Image src="/images/aws-ai-badge.png" alt="AWS Certified AI Practitioner" width={80} height={80} className="object-contain drop-shadow-md" />
+            </div>
+
             {/* Avatar */}
             <div className="rounded-2xl overflow-hidden border border-surfaceBorder/10 mb-5 relative group">
               <Image

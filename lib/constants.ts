@@ -102,6 +102,7 @@ export const SOCIAL_LINKS = [
 // ] as const;
 export const TYPEWRITER_WORDS = [
   "MERN Stack Builder",
+  "AWS Certified AI Practitioner",
   "React Developer",
   "Next.js Engineer",
   "UI Craftsman",
